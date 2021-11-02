@@ -9,6 +9,7 @@ import Vue from 'vue'
 import App from '../app.vue'
 import router from '../router/index.js'
 import store from '../store/index.js'
+import '../plugins/buefy.js'
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
