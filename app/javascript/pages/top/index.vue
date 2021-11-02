@@ -6,6 +6,7 @@
 
 <script>
 export default {
+  name: 'TopIndex',
   data: function () {
     return {
       message: "Hello Vue!"
