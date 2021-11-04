@@ -9,8 +9,11 @@ import Vue from 'vue'
 import App from '../app.vue'
 import router from '../router/index.js'
 import store from '../store/index.js'
+import axios from '../plugins/axios.js'
 import '../plugins/buefy.js'
 import '../plugins/vee-validate.js'
+
+Vue.prototype.$axios = axios
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({

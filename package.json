@@ -6,6 +6,7 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.2",
+    "axios": "^0.24.0",
     "buefy": "^0.9.11",
     "turbolinks": "^5.2.0",
     "vee-validate": "^3.4.13",
