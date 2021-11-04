@@ -10,6 +10,7 @@ import App from '../app.vue'
 import router from '../router/index.js'
 import store from '../store/index.js'
 import '../plugins/buefy.js'
+import '../plugins/vee-validate.js'
 
 document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
