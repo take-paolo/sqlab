@@ -13,6 +13,7 @@ import axios from '../plugins/axios.js'
 import '../plugins/buefy.js'
 import '../plugins/vee-validate.js'
 
+Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 
 document.addEventListener('DOMContentLoaded', () => {
