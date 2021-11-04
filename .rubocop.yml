@@ -1,0 +1,50 @@
+inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+AllCops:
+  TargetRubyVersion: 3.0.2
+  TargetRailsVersion: 6.1.4.1
+  NewCops: enable
+  Exclude:
+    - "vendor/**/*"
+    - "bin/**/*"
+    - "config/**/*"
+    - "db/**/*"
+    - 'lib/tasks/auto_annotate_models.rake'
+    - "node_modules/**/*"
+    - 'tmp/**/*'
+    - "Gemfile"
+    - "Rakefile"
+    - "config.ru"
+    - 'spec/rails_helper.rb'
+    - 'spec/spec_helper.rb'
+  DisplayCopNames: true
+
+Rails:
+  Enabled: true
+
+Rails/FilePath:
+  Exclude:
+    - 'lib/tasks/dev.rake'
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/AndOr:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Layout/IndentationConsistency:
+  EnforcedStyle: indented_internal_methods
