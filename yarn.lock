@@ -1324,6 +1324,11 @@
     "@types/yargs" "^16.0.0"
     chalk "^4.0.0"
 
+"@mdi/font@^6.9.96":
+  version "6.9.96"
+  resolved "https://registry.yarnpkg.com/@mdi/font/-/font-6.9.96.tgz#c68da7e0895885dd09e60dc08c5ecc0d77f67efb"
+  integrity sha512-z3QVZStyHVwkDsFR7A7F2PIvZJPWgdSFw4BEEy2Gc9HUN5NfK9mGbjgaYClRcbMWiYEV45srmiYtczmBtCqR8w==
+
 "@npmcli/fs@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@npmcli/fs/-/fs-1.0.0.tgz#589612cfad3a6ea0feafcb901d29c63fd52db09f"
@@ -2819,13 +2824,6 @@ bser@2.1.1:
   dependencies:
     node-int64 "^0.4.0"
 
-buefy@^0.9.11:
-  version "0.9.11"
-  resolved "https://registry.yarnpkg.com/buefy/-/buefy-0.9.11.tgz#69ab7f46e4f172d43247916f770f29764f9e0931"
-  integrity sha512-WP32SiaM9WVxDtzgdiq7V2zyIvn41NboPgluVqdB6OAi1/QhjO/63m6hd/jy6Vk8r+zuhIZD+aP9KlQ10EhxTQ==
-  dependencies:
-    bulma "0.9.3"
-
 buffer-from@^1.0.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.2.tgz#2b146a6fd72e80b4f55d255f35ed59a3a9a41bd5"
@@ -2854,11 +2852,6 @@ builtin-status-codes@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/builtin-status-codes/-/builtin-status-codes-3.0.0.tgz#85982878e21b98e1c66425e03d0174788f569ee8"
   integrity sha1-hZgoeOIbmOHGZCXgPQF0eI9Wnug=
-
-bulma@0.9.3:
-  version "0.9.3"
-  resolved "https://registry.yarnpkg.com/bulma/-/bulma-0.9.3.tgz#ddccb7436ebe3e21bf47afe01d3c43a296b70243"
-  integrity sha512-0d7GNW1PY4ud8TWxdNcP6Cc8Bu7MxcntD/RRLGWuiw/s0a9P+XlH/6QoOIrmbj6o8WWJzJYhytiu9nFjTszk1g==
 
 bytes@3.0.0:
   version "3.0.0"
@@ -9673,6 +9666,11 @@ vue@^2.6.14:
   version "2.6.14"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"
   integrity sha512-x2284lgYvjOMj3Za7kqzRcUSxBboHqtgRE2zlos1qWaOye5yUmHn42LB1250NJBLRwEcdrB0JRwyPTEPhfQjiQ==
+
+vuetify@^2.6.7:
+  version "2.6.7"
+  resolved "https://registry.yarnpkg.com/vuetify/-/vuetify-2.6.7.tgz#9c6fb7d20e1c4b07417084cbe5996c2dadf099df"
+  integrity sha512-1XxCv6mt1UsKaW7rqow0hF/jOw1ijT/fHH9euWLHgSVIcPAx8D2AY5ihTCBbMmV53Hj/YD0DUvzyk6cM/OGHvw==
 
 vuex@^3.6.2:
   version "3.6.2"

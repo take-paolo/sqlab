@@ -10,7 +10,7 @@ import App from '../app.vue'
 import router from '../router/index.js'
 import store from '../store/index.js'
 import axios from '../plugins/axios.js'
-import '../plugins/buefy.js'
+import vuetify from '@/plugins/vuetify'
 import '../plugins/vee-validate.js'
 
 Vue.config.productionTip = false
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     router,
     store,
+    vuetify,
     render: h => h(App)
   }).$mount()
   document.body.appendChild(app.$el)
