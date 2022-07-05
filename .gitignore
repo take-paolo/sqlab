@@ -73,3 +73,5 @@ yarn-debug.log*
 
 # Ignore coverage file
 coverage
+
+rails
