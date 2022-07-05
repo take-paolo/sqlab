@@ -47,4 +47,41 @@ Style/FrozenStringLiteralComment:
   Enabled: false
 
 Layout/IndentationConsistency:
-  EnforcedStyle: indented_internal_methods
+  EnforcedStyle: normal
+
+Layout/LineLength:
+  Max: 180
+
+Metrics/BlockLength:
+  CountComments: false
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 15
+  Exclude:
+    - 'lib/tasks/dev.rake'
+
+Metrics/CyclomaticComplexity:
+  Max: 8
+
+Naming/VariableNumber:
+  EnforcedStyle: snake_case
+
+RSpec/AnyInstance:
+  Exclude:
+    - 'spec/requests/**/*'
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Max: 5
+
+Rails/Output:
+  Exclude:
+    - 'lib/tasks/**/*.rb'
