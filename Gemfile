@@ -55,6 +55,9 @@ group :development, :test do
 
   # N+1 alert
   gem 'bullet'
+
+  # bulk insert
+  gem 'activerecord-import'
 end
 
 group :development do
