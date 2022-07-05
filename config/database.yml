@@ -19,14 +19,14 @@ default: &default
 
 development:
   <<: *default
-  database: sql_drill_development
+  database: sqlab_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: sql_drill_test
+  database: sqlab_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -50,6 +50,6 @@ test:
 #
 production:
   <<: *default
-  database: sql_drill_production
-  username: sql_drill
-  password: <%= ENV['SQL_DRILL_DATABASE_PASSWORD'] %>
+  database: sqlab_production
+  username: sqlab
+  password: <%= ENV['SQLAB_DATABASE_PASSWORD'] %>
