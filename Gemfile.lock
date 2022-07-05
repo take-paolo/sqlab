@@ -85,6 +85,10 @@ GEM
     childprocess (3.0.0)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     diff-lcs (1.4.4)
     docile (1.4.0)
     erubi (1.10.0)
@@ -300,6 +304,7 @@ DEPENDENCIES
   bullet
   byebug
   capybara (>= 3.26)
+  database_cleaner-active_record
   factory_bot_rails
   jbuilder (~> 2.7)
   jwt
