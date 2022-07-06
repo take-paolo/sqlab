@@ -12,6 +12,7 @@ import store from '../store/index.js'
 import axios from '../plugins/axios.js'
 import vuetify from '@/plugins/vuetify'
 import '../plugins/vee-validate.js'
+import '../plugins/vue-draggable'
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
