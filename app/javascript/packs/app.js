@@ -6,13 +6,13 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue'
-import App from '../app.vue'
-import router from '../router/index.js'
-import store from '../store/index.js'
-import axios from '../plugins/axios.js'
+import App from '@/app.vue'
+import router from '@/router/index.js'
+import store from '@/store/index.js'
+import axios from '@/plugins/axios.js'
 import vuetify from '@/plugins/vuetify'
-import '../plugins/vee-validate.js'
-import '../plugins/vue-draggable'
+import '@/plugins/vee-validate.js'
+import '@/plugins/vue-draggable'
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
