@@ -8,6 +8,7 @@
     "@rails/webpacker": "5.4.2",
     "axios": "^0.24.0",
     "codemirror": "^5.65",
+    "dayjs": "^1.11.3",
     "turbolinks": "^5.2.0",
     "vee-validate": "^3.4.13",
     "vue": "^2.6.14",
