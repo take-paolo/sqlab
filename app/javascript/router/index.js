@@ -5,13 +5,11 @@ import TopIndex from '@/pages/top/index.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  { path: '/', component: TopIndex, name: 'TopIndex' }
-]
+const routes = [{ path: '/', component: TopIndex, name: 'TopIndex' }]
 
 const router = new VueRouter({
   mode: 'history',
-  routes
+  routes,
 })
 
 export default router

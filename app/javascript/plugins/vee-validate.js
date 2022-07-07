@@ -6,7 +6,7 @@ import { required } from 'vee-validate/dist/rules'
 localize('ja', ja)
 
 extend('required', {
-  ...required
+  ...required,
 })
 
 Vue.component('ValidationProvider', ValidationProvider)
