@@ -10,10 +10,7 @@ namespace :rebuild do
     Rake::Task['db:drop'].execute
     Rake::Task['db:create'].execute
     Rake::Task['db:migrate'].execute
-    Rake::Task['samples:import:csv'].execute
-    Rake::Task['samples:permit:table_access'].execute
-    Rake::Task['samples:permit:temp_table_control'].execute
-    Rake::Task['samples:register:data_models'].execute
+    Rake::Task['samples:handle:data_models'].execute
     Rake::Task['db:seed'].execute
   end
 end
