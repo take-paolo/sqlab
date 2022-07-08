@@ -1,0 +1,53 @@
+[
+  {
+    "key": "ctrl+Enter",
+    "command": "handleTestQuery"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "executeQuery"
+  },
+  {
+    "key": "ctrl+z",
+    "command": "focusEditor"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "resetEditor"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "openErDiagramInNewTab"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "openExampleAnswerModal"
+  },
+  {
+    "key": "ctrl+.",
+    "command": "moveOutputTabTo"
+  },
+  {
+    "key": "ctrl+,",
+    "command": "moveOutputTabTo",
+    "args": [false]
+  },
+  {
+    "key": "ctrl+/",
+    "command": "moveOutputTableTabTo"
+  },
+  {
+    "key": "ctrl+m",
+    "command": "moveOutputTableTabTo",
+    "args": [false]
+  },
+  {
+    "key": "ctrl+meta+.",
+    "command": "moveInputTabTo"
+  },
+  {
+    "key": "ctrl+meta+,",
+    "command": "moveInputTabTo",
+    "args": [false]
+  }
+]

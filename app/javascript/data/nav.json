@@ -1,0 +1,23 @@
+[
+  {
+    "id": "works",
+    "icon": "mdi-database",
+    "tooltip": "問題集一覧",
+    "to": { "name": "Works" },
+    "disabled": false
+  },
+  {
+    "id": "help",
+    "icon": "mdi-help-circle-outline",
+    "tooltip": "ヘルプ",
+    "to": null,
+    "disabled": true
+  },
+  {
+    "id": "roadmap",
+    "icon": "mdi-chart-timeline-variant",
+    "tooltip": "学習ロードマップ",
+    "to": null,
+    "disabled": true
+  }
+]

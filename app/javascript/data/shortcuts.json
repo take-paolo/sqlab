@@ -1,0 +1,93 @@
+[
+  {
+    "scope": "全般",
+    "items": [
+      {
+        "key": "Ctrl - Enter",
+        "command": "答え合わせ"
+      },
+      {
+        "key": "Ctrl - K",
+        "command": "クエリ実行"
+      },
+      {
+        "key": "Ctrl - Z",
+        "command": "エディタをフォーカス"
+      },
+      {
+        "key": "Ctrl - R",
+        "command": "リセット"
+      },
+      {
+        "key": "Ctrl - O",
+        "command": "新しいタブでER図を開く"
+      },
+      {
+        "key": "Ctrl - A",
+        "command": "解答例を見る"
+      },
+      {
+        "key": "Ctrl - Meta - Period ( . )",
+        "command": "右タブに移動（エディタ、見本）"
+      },
+      {
+        "key": "Ctrl - Meta - Comma ( , )",
+        "command": "左タブに移動（エディタ、見本）"
+      },
+      {
+        "key": "Ctrl - Period ( . )",
+        "command": "右タブに移動（データベース、ER図、実行結果）"
+      },
+      {
+        "key": "Ctrl - Comma ( , )",
+        "command": "左タブに移動（データベース、ER図、実行結果）"
+      },
+      {
+        "key": "Ctrl - /",
+        "command": "右テーブルタブに移動（テーブルデータが複数ある場合）"
+      },
+      {
+        "key": "Ctrl - M",
+        "command": "左テーブルタブに移動（テーブルデータが複数ある場合）"
+      }
+    ],
+    "note": "Metaキーは、MacではCommandキー、WindowsではWindowsキーです。"
+  },
+  {
+    "scope": "エディタ",
+    "items": [
+      {
+        "key": "Cmd - C",
+        "command": "コピー"
+      },
+      {
+        "key": "Cmd - D",
+        "command": "削除"
+      },
+      {
+        "key": "Cmd - X",
+        "command": "切り取り"
+      },
+      {
+        "key": "Cmd - V",
+        "command": "ペースト"
+      },
+      {
+        "key": "Cmd - A",
+        "command": "全選択"
+      },
+      {
+        "key": "Cmd - /",
+        "command": "コメントの追加または削除"
+      },
+      {
+        "key": "Cmd - Z",
+        "command": "直前の操作の取り消し"
+      },
+      {
+        "key": "Cmd - Shift - Z",
+        "command": "直前の操作の取り消しの取り消し"
+      }
+    ]
+  }
+]
