@@ -7,12 +7,14 @@
 
 import Vue from 'vue'
 import App from '@/app.vue'
-import router from '@/router/index.js'
-import store from '@/store/index.js'
-import axios from '@/plugins/axios.js'
+import router from '@/router/index'
+import store from '@/store/index'
+import axios from '@/plugins/axios'
 import vuetify from '@/plugins/vuetify'
-import '@/plugins/vee-validate.js'
+import '@/plugins/vee-validate'
 import '@/plugins/vue-draggable'
+import '@/components/globals'
+import '@/styles/index.scss'
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
