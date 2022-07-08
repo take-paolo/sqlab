@@ -7,12 +7,14 @@
 
 import Vue from 'vue'
 import App from '@/app.vue'
-import router from '@/router/index.js'
-import store from '@/store/index.js'
-import axios from '@/plugins/axios.js'
+import router from '@/router/index'
+import store from '@/store/index'
+import axios from '@/plugins/axios'
 import vuetify from '@/plugins/vuetify'
-import '@/plugins/vee-validate.js'
+import '@/plugins/vee-validate'
 import '@/plugins/vue-draggable'
+import '@/components/globals'
+import '@/styles/index.scss'
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
@@ -22,11 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     router,
     store,
     vuetify,
-    render: h => h(App)
+    render: h => h(App),
   }).$mount()
   document.body.appendChild(app.$el)
 })
-
 
 // The above code uses Vue without the compiler, which means you cannot
 // use Vue to target elements in your existing html templates. You would
@@ -40,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
 //   {{message}}
 //   <app></app>
 // </div>
-
 
 // import Vue from 'vue/dist/vue.esm'
 // import App from '../app.vue'

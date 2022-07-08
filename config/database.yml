@@ -14,16 +14,45 @@
 # Configure Using Gemfile
 # gem 'pg'
 #
+
+# default
 default: &default
   adapter: postgresql
   encoding: unicode
-  # For details on connection pooling, see Rails configuration guide
-  # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-development:
+# users
+admin_user: &admin_user
+  username: sqlab_admin
+  password: <%= Rails.application.credentials[:db][:admin][:password] %>
+general_user: &general_user
+  username: sqlab_general
+  password: <%= Rails.application.credentials[:db][:general][:password] %>
+
+# databases
+primary: &primary
   <<: *default
-  database: sqlab_development
+  <<: *admin_user
+data_models: &data_models
+  <<: *default
+  <<: *admin_user
+  migrations_paths: db/data_models_migrate
+book_stores: &book_stores
+  <<: *default
+  <<: *admin_user
+  migrations_paths: db/book_stores_migrate
+
+# database_configs
+development:
+  primary:
+    <<: *primary
+    database: sqlab_development
+  data_models:
+    <<: *data_models
+    database: data_models_development
+  book_stores:
+    <<: *book_stores
+    database: book_stores_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -56,8 +85,15 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: sqlab_test
+  primary:
+    <<: *primary
+    database: sqlab_test
+  data_models:
+    <<: *data_models
+    database: data_models_test
+  book_stores:
+    <<: *book_stores
+    database: book_stores_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,7 +116,12 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: sqlab_production
-  username: sqlab
-  password: <%= ENV['SQLAB_DATABASE_PASSWORD'] %>
+  primary:
+    <<: *primary
+    database: sqlab_production
+  data_models:
+    <<: *data_models
+    database: data_models_production
+  book_stores:
+    <<: *book_stores
+    database: book_stores_production
