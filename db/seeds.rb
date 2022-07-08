@@ -67,4 +67,4 @@ SampleTable.create(practice_id: 2, uid: 2)
 SampleTable.create(practice_id: 3, uid: 1)
 SampleTable.create(practice_id: 3, uid: 2)
 SampleTable.create(practice_id: 3, uid: 3)
-
+SampleTable.create(practice_id: 4, uid: 6)
