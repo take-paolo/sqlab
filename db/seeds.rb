@@ -22,7 +22,7 @@ Practice.create(
   chapter_id: 1,
   name: "SQLトライアル1",
   question: "出版年(release_year)が不明の書籍一覧を取得してください。",
-  answer: "SELECT * FROM books WHERE release_year IS NULL;",
+  answer: "SELECT *\nFROM books\nWHERE release_year IS NULL;",
   sample_database_uid: 1,
   display_er_diagram: true,
   enabled: true,
@@ -33,7 +33,7 @@ Practice.create(
   chapter_id: 1,
   name: "SQLトライアル2",
   question: "書籍一覧をページ数が多い順に並び替えてください。",
-  answer: "SELECT name AS 書籍名, total_page AS 総ページ数 FROM books ORDER BY total_page DESC;",
+  answer: "SELECT name AS 書籍名, total_page AS 総ページ数\nFROM books\nORDER BY total_page DESC;",
   sample_database_uid: 1,
   display_er_diagram: true,
   enabled: true,
@@ -44,7 +44,7 @@ Practice.create(
   chapter_id: 1,
   name: "SQLトライアル3",
   question: "書籍一覧をカテゴリー毎に集計して多い順に並び替え、上位３つを取得してください。",
-  answer: "SELECT cat.name AS カテゴリー名, COUNT(book.name) AS 書籍数 FROM categories AS cat INNER JOIN book_categories AS book_cat ON cat.id = book_cat.category_id INNER JOIN books AS book ON book_cat.book_id = book.id GROUP BY カテゴリー名 ORDER BY 書籍数 DESC, カテゴリー名 ASC LIMIT 3;",
+  answer: "SELECT cat.name AS カテゴリー名, COUNT(book.name) AS 書籍数\nFROM categories AS cat\nINNER JOIN book_categories AS book_cat\nON cat.id = book_cat.category_id\nINNER JOIN books AS book\nON book_cat.book_id = book.id\nGROUP BY カテゴリー名\nORDER BY 書籍数 DESC, カテゴリー名 ASC\nLIMIT 3;",
   sample_database_uid: 1,
   display_er_diagram: true,
   enabled: true,
@@ -55,7 +55,7 @@ Practice.create(
   chapter_id: 1,
   name: "SQLトライアル4",
   question: "idが1のデータを削除後、イベント一覧を取得してください。",
-  answer: "DELETE FROM events WHERE id = 1;\nSELECT * FROM events;",
+  answer: "DELETE FROM events\nWHERE id = 1;\nSELECT *\nFROM events;",
   sample_database_uid: 1,
   display_er_diagram: false,
   enabled: true,
@@ -67,3 +67,4 @@ SampleTable.create(practice_id: 2, uid: 2)
 SampleTable.create(practice_id: 3, uid: 1)
 SampleTable.create(practice_id: 3, uid: 2)
 SampleTable.create(practice_id: 3, uid: 3)
+
