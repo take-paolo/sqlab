@@ -24,7 +24,7 @@
             <span class="font--text">{{ shortcut.scope }}</span>
           </v-subheader>
 
-          <BaseDivider class="practice-shortcut-divider" />
+          <BaseDivider class="practice-shortcut-divider rounded-lg" />
 
           <BaseTable
             class="practice-shortcut-table base-table--striped"

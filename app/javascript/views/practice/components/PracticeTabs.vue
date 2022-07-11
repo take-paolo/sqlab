@@ -1,7 +1,7 @@
 <template>
   <v-card
     class="practice-tabs-wrap"
-    rounded="sm"
+    rounded="lg"
   >
     <v-tabs
       ref="tabs"
@@ -79,6 +79,7 @@ export default {
 
       .v-tab:not(.v-tab--active) {
         color: var(--v-font-base);
+        opacity: 0.62;
       }
     }
   }

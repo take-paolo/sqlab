@@ -2,7 +2,7 @@
   <v-card
     class="overflow-hidden"
     color="white"
-    rounded="sm"
+    rounded="lg"
   >
     <v-card
       class="practice-question-icon-wrapper d-flex align-center justify-center"
