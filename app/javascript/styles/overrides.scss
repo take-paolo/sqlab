@@ -16,12 +16,13 @@
   .v-card__title {
     font-size: 1.125rem;
     line-height: 1.75rem;
-    font-weight: bold;
+    font-weight: 700;
   }
-  .v-card__subtitle {
+  .v-card__subtitle,
+  .v-card__text {
     font-size: 0.875rem;
     line-height: 1.5rem;
-    font-weight: 400;
+    font-weight: 500;
   }
   .v-card__subtitle,
   .v-card__text,
@@ -35,7 +36,7 @@
 
   // btn
   .v-btn {
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: normal;
     &:not(.v-btn--round) {
       &.v-size--default {
@@ -72,12 +73,12 @@
     &__title {
       font-size: 1rem;
       line-height: 1.5rem;
-      font-weight: bold;
+      font-weight: 700;
     }
     &__subtitle {
       font-size: 0.875rem;
       line-height: 1.5rem;
-      font-weight: 400;
+      font-weight: 500;
     }
   }
   .theme--light {
@@ -106,7 +107,7 @@
   }
   .v-tab {
     letter-spacing: normal;
-    font-weight: bold;
+    font-weight: 700;
   }
   .theme--light {
     &.v-tabs {
@@ -182,6 +183,18 @@
     &__message {
       color: var(--v-font-base);
       line-height: 1.5rem;
+    }
+  }
+
+  // subheader
+  .v-subheader {
+    font-weight: 500;
+  }
+
+  // progress bar
+  .theme--light {
+    .v-progress-linear {
+      color: var(--v-font-darken1);
     }
   }
 }
