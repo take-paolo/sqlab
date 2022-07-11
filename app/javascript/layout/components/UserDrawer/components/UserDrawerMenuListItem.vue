@@ -11,7 +11,7 @@
         {{ item.icon }}
       </BaseIcon>
     </v-list-item-icon>
-    <v-list-item-title class="font-weight-regular">
+    <v-list-item-title class="font-weight-medium">
       {{ item.title }}
     </v-list-item-title>
   </v-list-item>
