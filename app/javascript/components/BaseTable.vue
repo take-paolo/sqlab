@@ -20,7 +20,7 @@ export default {
   &.base-table {
     &--striped {
       tr {
-        &:nth-child(2n + 1) {
+        &:nth-child(2n) {
           td {
             background: var(--v-primary-lighten5);
           }
@@ -30,7 +30,9 @@ export default {
     &--hover {
       tr {
         &:hover {
-          background: var(--v-primary-lighten5) !important;
+          td {
+            background: var(--v-primary-lighten5) !important;
+          }
         }
       }
     }
