@@ -6,9 +6,8 @@
     :to="{ name: 'Practice', params: { slug: workSlug, id: practice.id } }"
     :ripple="{ center: true, class: 'primary--text' }"
   >
-    <v-list-item-title class="py-2 text-small font-weight-regular">
-      <span>{{ order }}.</span>
-      <span class="ml-0">{{ practice.name }}</span>
+    <v-list-item-title class="py-2 text-small font-weight-medium">
+      {{ practice.name }}
     </v-list-item-title>
   </v-list-item>
 </template>
@@ -17,10 +16,6 @@
 export default {
   name: 'WorkDrawerPracticeListItem',
   props: {
-    order: {
-      type: Number,
-      default: undefined,
-    },
     practice: {
       type: Object,
       default: () => ({}),

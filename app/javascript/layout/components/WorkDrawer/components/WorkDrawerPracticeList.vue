@@ -3,7 +3,6 @@
     <WorkDrawerPracticeListItem
       v-for="(practice, index) in practices"
       :key="index"
-      :order="index + 1"
       :practice="practice"
       :work-slug="workSlug"
       :active-practice-id="activePracticeId"
