@@ -1,7 +1,7 @@
 const font = Object.freeze({
-  base: '#5E5F66',
+  base: '#5A6977',
   lighten1: '#757680',
-  darken1: '#343438',
+  darken1: '#252545',
 })
 const primary = Object.freeze({
   base: '#7F96FC',
