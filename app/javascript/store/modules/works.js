@@ -1,4 +1,5 @@
 import axios from '@/plugins/axios'
+import { handleException } from '@/utils/exception'
 
 function calcWorkChapters(work) {
   return work.chapters.length
@@ -32,7 +33,7 @@ const works = {
         axios
           .get(`works/${slug}`)
           .then(res => commit('setWork', res.data))
-          .catch(err => console.log(err))
+          .catch(err => handleException(err))
       }
     },
   },
