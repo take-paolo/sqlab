@@ -1,33 +1,47 @@
 <template>
-  <div>
-    <p>{{ work.name }}</p>
-    <p>{{ work.description }}</p>
-    <div>
-      <div
-        v-for="chapter in work.chapters"
-        :key="chapter.id"
-      >
-        <span>{{ chapter.name }}</span>
-        <ul>
-          <li
-            v-for="practice in chapter.practices"
-            :key="practice.id"
-          >
-            <router-link :to="{ name: 'Practice', params: { slug: work.slug, id: practice.id } }">
-              {{ practice.name }}
-            </router-link>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+  <BaseContainer>
+    <template v-if="work">
+      <v-row no-gutters>
+        <v-col>
+          <WorkHeading :title="work.name" />
+        </v-col>
+      </v-row>
+      <v-row no-gutters>
+        <v-col
+          class="work-col"
+          cols="8"
+        >
+          <WorkMenu :work="work" />
+        </v-col>
+        <v-col
+          class="work-col"
+          cols="4"
+        >
+          <WorkDetail :work="work" />
+        </v-col>
+      </v-row>
+    </template>
+  </BaseContainer>
 </template>
 
 <script>
+import store from '@/store/index'
 import { mapGetters, mapActions } from 'vuex'
+
+import WorkHeading from './components/WorkHeading'
+import WorkMenu from './components/WorkMenu'
+import WorkDetail from './components/WorkDetail'
 
 export default {
   name: 'WorkView',
+  components: {
+    WorkHeading,
+    WorkMenu,
+    WorkDetail,
+  },
+  beforeRouteEnter(to, from, next) {
+    store.dispatch('works/fetchWork', to.params.slug).then(() => next())
+  },
   computed: {
     ...mapGetters('works', ['work']),
   },
@@ -41,8 +55,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-p {
-  font-size: 2em;
-  text-align: center;
+.work-col {
+  padding: 0 2% !important;
 }
 </style>

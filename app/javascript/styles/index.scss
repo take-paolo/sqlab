@@ -4,12 +4,19 @@
 :root {
   --shadow-color: rgb(23, 49, 128, 0.33);
   --shadow: 0px 3px 6px -2px var(--shadow-color);
+  --shadow-low: 0px 1px 7px -3px var(--shadow-color);
   --bg-color: #f1f5fb;
 }
 *,
 *:focus {
   outline: none;
 }
+a {
+  text-decoration: none;
+}
 .v-application {
   font-family: Roboto, 'Noto Sans JP', sans-serif;
+}
+.v-application--wrap {
+  background: var(--bg-color);
 }

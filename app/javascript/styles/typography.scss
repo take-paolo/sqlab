@@ -1,7 +1,7 @@
 .v-application {
   .text-x-large {
     font-size: 1.25rem !important;
-    line-height: 1.75rem !important;
+    line-height: 2rem !important;
   }
   .text-large {
     font-size: 1.125rem !important;
@@ -9,7 +9,7 @@
   }
   .text-default {
     font-size: 1rem !important;
-    line-height: 1.5rem !important;
+    line-height: 1.75rem !important;
   }
   .text-small {
     font-size: 0.875rem !important;
@@ -18,5 +18,10 @@
   .text-x-small {
     font-size: 0.75rem !important;
     line-height: 1.25rem !important;
+  }
+  .text-h1 {
+    font-size: 1.75rem !important;
+    line-height: 2.5rem !important;
+    letter-spacing: normal !important;
   }
 }
