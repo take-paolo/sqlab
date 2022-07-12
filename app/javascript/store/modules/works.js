@@ -14,8 +14,6 @@ const works = {
   namespaced: true,
   state: {
     work: null,
-    totalChapters: null,
-    totalPractices: null,
   },
   getters: {
     work: state => state.work,
