@@ -10,7 +10,7 @@
     >
       <WorkMenuChapter :name="chapter.name" />
 
-      <BaseDivider class="work-divider my-1 rounded-lg" />
+      <BaseDivider class="work-divider mt-1 mb-2 rounded-lg" />
 
       <WorkMenuPracticeList
         :slug="work.slug"
