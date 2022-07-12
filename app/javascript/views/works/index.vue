@@ -1,20 +1,34 @@
 <template>
-  <div>
-    <p>問題集</p>
-    <div
-      v-for="work in works"
-      :key="work.id"
-    >
-      <router-link :to="{ name: 'Work', params: { slug: work.slug } }">
-        {{ work.name }}
-      </router-link>
-    </div>
-  </div>
+  <BaseContainer
+    v-if="works"
+    class="works-container"
+  >
+    <v-row>
+      <v-col>
+        <BasePageHeading title="学習コンテンツ" />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col
+        v-for="work in works"
+        :key="work.id"
+        cols="6"
+        class="works-col pa-3"
+      >
+        <WorksCard :work="work" />
+      </v-col>
+    </v-row>
+  </BaseContainer>
 </template>
 
 <script>
+import WorksCard from './components/WorksCard'
+
 export default {
   name: 'WorksView',
+  components: {
+    WorksCard,
+  },
   data() {
     return {
       works: [],
@@ -35,8 +49,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-p {
-  font-size: 2em;
-  text-align: center;
+.works-container {
+  width: 80%;
+  margin: 0 auto;
+}
+.works-col {
+  &:nth-of-type(1),
+  &:nth-of-type(2) {
+    padding-top: 0 !important;
+  }
+  &:nth-last-of-type(1),
+  &:nth-last-of-type(2) {
+    padding-bottom: 0 !important;
+  }
 }
 </style>
