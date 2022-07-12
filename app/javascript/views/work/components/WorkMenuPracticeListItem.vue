@@ -1,6 +1,6 @@
 <template>
   <v-list-item
-    class="overflow-hidden rounded-lg px-4"
+    class="work-menu-practice-list-item overflow-hidden rounded-lg px-4"
     :to="{ name: 'Practice', params: { slug: slug, id: practice.id } }"
     :ripple="{ center: true, class: 'primary--text' }"
   >
@@ -25,3 +25,9 @@ export default {
   },
 }
 </script>
+
+<style lang="scss" scoped>
+.work-menu-practice-list-item {
+  z-index: 1;
+}
+</style>
