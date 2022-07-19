@@ -54,6 +54,10 @@ export default {
 .faq-expansion-panel {
   box-shadow: 0px 0px 12px -4px var(--shadow-color);
   color: var(--v-font-base) !important;
+
+  &::after {
+    border-color: transparent !important;
+  }
 }
 .faq-expansion-panel-header {
   line-height: normal !important;
