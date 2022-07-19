@@ -13,7 +13,7 @@
         depressed
         :to="{ name: 'Work', params: { slug: work.slug } }"
       >
-        問題集はこちら
+        演習問題はこちら
       </BaseButton>
     </v-card-actions>
   </v-card>
@@ -33,6 +33,7 @@ export default {
 
 <style lang="scss" scoped>
 .works-card {
+  background: white;
   box-shadow: var(--shadow-low) !important;
 }
 </style>
