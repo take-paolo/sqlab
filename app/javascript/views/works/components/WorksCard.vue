@@ -13,7 +13,7 @@
         depressed
         :to="{ name: 'Work', params: { slug: work.slug } }"
       >
-        演習問題はこちら
+        練習問題はこちら
       </BaseButton>
     </v-card-actions>
   </v-card>

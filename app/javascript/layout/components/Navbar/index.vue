@@ -75,7 +75,7 @@ export default {
       workDrawerBtn: {
         id: 'work-drawer',
         icon: 'mdi-format-list-bulleted-square',
-        tooltip: '問題一覧',
+        tooltip: '練習問題一覧',
         disabled: false,
       },
       userDrawerBtn: {
