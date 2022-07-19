@@ -1,6 +1,6 @@
 <template>
   <div class="concern-section">
-    <TopSectionTitle>こんな方におすすめ</TopSectionTitle>
+    <TopSectionTitle title="こんな方におすすめ" />
 
     <div class="mt-10">
       <v-card class="concern-item">
