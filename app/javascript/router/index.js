@@ -62,6 +62,17 @@ const routes = [
     ],
   },
   {
+    path: '/privacy',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/privacy/index'),
+        name: 'Privacy',
+      },
+    ],
+  },
+  {
     path: '*',
     component: () => import('@/views/errors/404'),
     name: 'PageNotFound',
