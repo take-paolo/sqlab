@@ -48,6 +48,9 @@ export default {
       this.updateFooterHeight(this.$el.clientHeight)
     })
   },
+  updated() {
+    this.updateFooterHeight(this.$el.clientHeight)
+  },
   methods: {
     ...mapActions('app', ['updateFooterHeight']),
   },
