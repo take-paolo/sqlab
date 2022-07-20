@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 .base-container {
-  padding: 0 2%;
+  padding: 40px 2% 80px;
   max-width: 1672px;
 }
 </style>

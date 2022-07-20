@@ -41,6 +41,7 @@
   .v-btn {
     font-weight: 500;
     letter-spacing: normal;
+    text-transform: initial;
     &:not(.v-btn--round) {
       &.v-size--default {
         padding: 0 0.75rem;

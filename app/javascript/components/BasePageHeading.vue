@@ -1,5 +1,5 @@
 <template>
-  <h1 class="base-page-heading text-center py-10">
+  <h1 class="base-page-heading text-center mb-10">
     {{ title }}
   </h1>
 </template>

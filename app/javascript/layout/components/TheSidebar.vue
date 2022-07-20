@@ -21,6 +21,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import AppNavbar from './Navbar'
 import WorkDrawer from './WorkDrawer'
 import UserDrawer from './UserDrawer'
@@ -34,15 +35,12 @@ export default {
   },
   data() {
     return {
-      sidebarWidth: 72,
       isVisibleWorkDrawer: false,
       isVisibleUserDrawer: false,
     }
   },
   computed: {
-    isPracticePage() {
-      return this.$route.name === 'Practice'
-    },
+    ...mapGetters('app', ['sidebarWidth', 'isPracticePage']),
   },
   methods: {
     toggleWorkDrawer() {
