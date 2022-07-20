@@ -10,6 +10,7 @@
       depressed
       :href="url"
       target="_blank"
+      rel="noopener"
       color="primary"
     >
       新しいタブでER図を開く

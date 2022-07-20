@@ -22,6 +22,7 @@
         <BaseButtonText
           href="https://twitter.com/sqlab_app"
           target="_blank"
+          rel="noopener"
         >
           Twitter
         </BaseButtonText>

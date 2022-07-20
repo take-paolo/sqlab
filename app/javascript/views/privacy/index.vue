@@ -87,15 +87,23 @@
               当サイトでは、Googleによるアクセス解析ツール「Googleアナリティクス」を使用しています。このGoogleアナリティクスはデータの収集のためにCookieを使用しています。このデータは匿名で収集されており、個人を特定するものではありません。
             </li>
             <li>
-              この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。この規約に関しての詳細は<a
+              この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。この規約に関しての詳細は
+              <a
                 href="https://marketingplatform.google.com/about/analytics/terms/jp/"
                 target="_blank"
-                >Googleアナリティクスサービス利用規約</a
-              >、<a
+                rel="noopener"
+              >
+                Googleアナリティクスサービス利用規約
+              </a>
+              、
+              <a
                 href="https://policies.google.com/technologies/ads?hl=ja"
                 target="_blank"
-                >Googleポリシーと規約</a
-              >をご覧ください。
+                rel="noopener"
+              >
+                Googleポリシーと規約
+              </a>
+              をご覧ください。
             </li>
           </ol>
         </div>
@@ -113,11 +121,15 @@
         <div class="privacy-content__item">
           <h2 class="text-x-large">第7条（お問い合わせ窓口）</h2>
           <p class="text-default">
-            本ポリシーに関するお問い合わせは、<a
+            本ポリシーに関するお問い合わせは、
+            <a
               href="https://twitter.com/sqlab_app"
               target="_blank"
-              >Twitter公式アカウント</a
-            >までお願いいたします。
+              rel="noopener"
+            >
+              Twitter公式アカウント
+            </a>
+            までお願いいたします。
           </p>
         </div>
         <div class="text-right mt-10">以上</div>
