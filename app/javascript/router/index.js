@@ -51,6 +51,17 @@ const routes = [
     ],
   },
   {
+    path: '/terms',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/terms/index'),
+        name: 'Terms',
+      },
+    ],
+  },
+  {
     path: '*',
     component: () => import('@/views/errors/404'),
     name: 'PageNotFound',
