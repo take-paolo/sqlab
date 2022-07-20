@@ -18,7 +18,7 @@
 
       <v-col cols="12">
         <BaseButtonText :to="{ name: 'Terms' }">利用規約</BaseButtonText>
-        <BaseButtonText>プライバシーポリシー</BaseButtonText>
+        <BaseButtonText :to="{ name: 'Privacy' }">プライバシーポリシー</BaseButtonText>
         <BaseButtonText
           href="https://twitter.com/sqlab_app"
           target="_blank"
