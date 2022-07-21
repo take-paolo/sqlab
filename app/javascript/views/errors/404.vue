@@ -1,12 +1,18 @@
 <template>
-  <div>
-    <h1>404</h1>
-    <router-link :to="{ name: 'Works' }">問題集一覧に戻る</router-link>
-  </div>
+  <ErrorsContent img="page-not-found.svg">
+    <template #title>404</template>
+    <template #subtitle>Page Not Found</template>
+    <template #text>お探しのページは見つかりませんでした。</template>
+  </ErrorsContent>
 </template>
 
 <script>
+import ErrorsContent from './components/ErrorsContent'
+
 export default {
   name: 'PageNotFound',
+  components: {
+    ErrorsContent,
+  },
 }
 </script>
