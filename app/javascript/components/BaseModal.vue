@@ -6,7 +6,7 @@
     v-bind="$attrs"
     v-on="$listeners"
   >
-    <v-card>
+    <v-card color="white">
       <v-card-title
         v-if="$scopedSlots.title"
         class="px-6 pt-4 pb-3 text-large font-weight-bold"
