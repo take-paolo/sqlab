@@ -1,7 +1,7 @@
 <template>
   <aside>
     <nav>
-      <AppNavbar
+      <DefaultNavbar
         :width="sidebarWidth"
         :is-practice-page="isPracticePage"
         @toggle-work-drawer="toggleWorkDrawer"
@@ -22,14 +22,14 @@
 
 <script>
 import { mapGetters } from 'vuex'
-import AppNavbar from './Navbar'
+import DefaultNavbar from './Navbar'
 import WorkDrawer from './WorkDrawer'
 import UserDrawer from './UserDrawer'
 
 export default {
   name: 'TheSidebar',
   components: {
-    AppNavbar,
+    DefaultNavbar,
     WorkDrawer,
     UserDrawer,
   },

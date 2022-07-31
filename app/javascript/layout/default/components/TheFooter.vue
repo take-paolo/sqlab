@@ -1,7 +1,7 @@
 <template>
   <v-footer
     v-if="!isPracticePage"
-    class="app-footer px-4 py-6"
+    class="default-footer px-4 py-6"
     color="white"
     :style="{ marginRight: sidebarWidth + 'px' }"
   >
@@ -58,7 +58,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app-footer {
+.default-footer {
   box-shadow: 0px 0px 5px -2px var(--shadow-color) !important;
 }
 </style>

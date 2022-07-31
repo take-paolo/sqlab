@@ -1,6 +1,6 @@
 <template>
   <v-navigation-drawer
-    class="app-navbar"
+    class="default-navbar"
     app
     right
     permanent
@@ -10,7 +10,7 @@
     tag="div"
   >
     <template #prepend>
-      <div class="app-navbar--prepend">
+      <div class="default-navbar--prepend">
         <NavbarLogo />
       </div>
       <BaseDivider class="mx-3" />
@@ -36,7 +36,7 @@
 
     <template #append>
       <BaseDivider class="mx-3" />
-      <div class="app-navbar--append">
+      <div class="default-navbar--append">
         <!-- button for user drawer  -->
         <NavbarItem
           :item="userDrawerBtn"
@@ -54,7 +54,7 @@ import NavbarLogo from './components/NavbarLogo'
 import NavbarItem from './components/NavbarItem'
 
 export default {
-  name: 'AppNavbar',
+  name: 'DefaultNavbar',
   components: {
     NavbarLogo,
     NavbarItem,
@@ -90,19 +90,19 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app-navbar {
+.default-navbar {
   z-index: 99;
 }
-.app-navbar--prepend,
-.app-navbar--append {
+.default-navbar--prepend,
+.default-navbar--append {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.app-navbar--prepend {
+.default-navbar--prepend {
   height: 72px;
 }
-.app-navbar--append {
+.default-navbar--append {
   height: 56px;
 }
 </style>

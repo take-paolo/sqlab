@@ -1,6 +1,6 @@
 <template>
   <BaseDrawer
-    class="app-user-drawer"
+    class="default-user-drawer"
     :is-active="isActive"
     app
     right
@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app-user-drawer {
+.default-user-drawer {
   max-width: 324px;
 }
 </style>

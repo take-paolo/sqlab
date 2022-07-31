@@ -12,7 +12,7 @@ import TheView from './components/TheView'
 import TheFooter from './components/TheFooter'
 
 export default {
-  name: 'AppLayout',
+  name: 'DefaultLayout',
   components: {
     TheSidebar,
     TheView,

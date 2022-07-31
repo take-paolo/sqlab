@@ -1,6 +1,6 @@
 <template>
   <BaseDrawer
-    class="app-work-drawer"
+    class="default-work-drawer"
     :is-active="isActive"
     app
     right
@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app-work-drawer {
+.default-work-drawer {
   max-width: 624px;
 }
 </style>
