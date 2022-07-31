@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_065620) do
     t.string "name", null: false
     t.text "question", null: false
     t.text "answer", null: false
-    t.string "sample_database_uid", null: false
+    t.integer "sample_database_id", null: false
     t.boolean "display_er_diagram", default: true, null: false
     t.boolean "enabled", default: false, null: false
     t.boolean "published", default: false, null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_11_16_065620) do
 
   create_table "sample_tables", force: :cascade do |t|
     t.bigint "practice_id", null: false
-    t.string "uid", null: false
+    t.integer "uid", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["practice_id", "uid"], name: "index_sample_tables_on_practice_id_and_uid", unique: true

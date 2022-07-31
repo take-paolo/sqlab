@@ -9,7 +9,7 @@ class Practice < ApplicationRecord
   validates :name, presence: true
   validates :question, presence: true
   validates :answer, presence: true
-  validates :sample_database_uid, presence: true
+  validates :sample_database_id, presence: true, numericality: { only_integer: true }
   validates :display_er_diagram, inclusion: { in: [true, false] }
   validates :enabled, inclusion: { in: [true, false] }
   validates :published, inclusion: { in: [true, false] }

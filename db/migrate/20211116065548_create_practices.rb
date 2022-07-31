@@ -5,7 +5,7 @@ class CreatePractices < ActiveRecord::Migration[6.1]
       t.string :name, null: false
       t.text :question, null: false
       t.text :answer, null: false
-      t.string :sample_database_uid, null:false
+      t.integer :sample_database_id, null:false
       t.boolean :display_er_diagram, null: false, default: true
       t.boolean :enabled, null: false, default: false
       t.boolean :published, null: false, default: false
