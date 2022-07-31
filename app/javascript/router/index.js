@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import Layout from '@/layout'
+import DefaultLayout from '@/layout/default'
+import AdminLayout from '@/layout/admin'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    component: Layout,
+    component: DefaultLayout,
     children: [
       {
         path: '',
@@ -19,7 +20,7 @@ const routes = [
   },
   {
     path: '/works',
-    component: Layout,
+    component: DefaultLayout,
     children: [
       {
         path: '',
@@ -30,7 +31,7 @@ const routes = [
   },
   {
     path: '/works/:slug',
-    component: Layout,
+    component: DefaultLayout,
     children: [
       {
         path: '',
@@ -41,7 +42,7 @@ const routes = [
   },
   {
     path: '/works/:slug/:id',
-    component: Layout,
+    component: DefaultLayout,
     children: [
       {
         path: '',
@@ -52,7 +53,7 @@ const routes = [
   },
   {
     path: '/terms',
-    component: Layout,
+    component: DefaultLayout,
     children: [
       {
         path: '',
@@ -63,12 +64,34 @@ const routes = [
   },
   {
     path: '/privacy',
-    component: Layout,
+    component: DefaultLayout,
     children: [
       {
         path: '',
         component: () => import('@/views/privacy/index'),
         name: 'Privacy',
+      },
+    ],
+  },
+  {
+    path: '/admin',
+    component: AdminLayout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/admin/dashboard/index'),
+        name: 'AdminDashboard',
+      },
+    ],
+  },
+  {
+    path: '/admin/works',
+    component: AdminLayout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/admin/works/index'),
+        name: 'AdminWorks',
       },
     ],
   },
