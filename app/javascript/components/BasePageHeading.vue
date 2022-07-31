@@ -1,5 +1,5 @@
 <template>
-  <h1 class="base-page-heading text-center mb-10">
+  <h1 class="base-page-heading">
     {{ title }}
   </h1>
 </template>
@@ -20,8 +20,10 @@ export default {
 .base-page-heading {
   font-size: 1.75rem;
   line-height: 2.5rem;
-  letter-spacing: normal;
+  letter-spacing: 0.03em;
   font-weight: 900;
+  text-align: center;
+  margin-bottom: 60px;
   color: var(--v-font-darken1);
 }
 </style>
