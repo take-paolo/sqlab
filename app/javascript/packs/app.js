@@ -11,6 +11,7 @@ import router from '@/router/index'
 import store from '@/store/index'
 import axios from '@/plugins/axios'
 import vuetify from '@/plugins/vuetify'
+import i18n from '@/i18n/index'
 import '@/plugins/vee-validate'
 import '@/plugins/vue-draggable'
 import '@/components/globals'
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     router,
     store,
     vuetify,
+    i18n,
     render: h => h(App),
   }).$mount()
   document.body.appendChild(app.$el)
