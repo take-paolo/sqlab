@@ -5,7 +5,7 @@
   >
     <v-row>
       <v-col>
-        <AppPageHeading>学習コンテンツ</AppPageHeading>
+        <AppPageHeading>問題集一覧</AppPageHeading>
       </v-col>
     </v-row>
     <v-row>
