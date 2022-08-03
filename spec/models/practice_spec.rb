@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Practice, type: :model do
   describe 'validation' do
-    let!(:practice) { build(:practice, sample_database_uid: 1) }
+    let!(:practice) { build(:practice, sample_database_id: 1) }
 
     it 'is valid all with attributes' do
       expect(practice).to be_valid
@@ -37,11 +37,11 @@ RSpec.describe Practice, type: :model do
       expect(practice.errors[:answer]).to include('を入力してください')
     end
 
-    it 'is invalid without sample_database_uid' do
-      practice.sample_database_uid = ''
+    it 'is invalid without sample_database_id' do
+      practice.sample_database_id = nil
 
       expect(practice).to be_invalid
-      expect(practice.errors[:sample_database_uid]).to include('を入力してください')
+      expect(practice.errors[:sample_database_id]).to include('を入力してください')
     end
 
     it 'is invalid without display_er_diagram' do

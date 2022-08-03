@@ -41,3 +41,16 @@ export function camelCase(str) {
 
   return str
 }
+
+export function intersectionBy(array, values, key = null) {
+  return array.filter(el => values.includes(el[key] || el))
+}
+
+export function pullObjectFrom(arr, obj, key = 'id') {
+  return arr.filter(el => el[key] !== obj[key])
+}
+
+export function replaceObjFrom(arr, obj, key = 'id') {
+  const item = arr.findIndex(el => el[key] === obj[key])
+  arr.splice(item, 1, obj)
+}

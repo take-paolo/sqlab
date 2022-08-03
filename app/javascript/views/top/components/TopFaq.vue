@@ -1,8 +1,8 @@
 <template>
   <div class="faq-section grey lighten-5">
-    <TopSectionTitle title="よくあるご質問" />
+    <TopSectionTitle>よくあるご質問</TopSectionTitle>
 
-    <div class="faq-content mt-13">
+    <div class="faq-content mt-15">
       <v-expansion-panels
         hover
         multiple
@@ -45,7 +45,7 @@ export default {
 
 <style lang="scss" scoped>
 .faq-section {
-  padding: 72px 16px 80px;
+  padding: 80px 16px 92px;
 }
 .faq-content {
   max-width: 900px;

@@ -60,5 +60,29 @@ RSpec.describe 'Api::Practices', type: :request do
         expect(response).to have_http_status(:not_found)
       end
     end
+
+    context 'when request with valid token to practice which requires auth' do
+      let(:headers) { { CONTENT_TYPE: 'application/json', ACCEPT: 'application/json', Authorization: "Bearer #{token}" } }
+      let!(:user) { create(:user) }
+      let!(:token) { user.create_tokens }
+      let(:practice) { create(:practice, :enabled, :published) }
+
+      it 'returns practice detail' do
+        http_request
+        expect(body['id']).to eq practice.id
+        expect(response).to be_successful
+        expect(response).to have_http_status(:ok)
+      end
+    end
+
+    context 'when request without token to practice which requires auth' do
+      let(:practice) { create(:practice, :enabled, :published) }
+
+      it 'returns 401 error' do
+        http_request
+        expect(response).not_to be_successful
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
   end
 end

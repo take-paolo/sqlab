@@ -1,11 +1,11 @@
 <template>
-  <BaseContainer
+  <AppContainer
     v-if="work"
     class="work-container"
   >
     <v-row>
       <v-col>
-        <BasePageHeading :title="work.name" />
+        <AppPageHeading>{{ work.name }}</AppPageHeading>
       </v-col>
     </v-row>
     <v-row>
@@ -22,7 +22,7 @@
         <WorkDetail :work="work" />
       </v-col>
     </v-row>
-  </BaseContainer>
+  </AppContainer>
 </template>
 
 <script>

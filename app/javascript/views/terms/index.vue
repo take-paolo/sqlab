@@ -1,12 +1,12 @@
 <template>
-  <BaseContainer>
+  <AppContainer>
     <v-row>
       <v-col>
-        <BasePageHeading title="利用規約" />
+        <AppPageHeading>利用規約</AppPageHeading>
       </v-col>
     </v-row>
     <v-row class="terms-content">
-      <v-col class="pa-0">
+      <v-col>
         <div class="terms-content__item">
           <p class="text-default ma-0">
             この利用規約（以下、「本規約」といいます。）は、運営者（以下、「当社」といいます。）が提供するWebサービス「SQLab」（以下、「本サービス」といいます。）の利用条件を定めるものです。登録ユーザーの皆さま（以下、「ユーザー」といいます。）には、本規約に従って、本サービスをご利用いただきます。
@@ -170,7 +170,7 @@
         <div class="text-right mt-10">以上</div>
       </v-col>
     </v-row>
-  </BaseContainer>
+  </AppContainer>
 </template>
 
 <script>

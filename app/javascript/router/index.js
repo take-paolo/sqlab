@@ -1,14 +1,16 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import store from '@/store/index'
 
-import Layout from '@/layout'
+import DefaultLayout from '@/layout/default'
+import AdminLayout from '@/layout/admin'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    component: Layout,
+    component: DefaultLayout,
     children: [
       {
         path: '',
@@ -19,7 +21,7 @@ const routes = [
   },
   {
     path: '/works',
-    component: Layout,
+    component: DefaultLayout,
     children: [
       {
         path: '',
@@ -30,7 +32,7 @@ const routes = [
   },
   {
     path: '/works/:slug',
-    component: Layout,
+    component: DefaultLayout,
     children: [
       {
         path: '',
@@ -41,7 +43,7 @@ const routes = [
   },
   {
     path: '/works/:slug/:id',
-    component: Layout,
+    component: DefaultLayout,
     children: [
       {
         path: '',
@@ -52,7 +54,7 @@ const routes = [
   },
   {
     path: '/terms',
-    component: Layout,
+    component: DefaultLayout,
     children: [
       {
         path: '',
@@ -63,12 +65,56 @@ const routes = [
   },
   {
     path: '/privacy',
-    component: Layout,
+    component: DefaultLayout,
     children: [
       {
         path: '',
         component: () => import('@/views/privacy/index'),
         name: 'Privacy',
+      },
+    ],
+  },
+  {
+    path: '/admin/login',
+    component: () => import('@/views/admin/login/index'),
+    name: 'AdminLogin',
+  },
+  {
+    path: '/admin',
+    component: AdminLayout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/admin/dashboard/index'),
+        name: 'AdminDashboard',
+        meta: { requiresAuth: true },
+        beforeEnter: checkAdmin,
+      },
+    ],
+  },
+  {
+    path: '/admin/works',
+    component: AdminLayout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/admin/works/index'),
+        name: 'AdminWorks',
+        meta: { requiresAuth: true },
+        beforeEnter: checkAdmin,
+      },
+    ],
+  },
+  {
+    path: '/admin/users',
+    component: AdminLayout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/admin/users/index'),
+        name: 'AdminUsers',
+        meta: { requiresAuth: true },
+        beforeEnter: checkAdmin,
       },
     ],
   },
@@ -88,5 +134,24 @@ const router = new VueRouter({
   mode: 'history',
   routes,
 })
+
+router.beforeEach((to, from, next) => {
+  store.dispatch('users/fetchAuthUser').then(authUser => {
+    if (to.matched.some(record => record.meta.requiresAuth) && !authUser) {
+      next({ name: 'AdminLogin' })
+    } else {
+      next()
+    }
+  })
+})
+
+function checkAdmin(to, from, next) {
+  const authUser = store.getters['users/authUser']
+  if (authUser.role === 'admin') {
+    next()
+  } else {
+    next({ name: 'Top' })
+  }
+}
 
 export default router

@@ -1,12 +1,12 @@
 <template>
-  <BaseContainer>
+  <AppContainer>
     <v-row>
       <v-col>
-        <BasePageHeading title="プライバシーポリシー" />
+        <AppPageHeading>プライバシーポリシー</AppPageHeading>
       </v-col>
     </v-row>
     <v-row class="privacy-content">
-      <v-col class="pa-0">
+      <v-col>
         <div class="privacy-content__item">
           <p class="text-default ma-0">
             運営者（以下、「当社」といいます。）は、本ウェブサイト上で提供するWebサービス「SQLab」（以下、「本サービス」といいます。）における、ユーザーの個人情報の取扱いについて、以下のとおりプライバシーポリシー（以下、「本ポリシー」といいます。）を定めます。
@@ -135,7 +135,7 @@
         <div class="text-right mt-10">以上</div>
       </v-col>
     </v-row>
-  </BaseContainer>
+  </AppContainer>
 </template>
 
 <script>

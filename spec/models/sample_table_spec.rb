@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe SampleTable, type: :model do
   describe 'validation' do
-    let!(:practice) { create(:practice, sample_database_uid: 1) }
+    let!(:practice) { create(:practice, sample_database_id: 1) }
     let!(:sample_table) { build(:sample_table, practice: practice, uid: 1) }
 
     it 'is valid all with attributes' do
@@ -11,7 +11,7 @@ RSpec.describe SampleTable, type: :model do
     end
 
     it 'is invalid without uid' do
-      sample_table.uid = ''
+      sample_table.uid = nil
 
       expect(sample_table).to be_invalid
       expect(sample_table.errors[:uid]).to include('を入力してください')

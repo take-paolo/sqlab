@@ -2,7 +2,7 @@
   {
     "id": "works",
     "icon": "mdi-database",
-    "tooltip": "学習コンテンツ",
+    "tooltip": "問題集一覧",
     "to": { "name": "Works" },
     "disabled": false
   },
