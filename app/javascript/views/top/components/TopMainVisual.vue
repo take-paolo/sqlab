@@ -2,7 +2,7 @@
   <div class="main-visual-section">
     <v-row class="main-visual-content">
       <v-col
-        class="text-center"
+        class="text-center pa-3"
         cols="12"
       >
         <div>

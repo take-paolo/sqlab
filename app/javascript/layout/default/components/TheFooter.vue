@@ -6,11 +6,17 @@
     :style="{ marginRight: sidebarWidth + 'px' }"
   >
     <v-row class="text-center">
-      <v-col cols="12">
+      <v-col
+        class="pa-3"
+        cols="12"
+      >
         <AppLogo dark />
       </v-col>
 
-      <v-col cols="12">
+      <v-col
+        class="pa-3"
+        cols="12"
+      >
         <BaseButtonText :to="{ name: 'Terms' }">利用規約</BaseButtonText>
         <BaseButtonText :to="{ name: 'Privacy' }">プライバシーポリシー</BaseButtonText>
         <BaseButtonText
@@ -22,7 +28,10 @@
         </BaseButtonText>
       </v-col>
 
-      <v-col cols="12">
+      <v-col
+        class="pa-3"
+        cols="12"
+      >
         <small class="font--text text--darken-1">&copy; 2022 SQLab</small>
       </v-col>
     </v-row>
