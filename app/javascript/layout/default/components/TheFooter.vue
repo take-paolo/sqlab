@@ -7,13 +7,7 @@
   >
     <v-row class="text-center">
       <v-col cols="12">
-        <BaseImage
-          class="mx-auto"
-          width="88px"
-          eager
-          :src="require('@/assets/logo-dark.svg')"
-          alt="SQLab"
-        />
+        <AppLogo dark />
       </v-col>
 
       <v-col cols="12">

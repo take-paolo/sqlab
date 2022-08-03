@@ -1,6 +1,6 @@
 <template>
   <div class="about-section">
-    <TopSectionTitle title="どんなサービス？" />
+    <TopSectionTitle>どんなサービス？</TopSectionTitle>
 
     <v-card-text class="text-large mt-8 font--text">
       <span class="primary--text font-weight-bold">SQLの練習ができる学習サービス</span>です。<br />

@@ -1,8 +1,8 @@
 <template>
-  <BaseContainer>
+  <AppContainer>
     <v-row>
       <v-col>
-        <BasePageHeading title="プライバシーポリシー" />
+        <AppPageHeading>プライバシーポリシー</AppPageHeading>
       </v-col>
     </v-row>
     <v-row class="privacy-content">
@@ -135,7 +135,7 @@
         <div class="text-right mt-10">以上</div>
       </v-col>
     </v-row>
-  </BaseContainer>
+  </AppContainer>
 </template>
 
 <script>

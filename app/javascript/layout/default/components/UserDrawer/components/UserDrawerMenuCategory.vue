@@ -6,7 +6,9 @@
     >
       mdi-rhombus-medium
     </BaseIcon>
-    <span class="font--text">{{ title }}</span>
+    <span class="font--text">
+      <slot />
+    </span>
   </v-subheader>
 </template>
 

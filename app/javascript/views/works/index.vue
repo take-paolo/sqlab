@@ -1,11 +1,11 @@
 <template>
-  <BaseContainer
+  <AppContainer
     v-if="works"
     class="works-container"
   >
     <v-row>
       <v-col>
-        <BasePageHeading title="学習コンテンツ" />
+        <AppPageHeading>学習コンテンツ</AppPageHeading>
       </v-col>
     </v-row>
     <v-row>
@@ -18,7 +18,7 @@
         <WorksCard :work="work" />
       </v-col>
     </v-row>
-  </BaseContainer>
+  </AppContainer>
 </template>
 
 <script>

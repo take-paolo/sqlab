@@ -1,11 +1,8 @@
 <template>
   <div class="admin-login">
-    <BaseFlashMessage />
+    <AppFlashMessage />
 
-    <BasePageHeading
-      class="mb-8"
-      title="管理画面ログイン"
-    />
+    <AppPageHeading class="mb-8">管理画面ログイン</AppPageHeading>
 
     <LoginForm
       ref="loginForm"

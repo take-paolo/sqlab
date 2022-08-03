@@ -1,6 +1,6 @@
 <template>
   <div class="faq-section grey lighten-5">
-    <TopSectionTitle title="よくあるご質問" />
+    <TopSectionTitle>よくあるご質問</TopSectionTitle>
 
     <div class="faq-content mt-13">
       <v-expansion-panels

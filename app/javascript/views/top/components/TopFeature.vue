@@ -1,6 +1,6 @@
 <template>
   <div class="feature-section grey lighten-5">
-    <TopSectionTitle title="特徴" />
+    <TopSectionTitle>特徴</TopSectionTitle>
 
     <div class="feature-list-wrap mt-6">
       <template v-for="(feature, index) in features">

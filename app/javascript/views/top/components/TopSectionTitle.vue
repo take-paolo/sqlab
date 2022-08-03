@@ -1,18 +1,12 @@
 <template>
   <h2 class="section-title text-center">
-    {{ title }}
+    <slot />
   </h2>
 </template>
 
 <script>
 export default {
   name: 'TopSectionTitle',
-  props: {
-    title: {
-      type: String,
-      default: '',
-    },
-  },
 }
 </script>
 

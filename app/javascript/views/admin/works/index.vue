@@ -1,6 +1,6 @@
 <template>
-  <BaseContainerAdmin>
-    <BasePageHeading title="問題集一覧" />
+  <AppContainerAdmin>
+    <AppPageHeading>問題集一覧</AppPageHeading>
 
     <WorksList
       :list.sync="list"
@@ -60,7 +60,7 @@
       @delete="handleDeleteItem(itemDelete, activeTable)"
       @cancel="closeDeleteModal"
     />
-  </BaseContainerAdmin>
+  </AppContainerAdmin>
 </template>
 
 <script>

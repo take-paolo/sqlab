@@ -1,8 +1,8 @@
 <template>
-  <BaseContainer>
+  <AppContainer>
     <v-row>
       <v-col>
-        <BasePageHeading title="利用規約" />
+        <AppPageHeading>利用規約</AppPageHeading>
       </v-col>
     </v-row>
     <v-row class="terms-content">
@@ -170,7 +170,7 @@
         <div class="text-right mt-10">以上</div>
       </v-col>
     </v-row>
-  </BaseContainer>
+  </AppContainer>
 </template>
 
 <script>

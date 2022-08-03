@@ -13,7 +13,9 @@
         v-for="(userMenu, index) in userMenuList"
         :key="index"
       >
-        <UserDrawerMenuCategory :title="userMenu.category" />
+        <UserDrawerMenuCategory>
+          {{ userMenu.category }}
+        </UserDrawerMenuCategory>
         <UserDrawerMenuList :items="userMenu.items" />
       </div>
     </div>

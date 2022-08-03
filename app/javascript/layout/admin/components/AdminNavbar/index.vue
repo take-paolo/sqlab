@@ -8,7 +8,7 @@
   >
     <template #prepend>
       <div class="admin-navbar--prepend">
-        <AdminNavbarLogo />
+        <AppLogo />
       </div>
     </template>
 
@@ -32,14 +32,12 @@
 </template>
 
 <script>
-import AdminNavbarLogo from './components/AdminNavbarLogo'
 import AdminNavbarItem from './components/AdminNavbarItem'
 import AdminNavbarLogout from './components/AdminNavbarLogout'
 
 export default {
   name: 'AdminNavbar',
   components: {
-    AdminNavbarLogo,
     AdminNavbarItem,
     AdminNavbarLogout,
   },

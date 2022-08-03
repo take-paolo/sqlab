@@ -1,7 +1,7 @@
 <template>
   <v-main :style="{ minHeight: minMainHeight }">
     <router-view :key="$route.path" />
-    <BaseFlashMessage />
+    <AppFlashMessage />
   </v-main>
 </template>
 

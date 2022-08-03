@@ -1,6 +1,6 @@
 <template>
-  <BaseContainerAdmin>
-    <BasePageHeading title="アカウント一覧" />
+  <AppContainerAdmin>
+    <AppPageHeading>アカウント一覧</AppPageHeading>
 
     <UsersTable
       :users="users"
@@ -18,7 +18,7 @@
       @delete="deleteUser(userDelete)"
       @cancel="closeUserDeleteModal()"
     />
-  </BaseContainerAdmin>
+  </AppContainerAdmin>
 </template>
 
 <script>
