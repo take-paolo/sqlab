@@ -169,6 +169,7 @@
             & > tr {
               & > th {
                 font-size: 0.875rem;
+                color: var(--v-font-base);
               }
             }
           }
@@ -272,15 +273,15 @@
   // forms
   .theme--light {
     &.v-input {
-      color: var(--font-base);
+      color: var(--v-font-base);
       input,
       textarea {
-        color: var(--font-base);
+        color: var(--v-font-base);
       }
     }
     &.v-select {
       .v-select__selections {
-        color: var(--font-base);
+        color: var(--v-font-base);
       }
     }
   }

@@ -36,9 +36,6 @@ export default {
         }
       }
     }
-    th {
-      color: var(--v-font-base) !important;
-    }
   }
 }
 </style>
