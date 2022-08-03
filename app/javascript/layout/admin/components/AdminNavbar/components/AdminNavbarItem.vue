@@ -13,7 +13,7 @@
         {{ item.icon }}
       </BaseIcon>
     </v-list-item-icon>
-    <v-list-item-title class="white--text">
+    <v-list-item-title class="text-small white--text">
       {{ item.title }}
     </v-list-item-title>
   </v-list-item>
