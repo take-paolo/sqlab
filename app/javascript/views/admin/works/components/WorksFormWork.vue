@@ -9,6 +9,7 @@
     >
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="name"
         :name="$t('name')"
         tag="div"
@@ -16,13 +17,14 @@
       >
         <v-text-field
           v-model="work.name"
-          class="form-control"
-          :error-messages="errors"
+          hide-details="auto"
           :label="$t('name')"
+          :error-messages="errors"
         />
       </ValidationProvider>
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="description"
         :name="$t('description')"
         tag="div"
@@ -30,14 +32,15 @@
       >
         <v-textarea
           v-model="work.description"
-          class="form-control"
-          :error-messages="errors"
-          :label="$t('description')"
+          hide-details="auto"
           rows="3"
+          :label="$t('description')"
+          :error-messages="errors"
         />
       </ValidationProvider>
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="slug"
         :name="$t('slug')"
         tag="div"
@@ -48,13 +51,14 @@
       >
         <v-text-field
           v-model="work.slug"
-          class="form-control"
-          :error-messages="errors"
+          hide-details="auto"
           :label="$t('slug')"
+          :error-messages="errors"
         />
       </ValidationProvider>
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="enabled"
         :name="$t('enabled')"
         tag="div"
@@ -62,13 +66,14 @@
       >
         <v-checkbox
           v-model="work.enabled"
-          class="form-control"
-          :error-messages="errors"
+          hide-details="auto"
           :label="$t('enabled')"
+          :error-messages="errors"
         />
       </ValidationProvider>
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="published"
         :name="$t('published')"
         tag="div"
@@ -76,14 +81,14 @@
       >
         <v-checkbox
           v-model="work.published"
-          class="form-control"
-          :error-messages="errors"
+          hide-details="auto"
           :label="$t('published')"
+          :error-messages="errors"
         />
       </ValidationProvider>
 
       <BaseButton
-        class="mt-4"
+        class="mt-7"
         depressed
         type="submit"
         :disabled="invalid"

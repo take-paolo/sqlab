@@ -9,6 +9,7 @@
     >
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="workId"
         :name="$t('workId')"
         rules="required"
@@ -16,16 +17,17 @@
       >
         <v-select
           v-model="chapter.workId"
-          class="form-control"
           :items="works"
           item-value="id"
           item-text="name"
+          hide-details="auto"
           :label="$t('workId')"
           :error-messages="errors"
         />
       </ValidationProvider>
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="name"
         :name="$t('name')"
         rules="required"
@@ -33,14 +35,14 @@
       >
         <v-text-field
           v-model="chapter.name"
-          class="form-control"
+          hide-details="auto"
           :label="$t('name')"
           :error-messages="errors"
         />
       </ValidationProvider>
 
       <BaseButton
-        class="mt-4"
+        class="mt-7"
         depressed
         type="submit"
         :disabled="invalid"

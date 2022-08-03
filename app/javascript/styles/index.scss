@@ -21,3 +21,8 @@ a {
 .v-application--wrap {
   background: var(--bg-color);
 }
+.form-control {
+  &:not(:first-child) {
+    margin-top: 1.5rem;
+  }
+}

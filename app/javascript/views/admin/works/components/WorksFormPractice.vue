@@ -9,6 +9,7 @@
     >
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="chapterId"
         :name="$t('name')"
         rules="required"
@@ -16,16 +17,17 @@
       >
         <v-select
           v-model="practice.chapterId"
-          class="form-control"
           :items="chapters"
           item-value="id"
           item-text="name"
+          hide-details="auto"
           :label="$t('chapterId')"
           :error-messages="errors"
         />
       </ValidationProvider>
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="name"
         :name="$t('name')"
         rules="required"
@@ -33,13 +35,14 @@
       >
         <v-text-field
           v-model="practice.name"
-          class="form-control"
+          hide-details="auto"
           :label="$t('name')"
           :error-messages="errors"
         />
       </ValidationProvider>
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="question"
         :name="$t('question')"
         rules="required"
@@ -47,14 +50,15 @@
       >
         <v-textarea
           v-model="practice.question"
-          class="form-control"
           rows="3"
+          hide-details="auto"
           :label="$t('question')"
           :error-messages="errors"
         />
       </ValidationProvider>
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="answer"
         :name="$t('answer')"
         rules="required"
@@ -62,14 +66,15 @@
       >
         <v-textarea
           v-model="practice.answer"
-          class="form-control"
           rows="6"
+          hide-details="auto"
           :label="$t('answer')"
           :error-messages="errors"
         />
       </ValidationProvider>
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="sampleDatabaseId"
         :name="$t('sampleDatabase')"
         rules="required"
@@ -77,16 +82,17 @@
       >
         <v-select
           v-model="practice.sampleDatabaseId"
-          class="form-control"
           :items="sampleDatabases"
           item-value="id"
           item-text="name"
+          hide-details="auto"
           :label="$t('sampleDatabase')"
           :error-messages="errors"
         />
       </ValidationProvider>
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="sampleTableIds"
         :name="$t('sampleTables')"
         rules=""
@@ -95,17 +101,18 @@
         <v-select
           v-if="practice.sampleDatabaseId"
           v-model="practice.sampleTableIds"
-          class="form-control"
           :items="sampleTables"
           item-value="id"
           item-text="name"
           multiple
+          hide-details="auto"
           :label="$t('sampleTables')"
           :error-messages="errors"
         />
       </ValidationProvider>
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="displayErDiagram"
         :name="$t('displayErDiagram')"
         rules=""
@@ -113,13 +120,14 @@
       >
         <v-checkbox
           v-model="practice.displayErDiagram"
-          class="form-control"
+          hide-details="auto"
           :label="$t('displayErDiagram')"
           :error-messages="errors"
         />
       </ValidationProvider>
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="enabled"
         :name="$t('enabled')"
         rules=""
@@ -127,13 +135,14 @@
       >
         <v-checkbox
           v-model="practice.enabled"
-          class="form-control"
+          hide-details="auto"
           :label="$t('enabled')"
           :error-messages="errors"
         />
       </ValidationProvider>
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="published"
         :name="$t('published')"
         rules=""
@@ -141,13 +150,14 @@
       >
         <v-checkbox
           v-model="practice.published"
-          class="form-control"
+          hide-details="auto"
           :label="$t('published')"
           :error-messages="errors"
         />
       </ValidationProvider>
       <ValidationProvider
         v-slot="{ errors }"
+        class="form-control"
         vid="requiresAuth"
         :name="$t('requiresAuth')"
         rules=""
@@ -155,14 +165,14 @@
       >
         <v-checkbox
           v-model="practice.requiresAuth"
-          class="form-control"
+          hide-details="auto"
           :label="$t('requiresAuth')"
           :error-messages="errors"
         />
       </ValidationProvider>
 
       <BaseButton
-        class="mt-4"
+        class="mt-7"
         depressed
         type="submit"
         :disabled="invalid"
