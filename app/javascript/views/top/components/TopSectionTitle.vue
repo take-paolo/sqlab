@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss" scoped>
 .section-title {
-  font-size: 2rem;
+  font-size: 2.125rem;
   line-height: 2.5rem;
   letter-spacing: normal;
   font-weight: 900;

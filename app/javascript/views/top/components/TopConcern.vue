@@ -2,7 +2,7 @@
   <div class="concern-section">
     <TopSectionTitle>こんな方におすすめ</TopSectionTitle>
 
-    <div class="mt-10">
+    <div class="mt-14">
       <v-card class="concern-item">
         <div class="mr-8">
           <BaseImage
@@ -19,7 +19,7 @@
         </v-card-text>
       </v-card>
 
-      <v-card class="concern-item flex-row-reverse mt-6">
+      <v-card class="concern-item flex-row-reverse mt-8">
         <div class="ml-8">
           <BaseImage
             class="concern-item__icon"
@@ -35,7 +35,7 @@
         </v-card-text>
       </v-card>
 
-      <v-card class="concern-item mt-6">
+      <v-card class="concern-item mt-8">
         <div class="mr-8">
           <BaseImage
             class="concern-item__icon"
@@ -74,7 +74,7 @@ export default {
 
 <style lang="scss" scoped>
 .concern-section {
-  padding: 72px 16px 80px;
+  padding: 100px 16px 116px;
 }
 .concern-item {
   display: flex;

@@ -2,7 +2,7 @@
   <div class="feature-section grey lighten-5">
     <TopSectionTitle>特徴</TopSectionTitle>
 
-    <div class="feature-list-wrap mt-6">
+    <div class="feature-list-wrap mt-7">
       <template v-for="(feature, index) in features">
         <v-card
           :key="index"
@@ -50,7 +50,7 @@ export default {
 
 <style lang="scss" scoped>
 .feature-section {
-  padding: 72px 16px 120px;
+  padding: 80px 16px 128px;
 }
 .feature-list-wrap {
   display: flex;
