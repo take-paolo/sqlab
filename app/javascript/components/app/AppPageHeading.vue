@@ -1,12 +1,12 @@
 <template>
-  <h1 class="base-page-heading">
-    {{ title }}
+  <h1 class="app-page-heading">
+    <slot />
   </h1>
 </template>
 
 <script>
 export default {
-  name: 'BasePageHeading',
+  name: 'AppPageHeading',
   props: {
     title: {
       type: String,
@@ -17,7 +17,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.base-page-heading {
+.app-page-heading {
   font-size: 1.75rem;
   line-height: 2.5rem;
   letter-spacing: 0.03em;

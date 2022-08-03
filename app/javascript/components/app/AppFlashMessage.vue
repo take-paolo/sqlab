@@ -1,7 +1,7 @@
 <template>
   <v-alert
     v-if="flashMessageActive"
-    class="base-flash-message"
+    class="app-flash-message"
     :type="flashMessage.type"
     :icon="flashMessage.icon"
     transition="slide-y-transition"
@@ -15,7 +15,7 @@ import { mapGetters } from 'vuex'
 import flashMessages from '@/data/flash-messages'
 
 export default {
-  name: 'BaseFlashMessage',
+  name: 'AppFlashMessage',
   inheritAttrs: false,
   data() {
     return {
@@ -32,7 +32,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.base-flash-message {
+.app-flash-message {
   position: absolute;
   top: 24px;
   right: 32px;

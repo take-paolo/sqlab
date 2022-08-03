@@ -1,6 +1,6 @@
 <template>
   <v-container
-    class="base-container-admin"
+    class="app-container-admin"
     fluid
     v-bind="$attrs"
   >
@@ -10,13 +10,13 @@
 
 <script>
 export default {
-  name: 'BaseContainerAdmin',
+  name: 'AppContainerAdmin',
   inheritAttrs: false,
 }
 </script>
 
 <style lang="scss" scoped>
-.base-container-admin {
+.app-container-admin {
   padding: 60px 10%;
   max-width: 1920px;
 }
