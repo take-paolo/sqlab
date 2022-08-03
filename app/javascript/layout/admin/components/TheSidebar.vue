@@ -1,11 +1,14 @@
 <template>
   <aside>
-    <AdminNavbar :width="adminSidebarWidth" />
+    <AdminNavbar
+      :width="adminSidebarWidth"
+      @logout="logout"
+    />
   </aside>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import AdminNavbar from './AdminNavbar'
 
 export default {
@@ -15,6 +18,15 @@ export default {
   },
   computed: {
     ...mapGetters('app', ['adminSidebarWidth']),
+  },
+  methods: {
+    ...mapActions('users', ['logoutUser']),
+    ...mapActions('app', ['openFlashMessage']),
+    logout() {
+      this.logoutUser()
+      this.openFlashMessage('logoutSuccess')
+      this.$router.push({ name: 'AdminLogin' })
+    },
   },
 }
 </script>

@@ -17,6 +17,24 @@
         <UserDrawerMenuList :items="userMenu.items" />
       </div>
     </div>
+
+    <div class="default-user-drawer-logout-btn-wrap">
+      <BaseButton
+        outlined
+        width="100%"
+        height="44px"
+        color="primary"
+        @click.stop="$emit('logout')"
+      >
+        <BaseIcon
+          left
+          color="inherit"
+        >
+          mdi-logout
+        </BaseIcon>
+        ログアウト
+      </BaseButton>
+    </div>
   </BaseDrawer>
 </template>
 
@@ -51,5 +69,12 @@ export default {
 <style lang="scss" scoped>
 .default-user-drawer {
   max-width: 324px;
+}
+.default-user-drawer-logout-btn-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  width: 100%;
 }
 </style>

@@ -25,7 +25,7 @@
 
     <template #append>
       <div class="admin-navbar--append px-4">
-        <AdminNavbarLogout />
+        <AdminNavbarLogout @logout="$listeners['logout']" />
       </div>
     </template>
   </v-navigation-drawer>
@@ -61,6 +61,11 @@ export default {
           icon: 'mdi-database',
           title: '問題集一覧',
           to: { name: 'AdminWorks' },
+        },
+        {
+          icon: 'mdi-account',
+          title: 'アカウント一覧',
+          to: { name: 'AdminUsers' },
         },
       ],
     }

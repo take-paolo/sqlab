@@ -39,8 +39,14 @@
       <div class="default-navbar--append">
         <!-- button for user drawer  -->
         <NavbarItem
+          v-if="loggedIn"
           :item="userDrawerBtn"
           @click="$listeners['toggle-user-drawer']"
+        />
+        <NavbarItem
+          v-else
+          :item="loginBtn"
+          :disabled="loginBtn.disabled"
         />
       </div>
     </template>
@@ -68,6 +74,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    loggedIn: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -83,6 +93,12 @@ export default {
         icon: 'mdi-account',
         tooltip: 'アカウント',
         disabled: false,
+      },
+      loginBtn: {
+        id: 'login',
+        icon: 'mdi-login',
+        tooltip: 'ログイン',
+        disabled: true,
       },
     }
   },

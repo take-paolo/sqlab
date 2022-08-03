@@ -4,6 +4,7 @@
       <DefaultNavbar
         :width="sidebarWidth"
         :is-practice-page="isPracticePage"
+        :logged-in="loggedIn"
         @toggle-work-drawer="toggleWorkDrawer"
         @toggle-user-drawer="toggleUserDrawer"
       />
@@ -15,13 +16,14 @@
       <UserDrawer
         :is-active.sync="isVisibleUserDrawer"
         :style="{ marginRight: sidebarWidth + 'px' }"
+        @logout="logout"
       />
     </nav>
   </aside>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 import DefaultNavbar from './Navbar'
 import WorkDrawer from './WorkDrawer'
 import UserDrawer from './UserDrawer'
@@ -41,13 +43,26 @@ export default {
   },
   computed: {
     ...mapGetters('app', ['sidebarWidth', 'isPracticePage']),
+    ...mapGetters('users', ['authUser']),
+    loggedIn() {
+      return Boolean(this.authUser)
+    },
   },
   methods: {
+    ...mapActions('users', ['logoutUser']),
+    ...mapActions('app', ['openFlashMessage']),
     toggleWorkDrawer() {
       this.isVisibleWorkDrawer = !this.isVisibleWorkDrawer
     },
     toggleUserDrawer() {
       this.isVisibleUserDrawer = !this.isVisibleUserDrawer
+    },
+    logout() {
+      this.logoutUser()
+      this.isVisibleUserDrawer = false
+      this.openFlashMessage('logoutSuccess')
+      if (this.$route.name === 'Top') return
+      this.$router.push({ name: 'Top' })
     },
   },
 }

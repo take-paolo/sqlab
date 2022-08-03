@@ -3,7 +3,8 @@
     outlined
     width="100%"
     height="44px"
-    color="white font--text"
+    color="white"
+    @click="$emit('logout')"
   >
     <BaseIcon
       left
