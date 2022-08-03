@@ -23,7 +23,7 @@ export default {
   letter-spacing: 0.03em;
   font-weight: 900;
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 3rem;
   color: var(--v-font-darken1);
 }
 </style>
