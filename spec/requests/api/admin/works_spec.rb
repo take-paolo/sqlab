@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Api::Admin::Works', type: :request do
   let!(:headers) { { CONTENT_TYPE: 'application/json', ACCEPT: 'application/json' } }
 
+  before do
+    allow_any_instance_of(Api::Admin::WorksController).to receive(:authenticate!)
+    allow_any_instance_of(Api::Admin::WorksController).to receive(:check_admin)
+  end
+
   describe 'GET /api/admin/works' do
     let(:http_request) { get api_admin_works_path, headers: headers, as: :json }
     let!(:works_num) { 3 }
@@ -69,9 +74,8 @@ RSpec.describe 'Api::Admin::Works', type: :request do
   end
 
   describe 'DELETE /api/admin/works/:id' do
-    let(:http_request) { delete api_admin_work_path(work.id), params: params, headers: headers, as: :json }
+    let(:http_request) { delete api_admin_work_path(work.id), headers: headers, as: :json }
     let!(:work) { create(:work) }
-    let(:params) { { work: work } }
 
     it 'return 200 status' do
       http_request

@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Api::Admin::Practices', type: :request do
   let!(:headers) { { CONTENT_TYPE: 'application/json', ACCEPT: 'application/json' } }
 
+  before do
+    allow_any_instance_of(Api::Admin::PracticesController).to receive(:authenticate!)
+    allow_any_instance_of(Api::Admin::PracticesController).to receive(:check_admin)
+  end
+
   describe 'GET /api/admin/practices' do
     let(:http_request) { get api_admin_practices_path, headers: headers, as: :json }
     let!(:practices_num) { 3 }
@@ -74,9 +79,8 @@ RSpec.describe 'Api::Admin::Practices', type: :request do
   end
 
   describe 'DELETE /api/admin/practices/:id' do
-    let(:http_request) { delete api_admin_practice_path(practice.id), params: params, headers: headers, as: :json }
+    let(:http_request) { delete api_admin_practice_path(practice.id), headers: headers, as: :json }
     let!(:practice) { create(:practice) }
-    let(:params) { { practice: practice } }
 
     it 'return 200 status' do
       http_request

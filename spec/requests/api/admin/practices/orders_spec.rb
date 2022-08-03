@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Api::Admin::Practices::Orders', type: :request do
   let!(:headers) { { CONTENT_TYPE: 'application/json', ACCEPT: 'application/json' } }
 
+  before do
+    allow_any_instance_of(Api::Admin::Practices::OrdersController).to receive(:authenticate!)
+    allow_any_instance_of(Api::Admin::Practices::OrdersController).to receive(:check_admin)
+  end
+
   describe 'PATCH /api/admin/practices/order' do
     let(:http_request) { patch api_admin_practices_order_path, params: params, headers: headers, as: :json }
     let!(:practices) { create_list(:practice, 2) }

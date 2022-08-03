@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   namespace :api do
     resources :works, param: :slug, only: %i[index show]
     resources :practices, only: %i[show]
+    resources :sessions, only: %i[create]
+    resource  :auth_user, only: %i[show]
 
     namespace :samples do
       resources :databases, controller: 'model_databases', only: %i[index show] do
@@ -12,6 +14,8 @@ Rails.application.routes.draw do
     end
 
     namespace :admin do
+      resources :users, only: %i[index destroy]
+
       namespace :works do
         resource :order, only: %i[update]
       end

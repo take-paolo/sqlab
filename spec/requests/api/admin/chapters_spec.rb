@@ -3,6 +3,11 @@ require 'rails_helper'
 RSpec.describe 'Api::Admin::Chapters', type: :request do
   let!(:headers) { { CONTENT_TYPE: 'application/json', ACCEPT: 'application/json' } }
 
+  before do
+    allow_any_instance_of(Api::Admin::ChaptersController).to receive(:authenticate!)
+    allow_any_instance_of(Api::Admin::ChaptersController).to receive(:check_admin)
+  end
+
   describe 'GET /api/admin/chapters' do
     let(:http_request) { get api_admin_chapters_path, headers: headers, as: :json }
     let!(:chapters_num) { 3 }
@@ -70,9 +75,8 @@ RSpec.describe 'Api::Admin::Chapters', type: :request do
   end
 
   describe 'DELETE /api/admin/chapters/:id' do
-    let(:http_request) { delete api_admin_chapter_path(chapter.id), params: params, headers: headers, as: :json }
+    let(:http_request) { delete api_admin_chapter_path(chapter.id), headers: headers, as: :json }
     let!(:chapter) { create(:chapter) }
-    let(:params) { { chapter: chapter } }
 
     it 'return 200 status' do
       http_request
