@@ -1,0 +1,23 @@
+{
+  "id": "ID",
+  "name": "名前",
+  "description": "説明",
+  "slug": "スラッグ",
+  "enabled": "利用可能",
+  "published": "公開済み",
+  "orderNumber": "並び順",
+  "createdAt": "作成日",
+  "updatedAt": "更新日",
+  "workId": "問題集ID",
+  "chapterId": "チャプターID",
+  "question": "問題文",
+  "answer": "解答例",
+  "sampleDatabase": "演習用DB",
+  "sampleTables": "演習用テーブル",
+  "displayErDiagram": "ER図の表示",
+  "requiresAuth": "ログイン要求",
+  "email": "メールアドレス",
+  "role": "権限",
+  "password": "パスワード",
+  "passwordConfirmation": "パスワード確認用"
+}

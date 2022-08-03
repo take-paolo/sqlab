@@ -30,6 +30,9 @@ module Sqlab
       g.helper false
       g.test_framework nil
       g.system_tests nil
+      g.factory_bot dir: 'spec/factories'
     end
+
+    config.active_record.legacy_connection_handling = false
   end
 end

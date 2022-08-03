@@ -1,0 +1,17 @@
+{
+  "loginSuccess": {
+    "type": "success",
+    "icon": "mdi-check-circle",
+    "text": "ログインしました。"
+  },
+  "loginFail": {
+    "type": "error",
+    "icon": "mdi-information-outline",
+    "text": "ログインに失敗しました。"
+  },
+  "logoutSuccess": {
+    "type": "success",
+    "icon": "mdi-check-circle",
+    "text": "ログアウトしました。"
+  }
+}

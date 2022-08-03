@@ -6,12 +6,16 @@
 // All it does is render <div>Hello Vue</div> at the bottom of the page.
 
 import Vue from 'vue'
-import App from '../app.vue'
-import router from '../router/index.js'
-import store from '../store/index.js'
-import axios from '../plugins/axios.js'
-import '../plugins/buefy.js'
-import '../plugins/vee-validate.js'
+import App from '@/app.vue'
+import router from '@/router/index'
+import store from '@/store/index'
+import axios from '@/plugins/axios'
+import vuetify from '@/plugins/vuetify'
+import i18n from '@/i18n/index'
+import '@/plugins/vee-validate'
+import '@/plugins/vue-draggable'
+import '@/components/globals'
+import '@/styles/index.scss'
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios
@@ -20,11 +24,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const app = new Vue({
     router,
     store,
-    render: h => h(App)
+    vuetify,
+    i18n,
+    render: h => h(App),
   }).$mount()
   document.body.appendChild(app.$el)
 })
-
 
 // The above code uses Vue without the compiler, which means you cannot
 // use Vue to target elements in your existing html templates. You would
@@ -38,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
 //   {{message}}
 //   <app></app>
 // </div>
-
 
 // import Vue from 'vue/dist/vue.esm'
 // import App from '../app.vue'
