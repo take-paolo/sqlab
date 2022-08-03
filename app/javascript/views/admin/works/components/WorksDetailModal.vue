@@ -9,7 +9,7 @@
       <BaseTable class="px-6 py-3">
         <tbody>
           <tr
-            v-for="(value, key, index) in items"
+            v-for="(value, key, index) in item"
             :key="index"
           >
             <th class="text-default">{{ $t(key) }}</th>
@@ -50,7 +50,7 @@ export default {
       type: String,
       default: '',
     },
-    items: {
+    item: {
       type: Object,
       required: true,
     },

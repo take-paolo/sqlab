@@ -1,31 +1,29 @@
 <template>
   <BaseModal
     :is-active="isActive"
+    max-width="450px"
     @update:isActive="$listeners['update:isActive']"
   >
     <template #title>{{ modalTitle }}</template>
 
     <template #text>
-      <BaseTable class="px-6 py-3">
-        <tbody>
-          <tr
-            v-for="(value, key, index) in items"
-            :key="index"
-          >
-            <th class="text-default">{{ $t(key) }}</th>
-            <td class="py-3 text-pre-wrap text-default">{{ value }}</td>
-          </tr>
-        </tbody>
-      </BaseTable>
+      <p class="works-delete-modal-text text-default px-6 py-3 mb-0">本当に削除しますか?</p>
     </template>
 
     <template #actions>
       <BaseButton
         color="error"
         depressed
-        @click.stop="$emit('delete')"
+        @click="$emit('delete')"
       >
         削除
+      </BaseButton>
+      <BaseButton
+        color="grey lighten-2"
+        depressed
+        @click="$emit('cancel')"
+      >
+        キャンセル
       </BaseButton>
     </template>
   </BaseModal>
@@ -43,10 +41,6 @@ export default {
       type: String,
       default: '',
     },
-    items: {
-      type: Object,
-      required: true,
-    },
   },
   computed: {
     modalTitle() {
@@ -57,7 +51,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-th {
-  width: 150px;
+.works-delete-modal-text {
+  min-height: 104px;
 }
 </style>

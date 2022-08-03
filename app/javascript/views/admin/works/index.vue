@@ -38,7 +38,7 @@
       :table-type="tableType"
       :active-table="activeTable"
       :title="modalTitle"
-      :item="item"
+      :item="itemEdit"
       :works="works"
       :chapters="chapters"
       :sample-databases="sampleDatabases"
@@ -50,15 +50,15 @@
     <WorksDetailModal
       :is-active.sync="isVisibleDetailModal"
       :title="modalTitle"
-      :items="displayItem"
-      @show-edit-modal="showEditModal(item, activeTable)"
-      @show-delete-modal="showDeleteModal(item, activeTable)"
+      :item="displayItem"
+      @show-edit-modal="showEditModal(itemDetail, activeTable)"
+      @show-delete-modal="showDeleteModal(itemDetail, activeTable)"
     />
     <WorksDeleteModal
       :is-active.sync="isVisibleDeleteModal"
       :title="modalTitle"
-      :items="displayItem"
-      @delete="deleteItem(item, activeTable)"
+      @delete="handleDeleteItem(itemDelete, activeTable)"
+      @cancel="closeDeleteModal"
     />
   </BaseContainerAdmin>
 </template>
@@ -66,6 +66,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import { formatDate } from '@/utils/format-date'
+import { intersectionBy, pullObjectFrom, replaceObjFrom } from '@/utils/helpers'
 import cloneDeep from 'lodash.clonedeep'
 import WorksList from './components/WorksList'
 import WorksCreateModal from './components/WorksCreateModal'
@@ -105,12 +106,13 @@ export default {
       chapters: [],
       practices: [],
       sampleDatabases: [],
-      isSorted: false,
       isVisibleCreateModal: false,
       isVisibleDetailModal: false,
       isVisibleEditModal: false,
       isVisibleDeleteModal: false,
-      item: {},
+      itemDetail: {},
+      itemEdit: {},
+      itemDelete: {},
       displayItem: {},
       references: {},
       sortResults: {},
@@ -123,6 +125,9 @@ export default {
     ...mapGetters('app', ['adminSidebarWidth']),
     modalTitle() {
       return this.tableType[this.activeTable]?.title || ''
+    },
+    isSorted() {
+      return Object.values(this.sortResults).some(el => el.length)
     },
   },
   created() {
@@ -202,7 +207,7 @@ export default {
       await this.$axios
         .patch(`admin/works/${work.id}`, { work: work })
         .then(res => {
-          this.replace(this.works, res.data)
+          replaceObjFrom(this.works, res.data)
           this.buildList()
           this.closeEditModal()
           this.closeDetailModal()
@@ -210,8 +215,8 @@ export default {
         .catch(err => (this.errorMessages = err.response.data))
     },
     async deleteWork(work) {
-      await this.$axios.delete(`admin/works/${work.id}`, work).then(() => {
-        this.works = this.pullAt(this.works, work)
+      await this.$axios.delete(`admin/works/${work.id}`).then(() => {
+        this.works = pullObjectFrom(this.works, work)
         this.buildList()
         this.closeDeleteModal()
         this.closeDetailModal()
@@ -231,7 +236,7 @@ export default {
       await this.$axios
         .patch(`admin/chapters/${chapter.id}`, { chapter: chapter })
         .then(res => {
-          this.replace(this.chapters, res.data)
+          replaceObjFrom(this.chapters, res.data)
           this.buildList()
           this.closeEditModal()
           this.closeDetailModal()
@@ -239,8 +244,8 @@ export default {
         .catch(err => (this.errorMessages = err.response.data))
     },
     async deleteChapter(chapter) {
-      await this.$axios.delete(`admin/chapters/${chapter.id}`, { chapter: chapter }).then(() => {
-        this.chapters = this.pullAt(this.chapters, chapter)
+      await this.$axios.delete(`admin/chapters/${chapter.id}`).then(() => {
+        this.chapters = pullObjectFrom(this.chapters, chapter)
         this.buildList()
         this.closeDeleteModal()
         this.closeDetailModal()
@@ -274,7 +279,7 @@ export default {
           sampleTables: sampleTables,
         })
         .then(res => {
-          this.replace(this.practices, res.data)
+          replaceObjFrom(this.practices, res.data)
           this.buildList()
           this.closeEditModal()
           this.closeDetailModal()
@@ -282,8 +287,8 @@ export default {
         .catch(err => (this.errorMessages = err.response.data))
     },
     async deletePractice(practice) {
-      await this.$axios.delete(`admin/practices/${practice.id}`, { practice: practice }).then(() => {
-        this.practices = this.pullAt(this.practices, practice)
+      await this.$axios.delete(`admin/practices/${practice.id}`).then(() => {
+        this.practices = pullObjectFrom(this.practices, practice)
         this.buildList()
         this.closeDeleteModal()
         this.closeDetailModal()
@@ -302,70 +307,50 @@ export default {
         }),
       ]).then(() => {
         this.setup()
-        this.changeSortStatus()
       })
     },
     onSort(evt) {
       const table = evt.item.dataset.tableType
       const newSortedIds = this.getNodesIds(evt.to.childNodes)
       this.changeSortResult(newSortedIds, this.references[table], this.sortResults[table])
-      this.changeSortStatus()
     },
     getNodesIds(array) {
       return Array.from(array, el => parseInt(el.dataset.id))
     },
     changeSortResult(ids, references, sortResults) {
-      const index = references.findIndex(el => this.intersectionBy(el, ids).length)
-      if (JSON.stringify(references[index]) !== JSON.stringify(ids)) {
-        sortResults.splice(index, 1, ids)
+      const reference = references.find(el => intersectionBy(el, ids).length)
+      const index = sortResults.findIndex(el => intersectionBy(el, ids).length)
+
+      if (JSON.stringify(reference) !== JSON.stringify(ids)) {
+        index !== -1 ? sortResults.splice(index, 1, ids) : sortResults.push(ids)
       } else {
-        sortResults.splice(index, 1)
+        if (index !== -1) sortResults.splice(index, 1)
       }
-    },
-    intersectionBy(array, values, key = null) {
-      return array.filter(el => values.includes(el[key] || el))
-    },
-    changeSortStatus() {
-      this.isSorted = this.existSortResult()
-    },
-    existSortResult() {
-      return Object.values(this.sortResults).some(el => el.length)
     },
     resetOrder() {
       this.list = this.baseList
       this.resetSortResults()
-      this.changeSortStatus()
     },
-    pullAt(arr, target, key = 'id') {
-      return arr.filter(el => el[key] !== target[key])
-    },
-    replace(arr, obj, key = 'id') {
-      const item = arr.findIndex(el => el[key] === obj[key])
-      arr.splice(item, 1, obj)
-    },
-    displayColumns(item, table) {
-      item = cloneDeep(item)
+    displayColumns(obj, table) {
+      obj = cloneDeep(obj)
       switch (table) {
         case this.tableType.works.id:
-          delete item.chapters
+          delete obj.chapters
           break
         case this.tableType.chapters.id:
-          delete item.practices
+          delete obj.practices
           break
         case this.tableType.practices.id:
-          ;[item.sampleDatabase, item.sampleTables] = this.findSampleDatabase(
-            item.sampleDatabaseId,
-            item.sampleTableIds
-          )
-          delete item.sampleDatabaseId
-          delete item.sampleTableIds
+          ;[obj.sampleDatabase, obj.sampleTables] = this.findSampleDatabase(obj.sampleDatabaseId, obj.sampleTableIds)
+          delete obj.sampleDatabaseId
+          delete obj.sampleTableIds
           break
         default:
           break
       }
-      return item
+      return obj
     },
-    deleteItem(item, table) {
+    handleDeleteItem(item, table) {
       switch (table) {
         case this.tableType.works.id:
           this.deleteWork(item)
@@ -382,7 +367,7 @@ export default {
     },
     findSampleDatabase(databaseId, tableIds) {
       const sampleDatabase = this.sampleDatabases.find(database => database.id === databaseId)
-      const sampleTables = this.intersectionBy(sampleDatabase.tables, tableIds, 'id')
+      const sampleTables = intersectionBy(sampleDatabase.tables, tableIds, 'id')
 
       return [sampleDatabase.name, sampleTables.map(table => table.name).join(', ')]
     },
@@ -402,36 +387,31 @@ export default {
       item.createdAt = formatDate(item.createdAt)
       item.updatedAt = formatDate(item.updatedAt)
       this.displayItem = this.displayColumns(item, table)
-      this.item = item
+      this.itemDetail = item
       this.isVisibleDetailModal = true
     },
     closeDetailModal() {
       this.displayItem = {}
-      this.item = {}
+      this.itemDetail = {}
       this.isVisibleDetailModal = false
     },
     showEditModal(item, table) {
       this.changeActiveTable(table)
       item = cloneDeep(item)
-      this.item = item
+      this.itemEdit = item
       this.isVisibleEditModal = true
     },
     closeEditModal() {
-      this.item = {}
+      this.itemEdit = {}
       this.isVisibleEditModal = false
     },
     showDeleteModal(item, table) {
       this.changeActiveTable(table)
-      item = cloneDeep(item)
-      item.createdAt = formatDate(item.createdAt)
-      item.updatedAt = formatDate(item.updatedAt)
-      this.displayItem = this.displayColumns(item, table)
-      this.item = item
+      this.itemDelete = item
       this.isVisibleDeleteModal = true
     },
     closeDeleteModal() {
-      this.displayItem = {}
-      this.item = {}
+      this.itemDelete = {}
       this.isVisibleDeleteModal = false
     },
   },
