@@ -7,18 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # Rails.application.eager_load!
 
-Work.create(
+Work.find_or_create_by!(
+  id: 1,
   name: "SQLトライアル編",
   slug: "trial",
   description: "SQLトライアル編です。",
   enabled: true,
   published: true
 )
-Chapter.create(
+Chapter.find_or_create_by!(
+  id: 1,
   work_id: 1,
   name: "トライアル"
 )
-Practice.create(
+Practice.find_or_create_by!(
+  id: 1,
   chapter_id: 1,
   name: "SQLトライアル1",
   question: "出版年(release_year)が不明の書籍一覧を取得してください。",
@@ -29,7 +32,8 @@ Practice.create(
   published: true,
   requires_auth: false
 )
-Practice.create(
+Practice.find_or_create_by!(
+  id: 2,
   chapter_id: 1,
   name: "SQLトライアル2",
   question: "書籍一覧をページ数が多い順に並び替えてください。",
@@ -40,7 +44,8 @@ Practice.create(
   published: true,
   requires_auth: false
 )
-Practice.create(
+Practice.find_or_create_by!(
+  id: 3,
   chapter_id: 1,
   name: "SQLトライアル3",
   question: "書籍一覧をカテゴリー毎に集計して多い順に並び替え、上位３つを取得してください。",
@@ -51,7 +56,8 @@ Practice.create(
   published: true,
   requires_auth: false
 )
-Practice.create(
+Practice.find_or_create_by!(
+  id: 4,
   chapter_id: 1,
   name: "SQLトライアル4",
   question: "idが1のデータを削除後、イベント一覧を取得してください。",
@@ -62,9 +68,9 @@ Practice.create(
   published: true,
   requires_auth: false
 )
-SampleTable.create(practice_id: 1, uid: 2)
-SampleTable.create(practice_id: 2, uid: 2)
-SampleTable.create(practice_id: 3, uid: 1)
-SampleTable.create(practice_id: 3, uid: 2)
-SampleTable.create(practice_id: 3, uid: 3)
-SampleTable.create(practice_id: 4, uid: 6)
+SampleTable.find_or_create_by!(id:1, practice_id: 1, uid: 2)
+SampleTable.find_or_create_by!(id:2, practice_id: 2, uid: 2)
+SampleTable.find_or_create_by!(id:3, practice_id: 3, uid: 1)
+SampleTable.find_or_create_by!(id:4, practice_id: 3, uid: 2)
+SampleTable.find_or_create_by!(id:5, practice_id: 3, uid: 3)
+SampleTable.find_or_create_by!(id:6, practice_id: 4, uid: 6)
