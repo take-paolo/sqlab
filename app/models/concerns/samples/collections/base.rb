@@ -20,20 +20,16 @@ module Samples
           false
         end
 
-        def establish_connection_as(username, password)
-          establish_connection(
-            **current_connection_db_config,
-            username: username,
-            password: password
-          )
-        end
-
         def current_connection_db_config
           connection_db_config.configuration_hash
         end
 
         def current_connection_db_name
           current_connection_db_config[:database]
+        end
+
+        def current_connection_username
+          current_connection_db_config[:username]
         end
       end
     end
