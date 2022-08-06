@@ -22,24 +22,21 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 # users
-admin_user: &admin_user
-  username: sqlab_admin
-  password: <%= Rails.application.credentials[:db][:admin][:password] %>
-general_user: &general_user
-  username: sqlab_general
-  password: <%= Rails.application.credentials[:db][:general][:password] %>
+sqlab_user: &sqlab_user
+  username: sqlab_user
+  password: <%= Rails.application.credentials[:db][:password] %>
 
 # databases
 primary: &primary
   <<: *default
-  <<: *admin_user
+  <<: *sqlab_user
 data_models: &data_models
   <<: *default
-  <<: *admin_user
+  <<: *sqlab_user
   migrations_paths: db/data_models_migrate
 book_stores: &book_stores
   <<: *default
-  <<: *admin_user
+  <<: *sqlab_user
   migrations_paths: db/book_stores_migrate
 
 # database_configs
