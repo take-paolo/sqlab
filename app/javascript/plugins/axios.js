@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const production = ''
+const production = 'https://sqlabapp.herokuapp.com'
 const development = 'http://127.0.0.1:3000'
 const url = process.env.NODE_ENV === 'production' ? production : development
 
