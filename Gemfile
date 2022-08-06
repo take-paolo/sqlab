@@ -50,7 +50,7 @@ group :development, :test do
 
   # Rspec
   gem 'rspec-rails', '~> 5.0.0'
-  gem 'spring-commands-rspec'
+  # gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
 
   # N+1 alert
@@ -68,7 +68,7 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  # gem 'spring'
 end
 
 group :test do
