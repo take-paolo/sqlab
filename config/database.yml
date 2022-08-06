@@ -120,9 +120,9 @@ production:
     <<: *default
   data_models:
     <<: *default
-    url: <%= ENV["BOOK_STORES_DATABASE_URL"] %>
+    url: <%= ENV["DATA_MODELS_DATABASE_URL"] %>
     migrations_paths: db/data_models_migrate
   book_stores:
     <<: *default
-    url: <%= ENV["DATA_MODELS_DATABASE_URL"] %>
+    url: <%= ENV["BOOK_STORES_DATABASE_URL"] %>
     migrations_paths: db/book_stores_migrate
