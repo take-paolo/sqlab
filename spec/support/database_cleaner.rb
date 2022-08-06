@@ -8,11 +8,6 @@ RSpec.configure do |config|
   end
 
   config.after(:suite) do
-    Samples::ModelDatabase.all.each do |model_database|
-      model_database.to_class.establish_connection model_database.name.to_sym
-      model_database.destroy
-      DatabaseCleaner[:active_record, db: model_database.name.to_sym].strategy = :truncation
-      DatabaseCleaner[:active_record, db: model_database.name.to_sym].clean
-    end
+    Samples::ModelDatabase.all.each(&:destroy)
   end
 end
