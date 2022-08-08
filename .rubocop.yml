@@ -62,6 +62,7 @@ Metrics/MethodLength:
   Max: 15
   Exclude:
     - 'lib/tasks/dev.rake'
+    - 'app/helpers/application_helper.rb'
 
 Metrics/CyclomaticComplexity:
   Max: 8
