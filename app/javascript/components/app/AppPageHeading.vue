@@ -18,12 +18,12 @@ export default {
 
 <style lang="scss" scoped>
 .app-page-heading {
-  font-size: 1.75rem;
+  font-size: 1.875rem;
   line-height: 2.5rem;
   letter-spacing: 0.03em;
   font-weight: 900;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 4.25rem;
   color: var(--v-font-darken1);
 }
 </style>

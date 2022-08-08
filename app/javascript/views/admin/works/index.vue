@@ -1,6 +1,6 @@
 <template>
   <AppContainerAdmin>
-    <AppPageHeading>問題集一覧</AppPageHeading>
+    <AppPageHeading class="mb-12">問題集一覧</AppPageHeading>
 
     <WorksList
       :list.sync="list"

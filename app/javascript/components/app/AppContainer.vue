@@ -17,7 +17,7 @@ export default {
 
 <style lang="scss" scoped>
 .app-container {
-  padding: 60px 2% 80px;
+  padding: 72px 2% 92px;
   max-width: 1672px;
 }
 </style>

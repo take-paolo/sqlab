@@ -1,6 +1,6 @@
 <template>
   <AppContainerAdmin>
-    <AppPageHeading>アカウント一覧</AppPageHeading>
+    <AppPageHeading class="mb-12">アカウント一覧</AppPageHeading>
 
     <UsersTable
       :users="users"

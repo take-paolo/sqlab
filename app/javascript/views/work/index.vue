@@ -9,15 +9,12 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col
-        class="work-col"
-        cols="8"
-      >
+      <v-col cols="7">
         <WorkMenu :work="work" />
       </v-col>
       <v-col
-        class="work-col"
-        cols="4"
+        class="pl-10"
+        cols="5"
       >
         <WorkDetail :work="work" />
       </v-col>
@@ -55,10 +52,7 @@ export default {
 
 <style lang="scss" scoped>
 .work-container {
-  width: 95%;
+  width: 90%;
   margin: 0 auto;
-}
-.work-col {
-  padding: 0 2% !important;
 }
 </style>
