@@ -151,9 +151,11 @@ function redirectToPath(next) {
   localStorage.redirectPath = ''
 
   store.dispatch('users/fetchAuthUser').then(authUser => {
+    next({ path: path })
     if (authUser) {
-      next({ path: path })
       store.dispatch('app/openFlashMessage', 'loginSuccess')
+    } else {
+      store.dispatch('app/openFlashMessage', 'loginFail')
     }
   })
 }
