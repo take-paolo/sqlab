@@ -43,12 +43,11 @@
 
       <BaseButton
         class="login-modal-btn d-block text-default white--text mt-3"
-        href=""
+        href="/api/oauth/github"
         width="100%"
         height="44px"
         depressed
         color="#171515"
-        disabled
         @click.native="setRedirectPath"
       >
         <BaseIcon
