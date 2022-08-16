@@ -1,0 +1,2 @@
+sorcery:
+  google_callback_url: 'http://127.0.0.1:3000/api/oauth/callback?provider=google'

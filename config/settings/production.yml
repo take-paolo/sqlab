@@ -1,0 +1,2 @@
+sorcery:
+  google_callback_url: 'https://sqlab.net/api/oauth/callback?provider=google'
