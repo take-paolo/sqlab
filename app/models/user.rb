@@ -1,6 +1,11 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   include JwtToken
   authenticates_with_sorcery!
+
+  has_many :authentications, dependent: :destroy
+  accepts_nested_attributes_for :authentications
 
   enum role: {
     general: 0,
