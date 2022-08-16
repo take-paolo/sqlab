@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const host = {
   development: 'http://127.0.0.1:3000',
-  staging: 'https://sqlabapp-test.herokuapp.com',
+  staging: 'https://sqlabapp-staging.herokuapp.com',
   production: 'https://sqlab.net',
 }
 
