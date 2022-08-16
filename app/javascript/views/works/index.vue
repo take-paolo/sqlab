@@ -13,7 +13,7 @@
         v-for="work in works"
         :key="work.id"
         cols="6"
-        class="works-col pa-3"
+        class="works-col pa-5"
       >
         <WorksCard :work="work" />
       </v-col>
@@ -50,7 +50,7 @@ export default {
 
 <style lang="scss" scoped>
 .works-container {
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
 }
 .works-col {

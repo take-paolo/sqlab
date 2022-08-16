@@ -22,10 +22,10 @@ export default {
   methods: {
     ...mapActions('users', ['logoutUser']),
     ...mapActions('app', ['openFlashMessage']),
-    logout() {
-      this.logoutUser()
+    async logout() {
+      await this.logoutUser()
       this.openFlashMessage('logoutSuccess')
-      this.$router.push({ name: 'AdminLogin' })
+      location.href = '/'
     },
   },
 }

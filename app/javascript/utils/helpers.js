@@ -54,3 +54,7 @@ export function replaceObjFrom(arr, obj, key = 'id') {
   const item = arr.findIndex(el => el[key] === obj[key])
   arr.splice(item, 1, obj)
 }
+
+export function removeTrailingSlash(item) {
+  return item.replace(/\/$/, '')
+}

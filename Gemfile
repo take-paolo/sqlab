@@ -31,12 +31,21 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Seeds
 gem 'seed-fu'
 
-# i18n
+# I18n
 gem 'rails-i18n', '~> 6.0.0'
 
 # Authentication
 gem 'sorcery'
-gem 'jwt'
+gem 'omniauth-google-oauth2'
+
+# Bulk insert
+gem 'activerecord-import'
+
+# Meta tags
+gem 'meta-tags'
+
+# Config control
+gem 'config'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -50,14 +59,11 @@ group :development, :test do
 
   # Rspec
   gem 'rspec-rails', '~> 5.0.0'
-  gem 'spring-commands-rspec'
+  # gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
 
   # N+1 alert
   gem 'bullet'
-
-  # bulk insert
-  gem 'activerecord-import'
 end
 
 group :development do
@@ -68,7 +74,7 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  # gem 'spring'
 end
 
 group :test do

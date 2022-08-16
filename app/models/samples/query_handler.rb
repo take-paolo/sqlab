@@ -2,8 +2,6 @@
 
 module Samples
   class QueryHandler
-    include Samples::ConnectionUser
-
     attr_reader :model_database
 
     def initialize(model_database)
@@ -17,7 +15,6 @@ module Samples
 
     def execute(query)
       queries = QueryParser.call(query)
-      model_database.to_class.establish_connection_as(*general_user)
       TempTableCreator.create(model_database.model_tables)
       QueryExecutor.new(model_database).execute(queries)
     end

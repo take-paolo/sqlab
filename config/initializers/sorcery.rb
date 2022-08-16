@@ -4,7 +4,7 @@
 # Available submodules are: :user_activation, :http_basic_auth, :remember_me,
 # :reset_password, :session_timeout, :brute_force_protection, :activity_logging,
 # :magic_login, :external
-Rails.application.config.sorcery.submodules = []
+Rails.application.config.sorcery.submodules = [:external]
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -80,7 +80,7 @@ Rails.application.config.sorcery.configure do |config|
   # i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce, :slack, :line].
   # Default: `[]`
   #
-  # config.external_providers =
+  config.external_providers = [:google, :github]
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
   # Path to ca_file. By default use a internal ca-bundle.crt.
@@ -136,11 +136,14 @@ Rails.application.config.sorcery.configure do |config|
   # config.instagram.user_info_mapping = {:email => "username"}
   # config.instagram.access_permissions = ["basic", "public_content", "follower_list", "comments", "relationships", "likes"]
   #
-  # config.github.key = ""
-  # config.github.secret = ""
-  # config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
-  # config.github.user_info_mapping = {:email => "name"}
-  # config.github.scope = ""
+  config.github.key = Settings.sorcery[:github][:client_id]
+  config.github.secret = Settings.sorcery[:github][:client_secret]
+  config.github.callback_url = Settings.sorcery[:github][:callback_url]
+  config.github.user_info_mapping = {
+    email: 'email',
+    name: 'login'
+  }
+  config.github.scope = 'user:email'
   #
   # config.paypal.key = ""
   # config.paypal.secret = ""
@@ -158,11 +161,14 @@ Rails.application.config.sorcery.configure do |config|
   # config.auth0.callback_url = "https://0.0.0.0:3000/oauth/callback?provider=auth0"
   # config.auth0.site = "https://example.auth0.com"
   #
-  # config.google.key = ""
-  # config.google.secret = ""
-  # config.google.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=google"
-  # config.google.user_info_mapping = {:email => "email", :username => "name"}
-  # config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
+  config.google.key = Rails.application.credentials[:google][:client_id]
+  config.google.secret = Rails.application.credentials[:google][:client_secret]
+  config.google.callback_url = Settings.sorcery[:google][:callback_url]
+  config.google.user_info_mapping = {
+    email: 'email',
+    name: 'name'
+  }
+  config.google.scope = "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
   #
   # For Microsoft Graph, the key will be your App ID, and the secret will be your app password/public key.
   # The callback URL "can't contain a query string or invalid special characters"
@@ -543,7 +549,7 @@ Rails.application.config.sorcery.configure do |config|
     # Class which holds the various external provider data for this user.
     # Default: `nil`
     #
-    # user.authentications_class =
+    user.authentications_class = Authentication
 
     # User's identifier in the `authentications` class.
     # Default: `:user_id`

@@ -33,9 +33,9 @@ export default {
 
 <style lang="scss" scoped>
 .app-flash-message {
-  position: absolute;
+  position: fixed;
   top: 24px;
-  right: 32px;
+  right: 105px;
   z-index: 9999;
   box-shadow: var(--shadow-low) !important;
 }

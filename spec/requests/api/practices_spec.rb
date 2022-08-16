@@ -61,13 +61,12 @@ RSpec.describe 'Api::Practices', type: :request do
       end
     end
 
-    context 'when request with valid token to practice which requires auth' do
-      let(:headers) { { CONTENT_TYPE: 'application/json', ACCEPT: 'application/json', Authorization: "Bearer #{token}" } }
+    context 'when request with login user to practice which requires auth' do
       let!(:user) { create(:user) }
-      let!(:token) { user.create_tokens }
       let(:practice) { create(:practice, :enabled, :published) }
 
       it 'returns practice detail' do
+        login_as(user)
         http_request
         expect(body['id']).to eq practice.id
         expect(response).to be_successful
@@ -75,7 +74,7 @@ RSpec.describe 'Api::Practices', type: :request do
       end
     end
 
-    context 'when request without token to practice which requires auth' do
+    context 'when request without login to practice which requires auth' do
       let(:practice) { create(:practice, :enabled, :published) }
 
       it 'returns 401 error' do

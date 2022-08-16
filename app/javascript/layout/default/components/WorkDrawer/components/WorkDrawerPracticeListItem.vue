@@ -3,7 +3,7 @@
     class="work-practice-list-item rounded-l-xl overflow-hidden px-4"
     color="primary"
     :input-value="isActivePractice(practice)"
-    :to="{ name: 'Practice', params: { slug: workSlug, id: practice.id } }"
+    :to="{ name: 'Practice', params: { slug: workSlug, id: practice.id, requiresAuth: practice.requiresAuth } }"
     :ripple="{ center: true, class: 'primary--text' }"
   >
     <v-list-item-title class="py-2 text-small font-weight-medium">

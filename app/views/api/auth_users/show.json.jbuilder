@@ -1,1 +1,1 @@
-json.merge! @current_user.attributes
+json.merge! current_user&.attributes

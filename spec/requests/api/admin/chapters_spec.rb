@@ -4,7 +4,7 @@ RSpec.describe 'Api::Admin::Chapters', type: :request do
   let!(:headers) { { CONTENT_TYPE: 'application/json', ACCEPT: 'application/json' } }
 
   before do
-    allow_any_instance_of(Api::Admin::ChaptersController).to receive(:authenticate!)
+    allow_any_instance_of(Api::Admin::ChaptersController).to receive(:require_login)
     allow_any_instance_of(Api::Admin::ChaptersController).to receive(:check_admin)
   end
 

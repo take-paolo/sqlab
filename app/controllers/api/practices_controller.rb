@@ -2,8 +2,6 @@
 
 module Api
   class PracticesController < BaseController
-    include Api::UserAuthenticator
-
     def show
       @practice = Practice.find(params[:id])
 

@@ -3,8 +3,12 @@ Rails.application.routes.draw do
   namespace :api do
     resources :works, param: :slug, only: %i[index show]
     resources :practices, only: %i[show]
-    resources :sessions, only: %i[create]
     resource  :auth_user, only: %i[show]
+
+    post 'oauth/callback', to: 'oauths#callback'
+    get 'oauth/callback', to: 'oauths#callback'
+    get 'oauth/:provider', to: 'oauths#oauth', as: :auth_at_provider
+    delete 'logout', to: 'user_sessions#destroy'
 
     namespace :samples do
       resources :databases, controller: 'model_databases', only: %i[index show] do
@@ -30,5 +34,9 @@ Rails.application.routes.draw do
       resources :practices, only: %i[index create update destroy]
     end
   end
+
+  # for development/test login
+  get '/login_as/:user_id', to: 'development/user_sessions#login_as' unless Rails.env.production?
+
   get '*path', to: 'home#index', constraints: lambda { |req| req.path.exclude? 'rails/active_storage' }
 end

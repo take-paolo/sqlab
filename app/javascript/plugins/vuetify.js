@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import light from './vuetify/theme'
-import '@mdi/font/css/materialdesignicons.min.css'
 
 Vue.use(Vuetify)
 
@@ -14,9 +13,6 @@ const options = {
     options: {
       customProperties: true,
     },
-  },
-  icons: {
-    iconfont: 'mdi',
   },
 }
 
