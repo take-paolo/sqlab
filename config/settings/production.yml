@@ -1,2 +1,7 @@
 sorcery:
-  google_callback_url: 'https://sqlab.net/api/oauth/callback?provider=google'
+  google:
+    callback_url: 'https://sqlab.net/api/oauth/callback?provider=google'
+  github:
+    client_id: <%= Rails.application.credentials[:github][:production][:client_id] %>
+    client_secret: <%= Rails.application.credentials[:github][:production][:client_secret] %>
+    callback_url: 'https://sqlab.net/api/oauth/callback?provider=github'

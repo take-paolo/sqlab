@@ -80,7 +80,7 @@ Rails.application.config.sorcery.configure do |config|
   # i.e. [:twitter, :facebook, :github, :linkedin, :xing, :google, :liveid, :salesforce, :slack, :line].
   # Default: `[]`
   #
-  config.external_providers = [:google]
+  config.external_providers = [:google, :github]
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'
   # Path to ca_file. By default use a internal ca-bundle.crt.
@@ -136,11 +136,14 @@ Rails.application.config.sorcery.configure do |config|
   # config.instagram.user_info_mapping = {:email => "username"}
   # config.instagram.access_permissions = ["basic", "public_content", "follower_list", "comments", "relationships", "likes"]
   #
-  # config.github.key = ""
-  # config.github.secret = ""
-  # config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
-  # config.github.user_info_mapping = {:email => "name"}
-  # config.github.scope = ""
+  config.github.key = Settings.sorcery[:github][:client_id]
+  config.github.secret = Settings.sorcery[:github][:client_secret]
+  config.github.callback_url = Settings.sorcery[:github][:callback_url]
+  config.github.user_info_mapping = {
+    email: 'email',
+    name: 'login'
+  }
+  config.github.scope = 'user:email'
   #
   # config.paypal.key = ""
   # config.paypal.secret = ""
@@ -160,7 +163,7 @@ Rails.application.config.sorcery.configure do |config|
   #
   config.google.key = Rails.application.credentials[:google][:client_id]
   config.google.secret = Rails.application.credentials[:google][:client_secret]
-  config.google.callback_url = Settings.sorcery[:google_callback_url]
+  config.google.callback_url = Settings.sorcery[:google][:callback_url]
   config.google.user_info_mapping = {
     email: 'email',
     name: 'name'
