@@ -36,8 +36,8 @@ const routes = [
     children: [
       {
         path: '',
-        name: 'Work',
         component: () => import('@/views/work/index'),
+        name: 'Work',
       },
     ],
   },
@@ -49,6 +49,18 @@ const routes = [
         path: '',
         component: () => import('@/views/practice/index'),
         name: 'Practice',
+      },
+    ],
+  },
+  {
+    path: '/login',
+    component: DefaultLayout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/login/index'),
+        name: 'Login',
+        beforeEnter: checkLoggedIn,
       },
     ],
   },
@@ -75,11 +87,6 @@ const routes = [
     ],
   },
   {
-    path: '/admin/login',
-    component: () => import('@/views/admin/login/index'),
-    name: 'AdminLogin',
-  },
-  {
     path: '/admin',
     component: AdminLayout,
     children: [
@@ -87,8 +94,7 @@ const routes = [
         path: '',
         component: () => import('@/views/admin/dashboard/index'),
         name: 'AdminDashboard',
-        meta: { requiresAuth: true },
-        beforeEnter: checkAdmin,
+        beforeEnter: checkAdminAuth,
       },
     ],
   },
@@ -100,8 +106,7 @@ const routes = [
         path: '',
         component: () => import('@/views/admin/works/index'),
         name: 'AdminWorks',
-        meta: { requiresAuth: true },
-        beforeEnter: checkAdmin,
+        beforeEnter: checkAdminAuth,
       },
     ],
   },
@@ -113,8 +118,7 @@ const routes = [
         path: '',
         component: () => import('@/views/admin/users/index'),
         name: 'AdminUsers',
-        meta: { requiresAuth: true },
-        beforeEnter: checkAdmin,
+        beforeEnter: checkAdminAuth,
       },
     ],
   },
@@ -136,18 +140,50 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  redirectToPath(next)
+  checkAuth(to, next)
+})
+
+function redirectToPath(next) {
+  if (!localStorage.redirectPath) return
+
+  const path = localStorage.redirectPath
+  localStorage.redirectPath = ''
+
+  store.dispatch('users/fetchAuthUser').then(authUser => {
+    if (authUser) {
+      next({ path: path })
+      store.dispatch('app/openFlashMessage', 'loginSuccess')
+    }
+  })
+}
+
+function checkAuth(to, next) {
   store.dispatch('users/fetchAuthUser').then(authUser => {
     if (to.matched.some(record => record.meta.requiresAuth) && !authUser) {
-      next({ name: 'AdminLogin' })
+      next(false)
+      store.dispatch('app/switchLoginModal', true)
+      store.dispatch('app/openFlashMessage', 'loginWarning')
     } else {
       next()
     }
   })
-})
+}
 
-function checkAdmin(to, from, next) {
+function checkLoggedIn(to, from, next) {
   const authUser = store.getters['users/authUser']
-  if (authUser.role === 'admin') {
+
+  if (authUser) {
+    next({ name: 'Top' })
+  } else {
+    next()
+  }
+}
+
+function checkAdminAuth(to, from, next) {
+  const authUser = store.getters['users/authUser']
+
+  if (authUser?.role === 'admin') {
     next()
   } else {
     next({ name: 'Top' })
