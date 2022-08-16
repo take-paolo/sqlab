@@ -8,21 +8,33 @@ module Api
 
     def callback
       provider = auth_params[:provider]
-      @user = login_from(provider)
 
-      unless @user
-        @user = create_from(provider)
-        reset_session
-        auto_login(@user)
+      return redirect_to root_path if access_denied?
+
+      if (@user = login_from(provider))
+        redirect_to root_path
+      else
+        begin
+          @user = create_from(provider)
+          reset_session
+          auto_login(@user)
+          redirect_to root_path
+        rescue StandardError
+          redirect_to root_path
+        end
       end
-
-      redirect_to root_path
     end
 
     private
 
     def auth_params
-      params.permit(:code, :provider)
+      params.permit(:code, :provider, :error)
+    end
+
+    def access_denied?
+      return unless auth_params[:error]
+
+      auth_params[:error].match?('access_denied')
     end
   end
 end
