@@ -1,7 +1,7 @@
 <template>
   <v-list-item
     class="work-menu-practice-list-item overflow-hidden rounded-lg px-4"
-    :to="{ name: 'Practice', params: { slug: slug, id: practice.id } }"
+    :to="{ name: 'Practice', params: { slug: slug, id: practice.id, requiresAuth: practice.requiresAuth } }"
     :ripple="{ center: true, class: 'primary--text' }"
   >
     <v-list-item-title class="font-weight-medium">

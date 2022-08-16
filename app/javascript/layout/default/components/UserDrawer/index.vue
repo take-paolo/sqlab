@@ -6,7 +6,7 @@
     right
     @update:isActive="$listeners['update:isActive']"
   >
-    <UserDrawerHeading />
+    <UserDrawerHeading :user="authUser" />
 
     <div class="py-2 pl-4">
       <div
@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 import userMenu from '@/data/user-menu'
 
 import UserDrawerHeading from './components/UserDrawerHeading'
@@ -64,6 +66,9 @@ export default {
     return {
       userMenuList: userMenu,
     }
+  },
+  computed: {
+    ...mapGetters('users', ['authUser']),
   },
 }
 </script>

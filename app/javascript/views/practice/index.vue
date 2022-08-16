@@ -191,12 +191,30 @@ export default {
     PracticeModalShortcutList,
   },
   beforeRouteEnter(to, from, next) {
-    store.dispatch('practices/fetchPractice', to.params.id).then(() => next())
+    store.dispatch('users/fetchAuthUser').then(authUser => {
+      if (to.params.requiresAuth && !authUser) {
+        next(false)
+        store.dispatch('app/switchLoginModal', true)
+        store.dispatch('app/openFlashMessage', 'loginWarning')
+      } else {
+        store.dispatch('practices/fetchPractice', to.params.id).then(() => next())
+      }
+    })
   },
   beforeRouteUpdate(to, from, next) {
     this.saveQuery()
     this.savePreferences()
-    next()
+
+    if (!to.params.requiresAuth) return next()
+    store.dispatch('users/fetchAuthUser').then(authUser => {
+      if (to.params.requiresAuth && !authUser) {
+        next(false)
+        store.dispatch('app/switchLoginModal', true)
+        store.dispatch('app/openFlashMessage', 'loginWarning')
+      } else {
+        next()
+      }
+    })
   },
   beforeRouteLeave(to, from, next) {
     this.saveQuery()
