@@ -36,7 +36,6 @@ gem 'rails-i18n', '~> 6.0.0'
 
 # Authentication
 gem 'sorcery'
-gem 'jwt'
 gem 'omniauth-google-oauth2'
 
 # Bulk insert

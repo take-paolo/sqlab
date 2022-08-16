@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
-  include JwtToken
   authenticates_with_sorcery!
 
   has_many :authentications, dependent: :destroy

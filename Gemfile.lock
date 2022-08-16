@@ -360,7 +360,6 @@ DEPENDENCIES
   database_cleaner-active_record
   factory_bot_rails
   jbuilder (~> 2.7)
-  jwt
   listen (~> 3.3)
   meta-tags
   omniauth-google-oauth2
