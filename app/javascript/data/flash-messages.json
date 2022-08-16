@@ -4,6 +4,11 @@
     "icon": "mdi-check-circle",
     "text": "ログインしました。"
   },
+  "loginWarning": {
+    "type": "warning",
+    "icon": "mdi-alert-outline",
+    "text": "ログインが必要です。"
+  },
   "loginFail": {
     "type": "error",
     "icon": "mdi-information-outline",
