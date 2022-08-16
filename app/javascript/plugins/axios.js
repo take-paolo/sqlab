@@ -1,11 +1,13 @@
 import axios from 'axios'
 
-const production = 'https://sqlab.net'
-const development = 'http://127.0.0.1:3000'
-const url = process.env.NODE_ENV === 'production' ? production : development
+const host = {
+  development: 'http://127.0.0.1:3000',
+  staging: 'https://sqlabapp-test.herokuapp.com',
+  production: 'https://sqlab.net',
+}
 
 const axiosInstance = axios.create({
-  baseURL: `${url}/api`,
+  baseURL: `${host[process.env.NODE_ENV]}/api`,
   credentials: true,
 })
 
