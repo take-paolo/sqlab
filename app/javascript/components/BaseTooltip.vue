@@ -2,6 +2,7 @@
   <v-tooltip
     :activator="activator"
     :color="color"
+    :content-class="`shadow ${contentClass}`"
     z-index="999"
     v-bind="$attrs"
     v-on="$listeners"
@@ -24,6 +25,10 @@ export default {
     color: {
       type: String,
       default: 'primary',
+    },
+    contentClass: {
+      type: String,
+      default: '',
     },
   },
 }

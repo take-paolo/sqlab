@@ -53,6 +53,18 @@ const routes = [
     ],
   },
   {
+    path: '/mypage',
+    component: DefaultLayout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/mypage/index'),
+        name: 'Mypage',
+        beforeEnter: checkAuth,
+      },
+    ],
+  },
+  {
     path: '/login',
     component: DefaultLayout,
     children: [
@@ -141,11 +153,10 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   redirectToPath(next)
-  checkAuth(to, next)
 })
 
 function redirectToPath(next) {
-  if (!localStorage.redirectPath) return
+  if (!localStorage.redirectPath) return next()
 
   const path = localStorage.redirectPath
   localStorage.redirectPath = ''
@@ -160,14 +171,13 @@ function redirectToPath(next) {
   })
 }
 
-function checkAuth(to, next) {
+function checkAuth(to, from, next) {
   store.dispatch('users/fetchAuthUser').then(authUser => {
-    if (to.matched.some(record => record.meta.requiresAuth) && !authUser) {
-      next(false)
-      store.dispatch('app/switchLoginModal', true)
-      store.dispatch('app/openFlashMessage', 'loginWarning')
-    } else {
+    if (authUser) {
       next()
+    } else {
+      next({ name: 'Login' })
+      store.dispatch('app/openFlashMessage', 'loginWarning')
     }
   })
 }
