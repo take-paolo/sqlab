@@ -161,7 +161,7 @@ function redirectToPath(next) {
   const path = localStorage.redirectPath
   localStorage.redirectPath = ''
 
-  store.dispatch('users/fetchAuthUser').then(authUser => {
+  store.dispatch('users/getAuthUser').then(authUser => {
     next({ path: path })
     if (authUser) {
       store.dispatch('app/openFlashMessage', 'loginSuccess')
@@ -172,7 +172,7 @@ function redirectToPath(next) {
 }
 
 function checkAuth(to, from, next) {
-  store.dispatch('users/fetchAuthUser').then(authUser => {
+  store.dispatch('users/getAuthUser').then(authUser => {
     if (authUser) {
       next()
     } else {
@@ -183,23 +183,23 @@ function checkAuth(to, from, next) {
 }
 
 function checkLoggedIn(to, from, next) {
-  const authUser = store.getters['users/authUser']
-
-  if (authUser) {
-    next({ name: 'Top' })
-  } else {
-    next()
-  }
+  store.dispatch('users/getAuthUser').then(authUser => {
+    if (authUser) {
+      next({ name: 'Top' })
+    } else {
+      next()
+    }
+  })
 }
 
 function checkAdminAuth(to, from, next) {
-  const authUser = store.getters['users/authUser']
-
-  if (authUser?.role === 'admin') {
-    next()
-  } else {
-    next({ name: 'Top' })
-  }
+  store.dispatch('users/getAuthUser').then(authUser => {
+    if (authUser?.role === 'admin') {
+      next()
+    } else {
+      next({ name: 'Top' })
+    }
+  })
 }
 
 export default router

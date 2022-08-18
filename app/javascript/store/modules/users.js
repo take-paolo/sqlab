@@ -18,15 +18,22 @@ const users = {
       await axios.delete('logout')
       commit('setAuthUser', null)
     },
-    async fetchAuthUser({ commit, state }) {
+    resetAuthUser({ commit }) {
+      commit('setAuthUser', null)
+    },
+    getAuthUser({ state, dispatch }) {
       if (state.authUser) return state.authUser
 
-      await axios
-        .get('auth_user')
-        .then(res => commit('setAuthUser', res.data))
-        .catch(() => null)
-
-      return state.authUser
+      return dispatch('fetchAuthUser')
+    },
+    async fetchAuthUser({ commit }) {
+      try {
+        const response = await axios.get('auth_user')
+        commit('setAuthUser', response.data)
+        return response.data
+      } catch {
+        return null
+      }
     },
   },
 }

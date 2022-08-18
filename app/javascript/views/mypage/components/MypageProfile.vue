@@ -28,6 +28,7 @@
             depressed
             width="100%"
             height="44px"
+            @click="$emit('show-account-setting-modal')"
           >
             アカウント設定
           </BaseButton>
@@ -36,6 +37,7 @@
             depressed
             width="100%"
             height="44px"
+            @click="$emit('logout')"
           >
             ログアウト
           </BaseButton>
