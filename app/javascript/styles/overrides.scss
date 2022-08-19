@@ -193,6 +193,11 @@
       }
     }
   }
+  .v-data-table>.v-data-table__wrapper>table>tbody>tr>th,
+  .v-data-table>.v-data-table__wrapper>table>tfoot>tr>th,
+  .v-data-table>.v-data-table__wrapper>table>thead>tr>th {
+    user-select: auto;
+  }
 
   // toolbar
   .v-toolbar__content,
