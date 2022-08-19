@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="work-detail pa-7"
+    class="shadow-low pa-7"
     color="white"
     rounded="lg"
   >
@@ -23,9 +23,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.work-detail {
-  box-shadow: var(--shadow-low) !important;
-}
-</style>

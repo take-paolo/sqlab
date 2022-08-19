@@ -1,7 +1,7 @@
 <template>
   <v-alert
     v-if="flashMessageActive"
-    class="app-flash-message"
+    class="app-flash-message shadow-low"
     :type="flashMessage.type"
     :icon="flashMessage.icon"
     transition="slide-y-transition"
@@ -37,6 +37,5 @@ export default {
   top: 24px;
   right: 105px;
   z-index: 9999;
-  box-shadow: var(--shadow-low) !important;
 }
 </style>

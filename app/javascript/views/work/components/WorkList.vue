@@ -3,7 +3,7 @@
     <v-card
       v-for="(chapter, index) in work.chapters"
       :key="chapter.id"
-      class="work-list-item px-6 py-4"
+      class="shadow-low px-6 py-4"
       :class="index !== 0 ? 'mt-10' : ''"
       color="white"
       rounded="lg"
@@ -45,9 +45,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.work-list-item {
-  box-shadow: var(--shadow-low) !important;
-}
 .work-divider {
   border-width: 2px !important;
   background: var(--v-primary-base);

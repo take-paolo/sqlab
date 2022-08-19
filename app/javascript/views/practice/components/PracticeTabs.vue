@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="practice-tabs-wrap"
+    class="practice-tabs-wrap shadow"
     rounded="lg"
   >
     <v-tabs
@@ -59,7 +59,6 @@ export default {
   overflow: hidden;
   position: relative;
   z-index: 1;
-  box-shadow: var(--shadow) !important;
 
   .practice-tabs {
     grid-area: tabs;

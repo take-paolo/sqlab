@@ -1,5 +1,8 @@
 <template>
-  <v-card class="works-card overflow-hidden rounded-lg pa-8">
+  <v-card
+    class="overflow-hidden rounded-lg shadow-low pa-8"
+    color="white"
+  >
     <v-card-title class="text-x-large font--text text--darken-1">
       {{ work.name }}
     </v-card-title>
@@ -28,10 +31,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.works-card {
-  background: white;
-  box-shadow: var(--shadow-low) !important;
-}
-</style>

@@ -6,7 +6,7 @@
         :style="{ gridTemplateColumns: `${resizableColumn} 12px 1fr` }"
       >
         <PracticeQuestion
-          class="practice-question-wrap"
+          class="practice-question-wrap shadow"
           :question="practice.question"
         />
 
@@ -617,7 +617,6 @@ export default {
 }
 .practice-question-wrap {
   grid-area: question;
-  box-shadow: var(--shadow) !important;
 }
 .practice-tabs-wrap--left {
   grid-area: tabs-left;
