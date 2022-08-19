@@ -2,7 +2,7 @@
   <v-btn
     class="base-btn"
     :color="color"
-    :ripple="{ center: true }"
+    :ripple="false"
     v-bind="$attrs"
     v-on="$listeners"
   >

@@ -2,7 +2,7 @@
   <v-btn
     class="base-btn base-btn-icon base-btn-close"
     icon
-    :ripple="{ center: true, class: 'primary--text' }"
+    :ripple="false"
     v-bind="$attrs"
     v-on="$listeners"
   >

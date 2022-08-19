@@ -24,7 +24,7 @@
           class="rounded-l-xl overflow-hidden px-4"
           :to="{ name: 'Mypage' }"
           color="primary"
-          :ripple="{ center: true, class: 'primary--text' }"
+          :ripple="false"
         >
           <v-list-item-icon class="mr-2">
             <BaseIcon
@@ -40,7 +40,7 @@
         <v-list-item
           class="rounded-l-xl overflow-hidden px-4"
           color="primary"
-          :ripple="{ center: true, class: 'primary--text' }"
+          :ripple="false"
           @click.stop="$emit('logout')"
         >
           <v-list-item-icon class="mr-2">

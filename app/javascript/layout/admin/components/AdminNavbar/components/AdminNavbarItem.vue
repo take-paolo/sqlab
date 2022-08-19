@@ -5,7 +5,7 @@
     exact
     :input-value="$route.name === item.to.name"
     :to="item.to"
-    :ripple="{ center: true, class: 'white--text' }"
+    :ripple="false"
     v-bind="$attrs"
   >
     <v-list-item-icon>
