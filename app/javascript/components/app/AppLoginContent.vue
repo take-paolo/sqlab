@@ -5,14 +5,14 @@
       事前に
       <router-link
         :to="{ name: 'Terms' }"
-        @click.native="isVisibleModal = false"
+        @click.native="$emit('close-login-modal')"
       >
         利用規約
       </router-link>
       ・
       <router-link
         :to="{ name: 'Privacy' }"
-        @click.native="isVisibleModal = false"
+        @click.native="$emit('close-login-modal')"
       >
         プライバシーポリシー
       </router-link>

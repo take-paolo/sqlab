@@ -6,7 +6,10 @@
     <template #title>ログイン</template>
 
     <template #text>
-      <AppLoginContent class="px-7 py-6" />
+      <AppLoginContent
+        class="px-7 py-6"
+        @close-login-modal="isVisibleModal = false"
+      />
     </template>
   </BaseModal>
 </template>
