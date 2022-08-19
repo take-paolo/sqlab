@@ -203,7 +203,6 @@ export default {
     })
   },
   beforeRouteUpdate(to, from, next) {
-    this.saveQuery()
     this.savePreferences()
 
     if (!to.params.requiresAuth) return next()
@@ -218,7 +217,6 @@ export default {
     })
   },
   beforeRouteLeave(to, from, next) {
-    this.saveQuery()
     this.savePreferences()
     next()
   },
@@ -313,7 +311,6 @@ export default {
   beforeMount() {
     document.addEventListener('keydown', this.handleKeyboardEvent)
     window.addEventListener('resize', this.calcContentWidth)
-    window.addEventListener('beforeunload', this.saveQuery)
     window.addEventListener('beforeunload', this.savePreferences)
   },
   mounted() {
@@ -326,7 +323,6 @@ export default {
   beforeDestroy() {
     document.removeEventListener('keydown', this.handleKeyboardEvent)
     window.removeEventListener('resize', this.calcContentWidth)
-    window.removeEventListener('beforeunload', this.saveQuery)
     window.removeEventListener('beforeunload', this.savePreferences)
   },
   methods: {
@@ -338,7 +334,7 @@ export default {
 
       await this.fetchSampleData()
 
-      this.loadQuery()
+      this.removeQueryFromLocalStorage()
       this.loadPreferences()
       this.focusEditor()
     },
@@ -514,14 +510,9 @@ export default {
       this.$refs[this.camelCase(this.inputTabs.editor.value)].resetValue()
       this.focusEditor()
     },
-    saveQuery() {
+    removeQueryFromLocalStorage() {
       const key = `${this.$route.params.slug}_${this.$route.params.id}`
-      localStorage.setItem(key, this.query)
-    },
-    loadQuery() {
-      const key = `${this.$route.params.slug}_${this.$route.params.id}`
-      this.query = localStorage.getItem(key)
-      this.$refs[this.camelCase(this.inputTabs.editor.value)].setValue()
+      localStorage.removeItem(key)
     },
     savePreferences() {
       let obj = {}
