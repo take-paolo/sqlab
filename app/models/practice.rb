@@ -4,6 +4,7 @@ class Practice < ApplicationRecord
   include Sortable
 
   has_many :sample_tables, dependent: :destroy
+  has_many :bookmarks, dependent: :destroy
   belongs_to :chapter
 
   validates :name, presence: true
@@ -29,5 +30,9 @@ class Practice < ApplicationRecord
     (new_sample_table_ids - old_sample_table_ids).each do |id|
       sample_tables.create!(uid: id)
     end
+  end
+
+  def bookmarked_by?(user)
+    bookmarks.pluck(:user_id).include?(user.id)
   end
 end

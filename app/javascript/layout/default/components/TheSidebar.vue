@@ -10,8 +10,8 @@
         @show-login-modal="showLoginModal"
       />
       <WorkDrawer
-        v-if="isPracticePage"
         :is-active.sync="isVisibleWorkDrawer"
+        :logged-in="loggedIn"
         :style="{ marginRight: sidebarWidth + 'px' }"
       />
       <UserDrawer

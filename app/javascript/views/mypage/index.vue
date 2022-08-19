@@ -7,15 +7,17 @@
     </v-row>
     <v-row>
       <v-col cols="8">
-        <MypageBookmark />
+        <MypageBookmark
+          :bookmark-practices="bookmarkPractices"
+          :logged-in="loggedIn"
+          @remove-bookmark="removeBookmark"
+        />
       </v-col>
       <v-col
         class="pl-10"
         cols="4"
       >
-        <MypageClearCount />
         <MypageProfile
-          class="mt-8"
           :user="user"
           @show-account-setting-modal="showAccountSettingModal"
           @logout="logout"
@@ -42,7 +44,6 @@
 import { mapGetters, mapActions } from 'vuex'
 
 import MypageBookmark from './components/MypageBookmark'
-import MypageClearCount from './components/MypageClearCount'
 import MypageProfile from './components/MypageProfile'
 import MypageAccountSettingModal from './components/MypageAccountSettingModal'
 import MypageAccountDeleteDialog from './components/MypageAccountDeleteDialog'
@@ -51,7 +52,6 @@ export default {
   name: 'MypageView',
   components: {
     MypageBookmark,
-    MypageClearCount,
     MypageProfile,
     MypageAccountSettingModal,
     MypageAccountDeleteDialog,
@@ -62,12 +62,19 @@ export default {
       isVisibleAccountSettingModal: false,
       isVisibleAccountDeleteDialog: false,
       errorMessages: {},
+      bookmarkPractices: [],
     }
   },
   computed: {
     ...mapGetters('users', {
       user: 'authUser',
     }),
+    loggedIn() {
+      return Boolean(this.user)
+    },
+  },
+  created() {
+    this.fetchBookmarkPractices()
   },
   methods: {
     ...mapActions('users', ['fetchAuthUser', 'logoutUser', 'resetAuthUser']),
@@ -101,6 +108,14 @@ export default {
       await this.logoutUser()
       this.openFlashMessage('logoutSuccess')
       location.href = '/'
+    },
+    async fetchBookmarkPractices() {
+      await this.$axios.get('bookmarks').then(res => {
+        this.bookmarkPractices = res.data
+      })
+    },
+    removeBookmark(id) {
+      this.bookmarkPractices = this.bookmarkPractices.filter(practice => practice.id !== id)
     },
   },
 }

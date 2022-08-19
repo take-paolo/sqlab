@@ -24,6 +24,12 @@ const works = {
       state.work.totalChapters = calcWorkChapters(work)
       state.work.totalPractices = calcWorkPractices(work)
     },
+    updateBookmark(state, id) {
+      state.work.chapters.forEach(chapter => {
+        let practice = chapter.practices.find(practice => practice.id === id)
+        practice.bookmarked = !practice.bookmarked
+      })
+    },
   },
   actions: {
     async fetchWork({ state, commit }, slug) {
@@ -33,6 +39,9 @@ const works = {
           .then(res => commit('setWork', res.data))
           .catch(err => handleException(err))
       }
+    },
+    toggleBookmark({ commit }, id) {
+      commit('updateBookmark', id)
     },
   },
 }

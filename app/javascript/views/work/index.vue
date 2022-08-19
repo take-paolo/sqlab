@@ -10,7 +10,10 @@
     </v-row>
     <v-row>
       <v-col cols="7">
-        <WorkMenu :work="work" />
+        <WorkList
+          :work="work"
+          :logged-in="loggedIn"
+        />
       </v-col>
       <v-col
         class="pl-10"
@@ -26,13 +29,13 @@
 import store from '@/store/index'
 import { mapGetters, mapActions } from 'vuex'
 
-import WorkMenu from './components/WorkMenu'
+import WorkList from './components/WorkList'
 import WorkDetail from './components/WorkDetail'
 
 export default {
   name: 'WorkView',
   components: {
-    WorkMenu,
+    WorkList,
     WorkDetail,
   },
   beforeRouteEnter(to, from, next) {
@@ -40,6 +43,10 @@ export default {
   },
   computed: {
     ...mapGetters('works', ['work']),
+    ...mapGetters('users', ['authUser']),
+    loggedIn() {
+      return Boolean(this.authUser)
+    },
   },
   created() {
     this.fetchWork(this.$route.params.slug)

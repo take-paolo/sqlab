@@ -10,7 +10,7 @@ class Chapter < ApplicationRecord
   validates :order_number, presence: true, numericality: { only_integer: true }
 
   scope :with_practice, lambda {
-    includes(:practices)
+    includes(practices: :bookmarks)
       .references(:practices)
       .merge(Practice.published)
       .merge(Practice.sort_by_order_number)
