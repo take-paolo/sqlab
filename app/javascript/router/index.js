@@ -152,6 +152,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  store.dispatch('users/getAuthUser')
   redirectToPath(next)
 })
 

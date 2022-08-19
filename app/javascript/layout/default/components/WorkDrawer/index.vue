@@ -14,13 +14,28 @@
           v-for="(chapter, index) in work.chapters"
           :key="index"
         >
-          <WorkDrawerChapter :name="chapter.name" />
+          <v-subheader class="text-default font-weight-bold pa-0">
+            <BaseIcon
+              small
+              color="primary"
+            >
+              mdi-rhombus-medium
+            </BaseIcon>
+            <span class="font--text">{{ chapter.name }}</span>
+          </v-subheader>
 
-          <WorkDrawerPracticeList
-            :practices="chapter.practices"
-            :work-slug="work.slug"
-            :active-practice-id="activePractice.id"
-          />
+          <v-list dense>
+            <AppPracticeListItem
+              v-for="practice in chapter.practices"
+              :key="practice.id"
+              class="rounded-l-xl pr-8"
+              :slug="work.slug"
+              :practice="practice"
+              :logged-in="loggedIn"
+              color="primary"
+              :input-value="activePractice.id === practice.id"
+            />
+          </v-list>
 
           <BaseDivider
             v-if="index < work.chapters.length - 1"
@@ -36,18 +51,18 @@
 <script>
 import { mapGetters } from 'vuex'
 import WorkDrawerHeading from './components/WorkDrawerHeading'
-import WorkDrawerChapter from './components/WorkDrawerChapter'
-import WorkDrawerPracticeList from './components/WorkDrawerPracticeList'
 
 export default {
   name: 'WorkDrawer',
   components: {
     WorkDrawerHeading,
-    WorkDrawerChapter,
-    WorkDrawerPracticeList,
   },
   props: {
     isActive: {
+      type: Boolean,
+      default: false,
+    },
+    loggedIn: {
       type: Boolean,
       default: false,
     },
@@ -63,6 +78,6 @@ export default {
 
 <style lang="scss" scoped>
 .default-work-drawer {
-  max-width: 624px;
+  max-width: 724px;
 }
 </style>
