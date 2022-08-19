@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :works, param: :slug, only: %i[index show]
     resources :practices, only: %i[show]
-    resource  :auth_user, only: %i[show]
+    resource  :auth_user, only: %i[show update destroy]
 
     post 'oauth/callback', to: 'oauths#callback'
     get 'oauth/callback', to: 'oauths#callback'

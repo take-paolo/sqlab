@@ -53,6 +53,18 @@ const routes = [
     ],
   },
   {
+    path: '/mypage',
+    component: DefaultLayout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/mypage/index'),
+        name: 'Mypage',
+        beforeEnter: checkAuth,
+      },
+    ],
+  },
+  {
     path: '/login',
     component: DefaultLayout,
     children: [
@@ -141,16 +153,15 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   redirectToPath(next)
-  checkAuth(to, next)
 })
 
 function redirectToPath(next) {
-  if (!localStorage.redirectPath) return
+  if (!localStorage.redirectPath) return next()
 
   const path = localStorage.redirectPath
   localStorage.redirectPath = ''
 
-  store.dispatch('users/fetchAuthUser').then(authUser => {
+  store.dispatch('users/getAuthUser').then(authUser => {
     next({ path: path })
     if (authUser) {
       store.dispatch('app/openFlashMessage', 'loginSuccess')
@@ -160,36 +171,35 @@ function redirectToPath(next) {
   })
 }
 
-function checkAuth(to, next) {
-  store.dispatch('users/fetchAuthUser').then(authUser => {
-    if (to.matched.some(record => record.meta.requiresAuth) && !authUser) {
-      next(false)
-      store.dispatch('app/switchLoginModal', true)
+function checkAuth(to, from, next) {
+  store.dispatch('users/getAuthUser').then(authUser => {
+    if (authUser) {
+      next()
+    } else {
+      next({ name: 'Login' })
       store.dispatch('app/openFlashMessage', 'loginWarning')
+    }
+  })
+}
+
+function checkLoggedIn(to, from, next) {
+  store.dispatch('users/getAuthUser').then(authUser => {
+    if (authUser) {
+      next({ name: 'Top' })
     } else {
       next()
     }
   })
 }
 
-function checkLoggedIn(to, from, next) {
-  const authUser = store.getters['users/authUser']
-
-  if (authUser) {
-    next({ name: 'Top' })
-  } else {
-    next()
-  }
-}
-
 function checkAdminAuth(to, from, next) {
-  const authUser = store.getters['users/authUser']
-
-  if (authUser?.role === 'admin') {
-    next()
-  } else {
-    next({ name: 'Top' })
-  }
+  store.dispatch('users/getAuthUser').then(authUser => {
+    if (authUser?.role === 'admin') {
+      next()
+    } else {
+      next({ name: 'Top' })
+    }
+  })
 }
 
 export default router

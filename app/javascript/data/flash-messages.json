@@ -18,5 +18,10 @@
     "type": "success",
     "icon": "mdi-check-circle",
     "text": "ログアウトしました。"
+  },
+  "deleteUserSuccess": {
+    "type": "success",
+    "icon": "mdi-check-circle",
+    "text": "アカウントを削除しました。"
   }
 }

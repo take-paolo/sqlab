@@ -191,7 +191,7 @@ export default {
     PracticeModalShortcutList,
   },
   beforeRouteEnter(to, from, next) {
-    store.dispatch('users/fetchAuthUser').then(authUser => {
+    store.dispatch('users/getAuthUser').then(authUser => {
       if (to.params.requiresAuth && !authUser) {
         next(false)
         store.dispatch('app/switchLoginModal', true)
@@ -206,7 +206,7 @@ export default {
     this.savePreferences()
 
     if (!to.params.requiresAuth) return next()
-    store.dispatch('users/fetchAuthUser').then(authUser => {
+    store.dispatch('users/getAuthUser').then(authUser => {
       if (to.params.requiresAuth && !authUser) {
         next(false)
         store.dispatch('app/switchLoginModal', true)

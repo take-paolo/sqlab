@@ -1,7 +1,7 @@
 <template>
   <v-card
     v-if="user"
-    class="px-4 py-6"
+    class="px-4 py-8"
     color="primary white--text"
   >
     <v-card-text class="text-center">
