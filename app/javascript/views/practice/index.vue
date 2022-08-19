@@ -121,6 +121,7 @@
 
     <PracticeModalTestResult
       :is-active.sync="isTestResultModalActive"
+      :practice="practice"
       :result="testResult"
       @open-example-answer-modal="openExampleAnswerModal"
       @move-next-practice="moveNextPractice"
