@@ -18,6 +18,7 @@ export default {
 
 <style lang="scss" scoped>
 .base-tab {
+  height: 100%;
   &:before {
     background: var(--v-primary-base);
   }
