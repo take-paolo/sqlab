@@ -6,16 +6,10 @@
         cols="12"
       >
         <div>
-          <BaseImage
-            class="mx-auto"
-            width="108px"
-            eager
-            :src="require('@/assets/logo.svg')"
-            alt="SQLab"
-          />
+          <AppLogo />
         </div>
 
-        <h1 class="main-visual-concept mt-4">{{ concept }}</h1>
+        <h1 class="main-visual-concept mt-5">{{ concept }}</h1>
 
         <div class="mt-6">
           <BaseButton

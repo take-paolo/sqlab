@@ -10,7 +10,7 @@
         class="pa-3"
         cols="12"
       >
-        <AppLogo dark />
+        <AppLogoLink dark />
       </v-col>
 
       <v-col

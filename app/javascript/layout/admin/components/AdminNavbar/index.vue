@@ -8,7 +8,7 @@
   >
     <template #prepend>
       <div class="admin-navbar--prepend">
-        <AppLogo />
+        <AppLogoLink />
       </div>
     </template>
 
