@@ -118,6 +118,7 @@ export default {
 <style lang="scss">
 .practice-table-tabs-wrap {
   .practice-table-tabs {
+    height: 100%;
     > .v-tabs-bar {
       height: 100%;
       > .v-slide-group__wrapper {
