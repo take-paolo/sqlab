@@ -1,7 +1,7 @@
 <template>
   <v-tab
     class="base-tab"
-    :ripple="{ center: true, class: 'primary--text' }"
+    :ripple="false"
     v-bind="$attrs"
     v-on="$listeners"
   >
@@ -18,6 +18,7 @@ export default {
 
 <style lang="scss" scoped>
 .base-tab {
+  height: 100%;
   &:before {
     background: var(--v-primary-base);
   }

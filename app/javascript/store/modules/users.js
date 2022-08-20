@@ -14,30 +14,24 @@ const users = {
     },
   },
   actions: {
-    async loginUser({ commit }, user) {
-      const sessionsResponse = await axios.post('sessions', user)
-      localStorage.auth_token = sessionsResponse.data.token
-      axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.auth_token}`
-
-      const userResponce = await axios.get('auth_user')
-      commit('setAuthUser', userResponce.data)
-    },
-    logoutUser({ commit }) {
-      localStorage.auth_token = ''
-      axios.defaults.headers.common['Authorization'] = ''
+    async logoutUser({ commit }) {
+      await axios.delete('logout')
       commit('setAuthUser', null)
     },
-    async fetchAuthUser({ commit, state }) {
-      if (!localStorage.auth_token) return null
+    resetAuthUser({ commit }) {
+      commit('setAuthUser', null)
+    },
+    getAuthUser({ state, dispatch }) {
       if (state.authUser) return state.authUser
 
-      const userResponce = await axios.get('auth_user').catch(() => null)
-      const authUser = userResponce.data
-      if (authUser) {
-        commit('setAuthUser', authUser)
-        return authUser
-      } else {
-        commit('setAuthUser', null)
+      return dispatch('fetchAuthUser')
+    },
+    async fetchAuthUser({ commit }) {
+      try {
+        const response = await axios.get('auth_user')
+        commit('setAuthUser', response.data)
+        return response.data
+      } catch {
         return null
       }
     },

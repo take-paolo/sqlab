@@ -3,7 +3,7 @@
     class="base-btn base-btn-icon"
     icon
     :color="color"
-    :ripple="ripple"
+    :ripple="false"
     v-bind="$attrs"
     v-on="$listeners"
   >
@@ -19,10 +19,6 @@ export default {
     color: {
       type: String,
       default: 'font',
-    },
-    ripple: {
-      type: [Boolean, Object],
-      default: () => ({ center: true, class: 'primary--text' }),
     },
   },
 }

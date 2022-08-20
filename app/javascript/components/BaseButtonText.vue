@@ -3,7 +3,7 @@
     class="base-btn base-btn-text"
     text
     :color="color"
-    :ripple="{ center: true, class: 'primary--text' }"
+    :ripple="false"
     link
     v-bind="$attrs"
     v-on="$listeners"

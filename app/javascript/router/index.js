@@ -36,8 +36,8 @@ const routes = [
     children: [
       {
         path: '',
-        name: 'Work',
         component: () => import('@/views/work/index'),
+        name: 'Work',
       },
     ],
   },
@@ -49,6 +49,30 @@ const routes = [
         path: '',
         component: () => import('@/views/practice/index'),
         name: 'Practice',
+      },
+    ],
+  },
+  {
+    path: '/mypage',
+    component: DefaultLayout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/mypage/index'),
+        name: 'Mypage',
+        beforeEnter: checkAuth,
+      },
+    ],
+  },
+  {
+    path: '/login',
+    component: DefaultLayout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/login/index'),
+        name: 'Login',
+        beforeEnter: checkLoggedIn,
       },
     ],
   },
@@ -75,11 +99,6 @@ const routes = [
     ],
   },
   {
-    path: '/admin/login',
-    component: () => import('@/views/admin/login/index'),
-    name: 'AdminLogin',
-  },
-  {
     path: '/admin',
     component: AdminLayout,
     children: [
@@ -87,8 +106,7 @@ const routes = [
         path: '',
         component: () => import('@/views/admin/dashboard/index'),
         name: 'AdminDashboard',
-        meta: { requiresAuth: true },
-        beforeEnter: checkAdmin,
+        beforeEnter: checkAdminAuth,
       },
     ],
   },
@@ -100,8 +118,7 @@ const routes = [
         path: '',
         component: () => import('@/views/admin/works/index'),
         name: 'AdminWorks',
-        meta: { requiresAuth: true },
-        beforeEnter: checkAdmin,
+        beforeEnter: checkAdminAuth,
       },
     ],
   },
@@ -113,8 +130,7 @@ const routes = [
         path: '',
         component: () => import('@/views/admin/users/index'),
         name: 'AdminUsers',
-        meta: { requiresAuth: true },
-        beforeEnter: checkAdmin,
+        beforeEnter: checkAdminAuth,
       },
     ],
   },
@@ -136,22 +152,55 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  store.dispatch('users/fetchAuthUser').then(authUser => {
-    if (to.matched.some(record => record.meta.requiresAuth) && !authUser) {
-      next({ name: 'AdminLogin' })
+  store.dispatch('users/getAuthUser')
+  redirectToPath(next)
+})
+
+function redirectToPath(next) {
+  if (!localStorage.redirectPath) return next()
+
+  const path = localStorage.redirectPath
+  localStorage.redirectPath = ''
+
+  store.dispatch('users/getAuthUser').then(authUser => {
+    next({ path: path })
+    if (authUser) {
+      store.dispatch('app/openFlashMessage', 'loginSuccess')
+    } else {
+      store.dispatch('app/openFlashMessage', 'loginFail')
+    }
+  })
+}
+
+function checkAuth(to, from, next) {
+  store.dispatch('users/getAuthUser').then(authUser => {
+    if (authUser) {
+      next()
+    } else {
+      next({ name: 'Login' })
+      store.dispatch('app/openFlashMessage', 'loginWarning')
+    }
+  })
+}
+
+function checkLoggedIn(to, from, next) {
+  store.dispatch('users/getAuthUser').then(authUser => {
+    if (authUser) {
+      next({ name: 'Top' })
     } else {
       next()
     }
   })
-})
+}
 
-function checkAdmin(to, from, next) {
-  const authUser = store.getters['users/authUser']
-  if (authUser.role === 'admin') {
-    next()
-  } else {
-    next({ name: 'Top' })
-  }
+function checkAdminAuth(to, from, next) {
+  store.dispatch('users/getAuthUser').then(authUser => {
+    if (authUser?.role === 'admin') {
+      next()
+    } else {
+      next({ name: 'Top' })
+    }
+  })
 }
 
 export default router

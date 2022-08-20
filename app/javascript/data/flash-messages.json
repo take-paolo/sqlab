@@ -4,6 +4,11 @@
     "icon": "mdi-check-circle",
     "text": "ログインしました。"
   },
+  "loginWarning": {
+    "type": "warning",
+    "icon": "mdi-alert-outline",
+    "text": "ログインが必要です。"
+  },
   "loginFail": {
     "type": "error",
     "icon": "mdi-information-outline",
@@ -13,5 +18,10 @@
     "type": "success",
     "icon": "mdi-check-circle",
     "text": "ログアウトしました。"
+  },
+  "deleteUserSuccess": {
+    "type": "success",
+    "icon": "mdi-check-circle",
+    "text": "アカウントを削除しました。"
   }
 }

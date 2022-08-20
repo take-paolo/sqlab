@@ -7,18 +7,24 @@ RSpec.describe 'Api::Admin::AdminAuthentication', type: :request do
       response
     end
 
-    let(:headers) { { CONTENT_TYPE: 'application/json', ACCEPT: 'application/json', Authorization: "Bearer #{token}" } }
+    let(:headers) { { CONTENT_TYPE: 'application/json', ACCEPT: 'application/json' } }
 
     context 'when request from admin user' do
       let!(:user) { create(:user, :admin) }
-      let(:token) { user.create_tokens }
+
+      before do
+        login_as(user)
+      end
 
       it { is_expected.to have_http_status(:ok) }
     end
 
     context 'when request from general user' do
       let!(:user) { create(:user) }
-      let(:token) { user.create_tokens }
+
+      before do
+        login_as(user)
+      end
 
       it { is_expected.to have_http_status(:unauthorized) }
     end

@@ -6,7 +6,7 @@
         :style="{ gridTemplateColumns: `${resizableColumn} 12px 1fr` }"
       >
         <PracticeQuestion
-          class="practice-question-wrap"
+          class="practice-question-wrap shadow"
           :question="practice.question"
         />
 
@@ -121,6 +121,7 @@
 
     <PracticeModalTestResult
       :is-active.sync="isTestResultModalActive"
+      :practice="practice"
       :result="testResult"
       @open-example-answer-modal="openExampleAnswerModal"
       @move-next-practice="moveNextPractice"
@@ -191,15 +192,31 @@ export default {
     PracticeModalShortcutList,
   },
   beforeRouteEnter(to, from, next) {
-    store.dispatch('practices/fetchPractice', to.params.id).then(() => next())
+    store.dispatch('users/getAuthUser').then(authUser => {
+      if (to.params.requiresAuth && !authUser) {
+        next(false)
+        store.dispatch('app/switchLoginModal', true)
+        store.dispatch('app/openFlashMessage', 'loginWarning')
+      } else {
+        store.dispatch('practices/fetchPractice', to.params.id).then(() => next())
+      }
+    })
   },
   beforeRouteUpdate(to, from, next) {
-    this.saveQuery()
     this.savePreferences()
-    next()
+
+    if (!to.params.requiresAuth) return next()
+    store.dispatch('users/getAuthUser').then(authUser => {
+      if (to.params.requiresAuth && !authUser) {
+        next(false)
+        store.dispatch('app/switchLoginModal', true)
+        store.dispatch('app/openFlashMessage', 'loginWarning')
+      } else {
+        next()
+      }
+    })
   },
   beforeRouteLeave(to, from, next) {
-    this.saveQuery()
     this.savePreferences()
     next()
   },
@@ -294,7 +311,6 @@ export default {
   beforeMount() {
     document.addEventListener('keydown', this.handleKeyboardEvent)
     window.addEventListener('resize', this.calcContentWidth)
-    window.addEventListener('beforeunload', this.saveQuery)
     window.addEventListener('beforeunload', this.savePreferences)
   },
   mounted() {
@@ -307,7 +323,6 @@ export default {
   beforeDestroy() {
     document.removeEventListener('keydown', this.handleKeyboardEvent)
     window.removeEventListener('resize', this.calcContentWidth)
-    window.removeEventListener('beforeunload', this.saveQuery)
     window.removeEventListener('beforeunload', this.savePreferences)
   },
   methods: {
@@ -319,7 +334,7 @@ export default {
 
       await this.fetchSampleData()
 
-      this.loadQuery()
+      this.removeQueryFromLocalStorage()
       this.loadPreferences()
       this.focusEditor()
     },
@@ -495,14 +510,9 @@ export default {
       this.$refs[this.camelCase(this.inputTabs.editor.value)].resetValue()
       this.focusEditor()
     },
-    saveQuery() {
+    removeQueryFromLocalStorage() {
       const key = `${this.$route.params.slug}_${this.$route.params.id}`
-      localStorage.setItem(key, this.query)
-    },
-    loadQuery() {
-      const key = `${this.$route.params.slug}_${this.$route.params.id}`
-      this.query = localStorage.getItem(key)
-      this.$refs[this.camelCase(this.inputTabs.editor.value)].setValue()
+      localStorage.removeItem(key)
     },
     savePreferences() {
       let obj = {}
@@ -598,7 +608,6 @@ export default {
 }
 .practice-question-wrap {
   grid-area: question;
-  box-shadow: var(--shadow) !important;
 }
 .practice-tabs-wrap--left {
   grid-area: tabs-left;

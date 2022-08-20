@@ -11,7 +11,7 @@
         <slot name="text" />
       </p>
       <BaseButton
-        class="error-content-btn text-default mt-4 px-4"
+        class="text-default shadow-low mt-4 px-4"
         height="52px"
         :to="{ name: 'Top' }"
       >
@@ -66,8 +66,5 @@ export default {
   color: var(--v-font-darken1);
   line-height: normal;
   margin: 0;
-}
-.error-content-btn {
-  box-shadow: var(--shadow-low) !important;
 }
 </style>

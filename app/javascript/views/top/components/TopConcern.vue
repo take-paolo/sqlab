@@ -14,12 +14,12 @@
             alt=""
           />
         </div>
-        <v-card-text class="concern-item__text bubble bubble--left rounded-lg text-default">
+        <v-card-text class="concern-item__text balloon balloon--left rounded-lg text-medium">
           とにかく多くの問題を解いて<span class="primary--text font-weight-bold">SQLのスキルを高めたい</span>
         </v-card-text>
       </v-card>
 
-      <v-card class="concern-item flex-row-reverse mt-8">
+      <v-card class="concern-item flex-row-reverse mt-9">
         <div class="ml-8">
           <BaseImage
             class="concern-item__icon"
@@ -30,12 +30,12 @@
             alt=""
           />
         </div>
-        <v-card-text class="concern-item__text bubble bubble--right rounded-lg text-default">
+        <v-card-text class="concern-item__text balloon balloon--right rounded-lg text-medium">
           SQLの技術書を読んだけど<span class="primary--text font-weight-bold">次に何をすれば良いかわからない</span>
         </v-card-text>
       </v-card>
 
-      <v-card class="concern-item mt-8">
+      <v-card class="concern-item mt-9">
         <div class="mr-8">
           <BaseImage
             class="concern-item__icon"
@@ -46,7 +46,7 @@
             alt=""
           />
         </div>
-        <v-card-text class="concern-item__text bubble bubble--left rounded-lg text-default">
+        <v-card-text class="concern-item__text balloon balloon--left rounded-lg text-medium">
           実際にSQLを書いてみたいけど<span class="primary--text font-weight-bold">環境構築やデータの用意が面倒だな</span
           >...
         </v-card-text>
@@ -93,7 +93,7 @@ export default {
   padding: 16px 20px;
   line-height: normal !important;
 }
-.bubble {
+.balloon {
   position: relative;
 
   &::before {

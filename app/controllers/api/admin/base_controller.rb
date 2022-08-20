@@ -4,9 +4,8 @@ module Api
   module Admin
     class BaseController < ApplicationController
       include Api::ExceptionHandler
-      include Api::UserAuthenticator
 
-      before_action :authenticate!
+      before_action :require_login
       before_action :check_admin
 
       def check_admin

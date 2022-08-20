@@ -120,6 +120,12 @@ export default {
   .practice-table-tabs {
     > .v-tabs-bar {
       height: 100%;
+      > .v-slide-group__wrapper {
+        height: 100%;
+        > .v-tabs-bar__content {
+          height: 100%;
+        }
+      }
     }
   }
 }

@@ -23,7 +23,7 @@
             />
           </div>
           <div class="mt-8">
-            <v-card-text class="feature-item__text text-default text-pre-wrap">{{ feature.text }}</v-card-text>
+            <v-card-text class="feature-item__text text-medium text-pre-wrap">{{ feature.text }}</v-card-text>
           </div>
         </v-card>
       </template>
@@ -78,7 +78,7 @@ export default {
   justify-content: center;
 }
 .feature-item__text {
-  max-width: 350px;
+  max-width: 370px;
 }
 .feature-item__icon {
   max-width: 168px;

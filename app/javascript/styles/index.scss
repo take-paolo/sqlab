@@ -26,3 +26,9 @@ a {
     margin-top: 1.5rem;
   }
 }
+.shadow {
+  box-shadow: var(--shadow) !important;
+}
+.shadow-low {
+  box-shadow: var(--shadow-low) !important;
+}

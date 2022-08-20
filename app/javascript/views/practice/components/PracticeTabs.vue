@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="practice-tabs-wrap"
+    class="practice-tabs-wrap shadow"
     rounded="lg"
   >
     <v-tabs
@@ -59,7 +59,6 @@ export default {
   overflow: hidden;
   position: relative;
   z-index: 1;
-  box-shadow: var(--shadow) !important;
 
   .practice-tabs {
     grid-area: tabs;
@@ -76,10 +75,15 @@ export default {
   .practice-tabs {
     > .v-tabs-bar {
       height: 100%;
-
-      .v-tab:not(.v-tab--active) {
-        color: var(--v-font-base);
-        opacity: 0.62;
+      > .v-slide-group__wrapper {
+        height: 100%;
+        > .v-tabs-bar__content {
+          height: 100%;
+          .v-tab:not(.v-tab--active) {
+            color: var(--v-font-base);
+            opacity: 0.62;
+          }
+        }
       }
     }
   }

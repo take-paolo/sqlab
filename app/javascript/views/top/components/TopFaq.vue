@@ -14,12 +14,10 @@
           class="faq-expansion-panel rounded-lg overflow-hidden"
           :class="index !== 0 ? 'mt-5' : ''"
         >
-          <v-expansion-panel-header class="faq-expansion-panel-header text-default">
+          <v-expansion-panel-header class="faq-expansion-panel-header text-medium">
             {{ faqItem.header }}
           </v-expansion-panel-header>
-          <v-expansion-panel-content class="text-pre-wrap text-default">{{
-            faqItem.content
-          }}</v-expansion-panel-content>
+          <v-expansion-panel-content class="text-pre-wrap text-medium">{{ faqItem.content }}</v-expansion-panel-content>
         </v-expansion-panel>
       </v-expansion-panels>
     </div>

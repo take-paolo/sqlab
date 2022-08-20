@@ -2,7 +2,7 @@
   <v-menu
     :activator="activator"
     open-on-hover
-    content-class="base-menu"
+    content-class="shadow"
     :close-delay="closeDelay"
     :transition="transition"
     :origin="origin"
@@ -42,9 +42,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.base-menu {
-  box-shadow: var(--shadow);
-}
-</style>

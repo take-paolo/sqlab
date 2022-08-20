@@ -46,7 +46,7 @@
         <NavbarItem
           v-else
           :item="loginBtn"
-          :disabled="loginBtn.disabled"
+          @click="$listeners['show-login-modal']"
         />
       </div>
     </template>

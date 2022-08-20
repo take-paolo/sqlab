@@ -1,6 +1,7 @@
 <template>
   <v-card
-    class="px-4 py-6"
+    v-if="user"
+    class="px-4 py-8"
     color="primary white--text"
   >
     <v-card-text class="text-center">
@@ -15,8 +16,8 @@
           mdi-account
         </BaseIcon>
       </BaseAvatar>
-      <v-card-title class="text-default justify-center">ゲストユーザー</v-card-title>
-      <v-card-subtitle>guest@sqlab.com</v-card-subtitle>
+      <v-card-title class="text-default justify-center">{{ user.name }}</v-card-title>
+      <v-card-subtitle>{{ user.email }}</v-card-subtitle>
     </v-card-text>
   </v-card>
 </template>
@@ -24,5 +25,11 @@
 <script>
 export default {
   name: 'UserDrawerHeading',
+  props: {
+    user: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
 }
 </script>

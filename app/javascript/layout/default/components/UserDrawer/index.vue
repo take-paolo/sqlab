@@ -6,53 +6,67 @@
     right
     @update:isActive="$listeners['update:isActive']"
   >
-    <UserDrawerHeading />
+    <UserDrawerHeading :user="authUser" />
 
-    <div class="py-2 pl-4">
-      <div
-        v-for="(userMenu, index) in userMenuList"
-        :key="index"
-      >
-        <UserDrawerMenuCategory>
-          {{ userMenu.category }}
-        </UserDrawerMenuCategory>
-        <UserDrawerMenuList :items="userMenu.items" />
-      </div>
-    </div>
-
-    <div class="default-user-drawer-logout-btn-wrap">
-      <BaseButton
-        outlined
-        width="100%"
-        height="44px"
-        color="primary"
-        @click.stop="$emit('logout')"
-      >
+    <div class="py-3 pl-5">
+      <v-subheader class="default-user-drawer-menu__category">
         <BaseIcon
-          left
-          color="inherit"
+          dense
+          color="primary"
         >
-          mdi-logout
+          mdi-rhombus-medium
         </BaseIcon>
-        ログアウト
-      </BaseButton>
+        <span class="font--text">メニュー</span>
+      </v-subheader>
+
+      <v-list dense>
+        <v-list-item
+          class="rounded-l-xl overflow-hidden px-4"
+          :to="{ name: 'Mypage' }"
+          color="primary"
+          :ripple="false"
+        >
+          <v-list-item-icon class="mr-2">
+            <BaseIcon
+              dense
+              color="inherit"
+            >
+              mdi-account
+            </BaseIcon>
+          </v-list-item-icon>
+          <v-list-item-title class="font-weight-medium">マイページ </v-list-item-title>
+        </v-list-item>
+
+        <v-list-item
+          class="rounded-l-xl overflow-hidden px-4"
+          color="primary"
+          :ripple="false"
+          @click.stop="$emit('logout')"
+        >
+          <v-list-item-icon class="mr-2">
+            <BaseIcon
+              dense
+              color="inherit"
+            >
+              mdi-logout
+            </BaseIcon>
+          </v-list-item-icon>
+          <v-list-item-title class="font-weight-medium">ログアウト</v-list-item-title>
+        </v-list-item>
+      </v-list>
     </div>
   </BaseDrawer>
 </template>
 
 <script>
-import userMenu from '@/data/user-menu'
+import { mapGetters } from 'vuex'
 
 import UserDrawerHeading from './components/UserDrawerHeading'
-import UserDrawerMenuCategory from './components/UserDrawerMenuCategory'
-import UserDrawerMenuList from './components/UserDrawerMenuList'
 
 export default {
   name: 'UserDrawer',
   components: {
     UserDrawerHeading,
-    UserDrawerMenuCategory,
-    UserDrawerMenuList,
   },
   props: {
     isActive: {
@@ -60,10 +74,8 @@ export default {
       default: false,
     },
   },
-  data() {
-    return {
-      userMenuList: userMenu,
-    }
+  computed: {
+    ...mapGetters('users', ['authUser']),
   },
 }
 </script>
@@ -72,11 +84,9 @@ export default {
 .default-user-drawer {
   max-width: 324px;
 }
-.default-user-drawer-logout-btn-wrap {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  width: 100%;
+.default-user-drawer-menu__category {
+  padding: 0;
+  font-size: 0.75rem;
+  height: 40px;
 }
 </style>

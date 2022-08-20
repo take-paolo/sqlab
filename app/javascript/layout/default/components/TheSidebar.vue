@@ -7,16 +7,21 @@
         :logged-in="loggedIn"
         @toggle-work-drawer="toggleWorkDrawer"
         @toggle-user-drawer="toggleUserDrawer"
+        @show-login-modal="showLoginModal"
       />
       <WorkDrawer
-        v-if="isPracticePage"
         :is-active.sync="isVisibleWorkDrawer"
+        :logged-in="loggedIn"
         :style="{ marginRight: sidebarWidth + 'px' }"
       />
       <UserDrawer
         :is-active.sync="isVisibleUserDrawer"
         :style="{ marginRight: sidebarWidth + 'px' }"
         @logout="logout"
+      />
+      <LoginModal
+        :is-active="isVisibleLoginModal"
+        @update="switchLoginModal(false)"
       />
     </nav>
   </aside>
@@ -27,6 +32,7 @@ import { mapGetters, mapActions } from 'vuex'
 import DefaultNavbar from './Navbar'
 import WorkDrawer from './WorkDrawer'
 import UserDrawer from './UserDrawer'
+import LoginModal from './LoginModal'
 
 export default {
   name: 'TheSidebar',
@@ -34,6 +40,7 @@ export default {
     DefaultNavbar,
     WorkDrawer,
     UserDrawer,
+    LoginModal,
   },
   data() {
     return {
@@ -42,7 +49,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('app', ['sidebarWidth', 'isPracticePage']),
+    ...mapGetters('app', ['sidebarWidth', 'isPracticePage', 'isVisibleLoginModal']),
     ...mapGetters('users', ['authUser']),
     loggedIn() {
       return Boolean(this.authUser)
@@ -50,19 +57,21 @@ export default {
   },
   methods: {
     ...mapActions('users', ['logoutUser']),
-    ...mapActions('app', ['openFlashMessage']),
+    ...mapActions('app', ['openFlashMessage', 'switchLoginModal']),
     toggleWorkDrawer() {
       this.isVisibleWorkDrawer = !this.isVisibleWorkDrawer
     },
     toggleUserDrawer() {
       this.isVisibleUserDrawer = !this.isVisibleUserDrawer
     },
-    logout() {
-      this.logoutUser()
+    showLoginModal() {
+      this.switchLoginModal(true)
+    },
+    async logout() {
+      await this.logoutUser()
       this.isVisibleUserDrawer = false
       this.openFlashMessage('logoutSuccess')
-      if (this.$route.name === 'Top') return
-      this.$router.push({ name: 'Top' })
+      location.href = '/'
     },
   },
 }

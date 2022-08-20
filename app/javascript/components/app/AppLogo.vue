@@ -1,17 +1,15 @@
 <template>
-  <div class="d-flex justify-center">
-    <router-link
-      class="app-logo-link"
-      :to="{ name: 'Top' }"
-    >
-      <BaseImage
-        :max-width="width"
-        eager
-        :src="require(`@/assets/${logoType}.svg`)"
-        alt="SQLab"
-      />
-    </router-link>
-  </div>
+  <img
+    class="d-block mx-auto"
+    :src="require(`@/assets/${logoType}.svg`)"
+    alt="SQLab"
+    :style="{
+      width: width,
+      maxWidth: width,
+      height: height,
+      maxHeight: height,
+    }"
+  />
 </template>
 
 <script>
@@ -21,7 +19,11 @@ export default {
   props: {
     width: {
       type: String,
-      default: '88px',
+      default: '98px',
+    },
+    height: {
+      type: String,
+      default: '30px',
     },
     dark: {
       type: Boolean,
@@ -35,12 +37,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.app-logo-link {
-  &:hover {
-    opacity: 0.5;
-    transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
-  }
-}
-</style>
