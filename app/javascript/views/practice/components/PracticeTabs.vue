@@ -8,7 +8,6 @@
       v-model="tab"
       class="practice-tabs"
       color="primary"
-      height="44px"
     >
       <slot name="tabs" />
     </v-tabs>
@@ -55,7 +54,7 @@ export default {
 .practice-tabs-wrap {
   display: grid;
   grid-template-rows: 44px 1fr;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
   grid-template-areas: 'tabs' 'tabs-items';
   overflow: hidden;
   position: relative;
@@ -63,7 +62,6 @@ export default {
 
   .practice-tabs {
     grid-area: tabs;
-    overflow-x: scroll;
   }
   .practice-tabs-items {
     grid-area: tabs-items;

@@ -147,20 +147,6 @@
       }
     }
   }
-  .v-slide-group__prev,
-  .v-slide-group__next {
-    display: none;
-  }
-  .v-slide-group__content {
-    overflow-x: scroll;
-    width: 100%;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
 
   // table
   .theme--light {

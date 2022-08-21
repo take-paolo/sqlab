@@ -5,7 +5,6 @@
       class="practice-table-tabs"
       active-class="primary white--text"
       background-color="primary lighten-4"
-      height="32px"
       hide-slider
     >
       <BaseTab
@@ -97,14 +96,13 @@ export default {
 .practice-table-tabs-wrap {
   display: grid;
   grid-template-rows: 32px 1fr;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
   grid-template-areas: 'table-tabs' 'table-tabs-items';
   height: 100%;
   width: 100%;
 
   .practice-table-tabs {
     grid-area: table-tabs;
-    overflow-x: scroll;
   }
   .practice-table-tabs-items {
     grid-area: table-tabs-items;
