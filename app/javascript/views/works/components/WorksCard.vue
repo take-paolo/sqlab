@@ -1,6 +1,7 @@
 <template>
   <v-card
     class="overflow-hidden rounded-lg shadow-low pa-8"
+    height="100%"
     color="white"
   >
     <v-card-title class="text-x-large font--text text--darken-1">
@@ -13,6 +14,7 @@
         height="44px"
         depressed
         :to="{ name: 'Work', params: { slug: work.slug } }"
+        :disabled="!work.enabled"
       >
         練習問題はこちら
       </BaseButton>

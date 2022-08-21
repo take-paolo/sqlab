@@ -2,6 +2,7 @@
   <v-list-item
     class="app-practice-list-item overflow-hidden px-4"
     :ripple="false"
+    :disabled="!practice.enabled"
     v-bind="$attrs"
     @click.stop="moveToPractice"
     v-on="$listeners"
