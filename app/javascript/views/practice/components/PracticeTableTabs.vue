@@ -5,6 +5,7 @@
       class="practice-table-tabs"
       active-class="primary white--text"
       background-color="primary lighten-4"
+      height="32px"
       hide-slider
     >
       <BaseTab
@@ -118,15 +119,8 @@ export default {
 <style lang="scss">
 .practice-table-tabs-wrap {
   .practice-table-tabs {
-    height: 100%;
     > .v-tabs-bar {
       height: 100%;
-      > .v-slide-group__wrapper {
-        height: 100%;
-        > .v-tabs-bar__content {
-          height: 100%;
-        }
-      }
     }
   }
 }

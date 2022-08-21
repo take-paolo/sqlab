@@ -8,6 +8,7 @@
       v-model="tab"
       class="practice-tabs"
       color="primary"
+      height="44px"
     >
       <slot name="tabs" />
     </v-tabs>
@@ -73,18 +74,11 @@ export default {
 <style lang="scss">
 .practice-tabs-wrap {
   .practice-tabs {
-    height: 100%;
     > .v-tabs-bar {
       height: 100%;
-      > .v-slide-group__wrapper {
-        height: 100%;
-        > .v-tabs-bar__content {
-          height: 100%;
-          .v-tab:not(.v-tab--active) {
-            color: var(--v-font-base);
-            opacity: 0.62;
-          }
-        }
+      .v-tab:not(.v-tab--active) {
+        color: var(--v-font-base);
+        opacity: 0.62;
       }
     }
   }
