@@ -8,12 +8,12 @@
         <AppPageHeading>問題集一覧</AppPageHeading>
       </v-col>
     </v-row>
-    <v-row>
+    <v-row class="my-n5">
       <v-col
         v-for="work in works"
         :key="work.id"
+        class="pa-5"
         cols="6"
-        class="works-col pa-5"
       >
         <WorksCard :work="work" />
       </v-col>
@@ -52,15 +52,5 @@ export default {
 .works-container {
   width: 85%;
   margin: 0 auto;
-}
-.works-col {
-  &:nth-of-type(1),
-  &:nth-of-type(2) {
-    padding-top: 0 !important;
-  }
-  &:nth-last-of-type(1),
-  &:nth-last-of-type(2) {
-    padding-bottom: 0 !important;
-  }
 }
 </style>
