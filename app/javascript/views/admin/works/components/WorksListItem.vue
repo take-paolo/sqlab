@@ -74,7 +74,7 @@ export default {
   }
 }
 .works-list-item-action {
-  min-width: initial;
+  min-width: auto;
   flex-direction: row;
   margin-left: 1rem;
   margin-right: 1rem;
