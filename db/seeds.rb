@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 # Rails.application.eager_load!
 
-Work.find_or_create_by!(
+Work.find_or_create_by(
   id: 1,
   name: "SQLトライアル編",
   slug: "trial",
@@ -15,12 +15,12 @@ Work.find_or_create_by!(
   enabled: true,
   published: true
 )
-Chapter.find_or_create_by!(
+Chapter.find_or_create_by(
   id: 1,
   work_id: 1,
   name: "トライアル"
 )
-Practice.find_or_create_by!(
+Practice.find_or_create_by(
   id: 1,
   chapter_id: 1,
   name: "SQLトライアル1",
@@ -32,7 +32,7 @@ Practice.find_or_create_by!(
   published: true,
   requires_auth: false
 )
-Practice.find_or_create_by!(
+Practice.find_or_create_by(
   id: 2,
   chapter_id: 1,
   name: "SQLトライアル2",
@@ -44,7 +44,7 @@ Practice.find_or_create_by!(
   published: true,
   requires_auth: false
 )
-Practice.find_or_create_by!(
+Practice.find_or_create_by(
   id: 3,
   chapter_id: 1,
   name: "SQLトライアル3",
@@ -56,7 +56,7 @@ Practice.find_or_create_by!(
   published: true,
   requires_auth: false
 )
-Practice.find_or_create_by!(
+Practice.find_or_create_by(
   id: 4,
   chapter_id: 1,
   name: "SQLトライアル4",
@@ -68,9 +68,42 @@ Practice.find_or_create_by!(
   published: true,
   requires_auth: false
 )
-SampleTable.find_or_create_by!(id:1, practice_id: 1, uid: 2)
-SampleTable.find_or_create_by!(id:2, practice_id: 2, uid: 2)
-SampleTable.find_or_create_by!(id:3, practice_id: 3, uid: 1)
-SampleTable.find_or_create_by!(id:4, practice_id: 3, uid: 2)
-SampleTable.find_or_create_by!(id:5, practice_id: 3, uid: 3)
-SampleTable.find_or_create_by!(id:6, practice_id: 4, uid: 6)
+SampleTable.find_or_create_by(id:1, practice_id: 1, uid: 2)
+SampleTable.find_or_create_by(id:2, practice_id: 2, uid: 2)
+SampleTable.find_or_create_by(id:3, practice_id: 3, uid: 1)
+SampleTable.find_or_create_by(id:4, practice_id: 3, uid: 2)
+SampleTable.find_or_create_by(id:5, practice_id: 3, uid: 3)
+SampleTable.find_or_create_by(id:6, practice_id: 4, uid: 6)
+
+Work.find_or_create_by(
+  id: 2,
+  name: "SQL初級編",
+  slug: "basic",
+  description: "SQLの基本であるSELECT文やWHERE句、データの検索条件を指定するための算術演算子、比較演算子、論理演算子に関する練習問題に取り組むことができます。",
+  enabled: false,
+  published: true
+)
+Work.find_or_create_by(
+  id: 3,
+  name: "SQL中級編",
+  slug: "intermediate",
+  description: "集約関数やデータのグループ化・並び替え、データの登録・更新・削除、サブクエリやJOIN句に関する練習問題に取り組むことができます。",
+  enabled: false,
+  published: true
+)
+Work.find_or_create_by(
+  id: 4,
+  name: "SQL上級編",
+  slug: "advanced",
+  description: "準備中...",
+  enabled: false,
+  published: true
+)
+Work.find_or_create_by(
+  id: 5,
+  name: "SQLチャレンジ編",
+  slug: "challenge",
+  description: "SQLの基礎力を試したい方は、チャレンジ問題に挑戦してみましょう！\nSQLのスキルがより上達することでしょう！",
+  enabled: false,
+  published: true
+)
