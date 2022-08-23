@@ -11,7 +11,7 @@ Work.find_or_create_by(
   id: 1,
   name: "SQLトライアル編",
   slug: "trial",
-  description: "SQLトライアル編です。",
+  description: "実際にSQLの問題を解いてみましょう。\nSELECT文・ORDER BY句・JOIN句・DELETE文など様々な課題があります。\n全問正解を目指して挑戦してみましょう！",
   enabled: true,
   published: true
 )
