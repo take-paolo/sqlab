@@ -25,9 +25,12 @@ const works = {
       state.work.totalPractices = calcWorkPractices(work)
     },
     updateBookmark(state, id) {
-      state.work.chapters.forEach(chapter => {
+      state.work.chapters.some(chapter => {
         let practice = chapter.practices.find(practice => practice.id === id)
-        practice.bookmarked = !practice.bookmarked
+        if (practice) {
+          practice.bookmarked = !practice.bookmarked
+          return true
+        }
       })
     },
   },
