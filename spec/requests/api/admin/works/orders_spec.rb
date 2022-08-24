@@ -9,7 +9,7 @@ RSpec.describe 'Api::Admin::Works::Orders', type: :request do
   end
 
   describe 'PATCH /api/admin/works/order' do
-    let(:http_request) { patch api_admin_works_order_path, params: params, headers: headers, as: :json }
+    let(:http_request) { patch order_api_admin_works_path, params: params, headers: headers, as: :json }
     let!(:works) { create_list(:work, 3) }
     let(:params) { { ids: [[works[2].id, works[1].id, works[0].id]] } }
 

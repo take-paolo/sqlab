@@ -9,7 +9,7 @@ RSpec.describe 'Api::Admin::Practices::Orders', type: :request do
   end
 
   describe 'PATCH /api/admin/practices/order' do
-    let(:http_request) { patch api_admin_practices_order_path, params: params, headers: headers, as: :json }
+    let(:http_request) { patch order_api_admin_practices_path, params: params, headers: headers, as: :json }
     let!(:practices) { create_list(:practice, 2) }
     let!(:another_practices) { create_list(:practice, 3) }
     let(:params) { { ids: [[practices[1].id, practices[0].id], [another_practices[1].id, another_practices[2].id, another_practices[0].id]] } }

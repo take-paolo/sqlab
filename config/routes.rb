@@ -21,18 +21,15 @@ Rails.application.routes.draw do
     namespace :admin do
       resources :users, only: %i[index destroy]
 
-      namespace :works do
-        resource :order, only: %i[update]
+      resources :works, only: %i[index create update destroy] do
+        patch 'order', to: 'works/orders#update', on: :collection
       end
-      resources :works, only: %i[index create update destroy]
-      namespace :chapters do
-        resource :order, only: %i[update]
+      resources :chapters, only: %i[index create update destroy] do
+        patch 'order', to: 'chapters/orders#update', on: :collection
       end
-      resources :chapters, only: %i[index create update destroy]
-      namespace :practices do
-        resource :order, only: %i[update]
+      resources :practices, only: %i[index create update destroy] do
+        patch 'order', to: 'practices/orders#update', on: :collection
       end
-      resources :practices, only: %i[index create update destroy]
     end
   end
 
