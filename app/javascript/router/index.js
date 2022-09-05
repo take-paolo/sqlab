@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import VueGtag from 'vue-gtag'
 import store from '@/store/index'
 
 import DefaultLayout from '@/layout/default'
@@ -150,6 +151,16 @@ const router = new VueRouter({
   mode: 'history',
   routes,
 })
+
+if (process.env.NODE_ENV === 'production') {
+  Vue.use(
+    VueGtag,
+    {
+      config: { id: 'G-0HN4DDBSEZ' },
+    },
+    router
+  )
+}
 
 router.beforeEach((to, from, next) => {
   store.dispatch('users/getAuthUser')
