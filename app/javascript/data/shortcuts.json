@@ -11,7 +11,7 @@
         "command": "クエリ実行"
       },
       {
-        "key": "Ctrl - Z",
+        "key": "Ctrl - J",
         "command": "エディタをフォーカス"
       },
       {
@@ -23,7 +23,7 @@
         "command": "新しいタブでER図を開く"
       },
       {
-        "key": "Ctrl - A",
+        "key": "Ctrl - I",
         "command": "解答例を見る"
       },
       {

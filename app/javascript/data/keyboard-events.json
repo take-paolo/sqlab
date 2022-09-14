@@ -8,7 +8,7 @@
     "command": "executeQuery"
   },
   {
-    "key": "ctrl+z",
+    "key": "ctrl+j",
     "command": "focusEditor"
   },
   {
@@ -20,7 +20,7 @@
     "command": "openErDiagramInNewTab"
   },
   {
-    "key": "ctrl+a",
+    "key": "ctrl+i",
     "command": "openExampleAnswerModal"
   },
   {
