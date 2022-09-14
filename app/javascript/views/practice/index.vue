@@ -252,7 +252,7 @@ export default {
         },
         execResultModel: {
           value: 'exec-result-model-tab',
-          name: '見本',
+          name: '想定結果',
         },
       },
       outputTabs: {

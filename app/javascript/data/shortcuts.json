@@ -28,11 +28,11 @@
       },
       {
         "key": "Ctrl - Meta - Period ( . )",
-        "command": "右タブに移動（エディタ、見本）"
+        "command": "右タブに移動（エディタ、想定結果）"
       },
       {
         "key": "Ctrl - Meta - Comma ( , )",
-        "command": "左タブに移動（エディタ、見本）"
+        "command": "左タブに移動（エディタ、想定結果）"
       },
       {
         "key": "Ctrl - Period ( . )",
