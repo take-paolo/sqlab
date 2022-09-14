@@ -11,7 +11,7 @@
         "command": "クエリ実行"
       },
       {
-        "key": "Ctrl - Z",
+        "key": "Ctrl - J",
         "command": "エディタをフォーカス"
       },
       {
@@ -23,16 +23,16 @@
         "command": "新しいタブでER図を開く"
       },
       {
-        "key": "Ctrl - A",
+        "key": "Ctrl - I",
         "command": "解答例を見る"
       },
       {
         "key": "Ctrl - Meta - Period ( . )",
-        "command": "右タブに移動（エディタ、見本）"
+        "command": "右タブに移動（エディタ、想定結果）"
       },
       {
         "key": "Ctrl - Meta - Comma ( , )",
-        "command": "左タブに移動（エディタ、見本）"
+        "command": "左タブに移動（エディタ、想定結果）"
       },
       {
         "key": "Ctrl - Period ( . )",
