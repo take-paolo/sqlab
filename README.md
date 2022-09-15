@@ -1,5 +1,5 @@
 # SQLab
-![sqlab](https://user-images.githubusercontent.com/42969542/186997705-e8ca3848-3cff-4734-8ae1-423a83bf188d.png)
+![sqlab@2x-min](https://user-images.githubusercontent.com/42969542/190332661-cd02052e-f7b7-4ea6-9115-3ceee5ac9997.png)
 
 サービスURL: https://sqlab.net
 
@@ -20,38 +20,36 @@ SQLの練習ができるSQL特化の学習サービスです。<br>
 - 実際にSQLを書いてみたいけど環境構築やデータの用意が面倒だなと感じる方
 
 ## 使い方
-### 1. エディタにクエリを入力する
+1. お好きな問題集を選択します
+2. 解きたい練習問題を選択します
+3. 問題文を読み、クエリをエディタに記述します
+4. 答え合わせボタンで正誤判定を行います
 
-実行ボタンを押すと記述したクエリの実行結果を確認することができます。
+正解するまで3〜4を繰り返しましょう！
 
-![image](https://user-images.githubusercontent.com/42969542/187005239-0e75865d-f081-40de-a7ac-9c4b1807a025.png)
+![demo](https://user-images.githubusercontent.com/42969542/190333151-d1c4ad7a-3d31-41d0-8bcc-eddd1b8aaa56.gif)
 
-### 2. 答え合わせボタンで正誤判定を行う
+## 工夫した点
+| タブアイテムのオートフォーカス機能 | 実行結果タブへのオートスライド機能 |
+| ---- | ---- |
+| ![auto_focus](https://user-images.githubusercontent.com/42969542/190333592-662efcac-ab44-4f0a-84f4-0692aa22c74d.gif) | ![auto_slide](https://user-images.githubusercontent.com/42969542/190333643-e00e7490-49bf-4757-878b-145ed26d1443.gif) |
+| タブが切り替わると自動的にタブアイテムをフォーカスします。 | ユーザーが「実行」または「答え合わせ」ボタンを押した時に「実行結果」タブへ自動的にスライドします。 |
 
-想定結果に合わせて解答してください。正解するまでトライアンドエラーを繰り返しましょう！
-
-![image](https://user-images.githubusercontent.com/42969542/187005524-3ef488fc-f517-4cd3-bba5-cb79c544e977.png)
+| ショートカット機能 | 演習画面の設定機能 |
+| ---- | ---- |
+| ![shortcut](https://user-images.githubusercontent.com/42969542/190337899-2c19b887-9599-4075-8887-a5ef164496df.gif) | ![settings](https://user-images.githubusercontent.com/42969542/190333903-c5aa0afa-663f-4280-8fe3-69a3946f2a93.gif) |
+| タブの切り替えやクエリ実行、解答例の表示などをコマンド一つで実行できます。 | 実行結果タブへのオートスライド機能やショートカット機能のオンオフを切り替えることができます。 |
 
 ## その他機能
-|  タブアイテムのオートフォーカス機能  |  ショートカット機能  |
+| 練習問題のお気に入り登録機能 | ログイン機能 |
 | ---- | ---- |
-| ![gif](https://user-images.githubusercontent.com/42969542/187007091-5ad84f1c-aa15-4e7b-ba0b-932dc6e38ed5.gif) | ![image](https://user-images.githubusercontent.com/42969542/187007213-e4fe7fa0-208e-4da1-8255-de6d3c1cefa3.png) |
-| タブが切り替わると自動的にタブアイテムをフォーカスします。 | タブの切り替えやクエリ実行、解答例の表示などをコマンド一つで実行できます。 |
+| ![favorite](https://user-images.githubusercontent.com/42969542/190334665-3166d43b-d0ee-4c86-a1ff-08d106a79321.gif) | ![login](https://user-images.githubusercontent.com/42969542/190337722-1bd2f513-bd96-4674-854b-395ee11874b7.gif) |
+| ログインユーザーは練習問題をお気に入り登録することができます。お気に入り登録一覧はマイページで確認することができます。 | GoogleまたはGitHubアカウントを用いてアカウント登録・ログインをすることができます。 |
 
-|  演習画面の設定機能  |  練習問題のお気に入り登録機能  |
+| マイページ機能 | 管理画面機能 |
 | ---- | ---- |
-| ![image](https://user-images.githubusercontent.com/42969542/187007241-90d823b5-1169-4a72-bef5-cc9f1bdca875.png) | ![image](https://user-images.githubusercontent.com/42969542/187007749-0e627c4c-2a20-4530-9378-8de2679d9cca.png) |
-| 実行結果タブへのオートスライド機能やショートカット機能のオンオフを切り替えることができます。 | ログインユーザーは練習問題をお気に入り登録することができます。お気に入り一覧はマイページで確認することができます。 |
-
-|  ログイン機能  |  マイページ機能  |
-| ---- | ---- |
-| ![image](https://user-images.githubusercontent.com/42969542/187009051-b9553379-720a-4336-b7df-cc2cd1fffc32.png) | ![image](https://user-images.githubusercontent.com/42969542/187009132-731f5e56-9d65-4352-8ff8-9253ac084cb3.png) |
-| GoogleまたはGitHubアカウントを用いてアカウント登録・ログインをすることができます。 | マイページでアカウント登録情報の確認やお気に入り登録した練習問題一覧を確認することができます。 |
-
-|  アカウント設定機能  |  管理画面機能  |
-| ---- | ---- |
-| ![image](https://user-images.githubusercontent.com/42969542/187009198-8673a47b-62d3-4179-845a-5f0a4eb85b6f.png) | ![image](https://user-images.githubusercontent.com/42969542/187008928-c14c92c3-5b71-4dd8-a035-1cc843c6348f.png) |
-| ユーザー名、メールアドレスを変更することができます。 | 問題集・チャプター・練習問題を管理画面上で作成・更新・削除することができます。また、ドラッグ&ドロップで並び順を入れ替えることができます。 |
+| ![mypage](https://user-images.githubusercontent.com/42969542/190334948-cc5ee277-d02a-431e-a35d-3106c7539ed4.gif) | ![admin_works](https://user-images.githubusercontent.com/42969542/190334984-819d33ad-6fc9-423b-a442-0304e83adfa6.gif) |
+| マイページでアカウント登録情報の詳細や更新ができます。<br>また、お気に入り登録した練習問題の確認やお気に入り登録の解除をすることができます。 | 問題集・チャプター・練習問題を管理画面上で作成・更新・削除することができます。<br>また、ドラッグ&ドロップで並び順を任意のタイミングで入れ替えることができます。 |
 
 ## 使用技術
 ### フロントエンド
@@ -66,9 +64,22 @@ SQLの練習ができるSQL特化の学習サービスです。<br>
 - Ruby (3.0.2)
 - Rails (6.1.4.1)
 
+### コード解析ツール
+- ESLint
+- Rubocop
+
+### コードフォーマッター
+- Prettier
+
+### テスト
+- Rspec
+
 ### インフラ
 - Heroku
 - PostgreSQL
 
 ## ER図
 ![er-diagram](https://user-images.githubusercontent.com/42969542/187009732-86a4f3f5-d3f9-4ccc-a350-7f4d8b0c5e4c.png)
+
+## 関連記事
+- [SQLの練習ができる学習サービス「SQLab」を作ってみた](https://qiita.com/paolo_takechi/items/6b69767d8efbd013bf64)
