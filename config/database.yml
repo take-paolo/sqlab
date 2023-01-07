@@ -115,12 +115,22 @@ test:
 production:
   primary:
     <<: *default
+    database: clccrzdrp0041bxqu43ocei2t
+    username: clccrzdrp003zbxqu6fx5f5p1
+    password: <%= ENV['DATABASE_PASSWORD'] %>
+    url: <%= ENV['DATABASE_URL'] %>
   data_models:
     <<: *default
+    database: clcg29lb9004rbxqu8qx8d9vr
+    username: clcg29lb8004pbxqu3fyadno4
+    password: <%= ENV['DATA_MODELS_DATABASE_PASSWORD'] %>
     url: <%= ENV["DATA_MODELS_DATABASE_URL"] %>
     migrations_paths: db/data_models_migrate
   book_stores:
     <<: *default
+    database: clcg2ayvz004ubxqu4gg8g0i0
+    username: clcg2ayvy004sbxqubbs0920v
+    password: <%= ENV['BOOK_STORES_DATABASE_PASSWORD'] %>
     url: <%= ENV["BOOK_STORES_DATABASE_URL"] %>
     migrations_paths: db/book_stores_migrate
 
