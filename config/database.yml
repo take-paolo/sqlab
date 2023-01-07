@@ -137,11 +137,21 @@ production:
 staging:
   primary:
     <<: *default
+    database: clcm3f7a90006bxqu5vndfnwq
+    username: clcm3f7a80004bxquh1gnhac9
+    password: <%= ENV['DATABASE_PASSWORD'] %>
+    url: <%= ENV['DATABASE_URL'] %>
   data_models:
     <<: *default
+    database: clcm3l36g0009bxqu945w7g69
+    username: clcm3l36f0007bxqufwej8eyk
+    password: <%= ENV['DATA_MODELS_DATABASE_PASSWORD'] %>
     url: <%= ENV["DATA_MODELS_DATABASE_URL"] %>
     migrations_paths: db/data_models_migrate
   book_stores:
     <<: *default
+    database: clcm3mdxy000cbxqu6vr3gugr
+    username: clcm3mdxx000abxqu3lte62rb
+    password: <%= ENV['BOOK_STORES_DATABASE_PASSWORD'] %>
     url: <%= ENV["BOOK_STORES_DATABASE_URL"] %>
     migrations_paths: db/book_stores_migrate
