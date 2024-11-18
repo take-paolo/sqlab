@@ -8,6 +8,6 @@ RSpec.configure do |config|
   end
 
   config.after(:suite) do
-    Samples::ModelDatabase.all.each(&:destroy)
+    Samples::ModelDatabase.find_each(&:destroy)
   end
 end

@@ -8,7 +8,7 @@ RSpec.describe 'Api::Samples::ModelDatabases', type: :request do
 
     it 'returns list of works' do
       http_request
-      expect(body.count).to eq Samples::ModelDatabase.all.count
+      expect(body.count).to eq Samples::ModelDatabase.count
       expect(response).to be_successful
       expect(response).to have_http_status(:ok)
     end
