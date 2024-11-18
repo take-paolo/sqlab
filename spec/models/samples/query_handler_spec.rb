@@ -112,14 +112,14 @@ RSpec.describe Samples::QueryHandler, type: :model do
           let(:query) { 'select * from book' }
 
           it { expect(exec_result[:status]).to eq status[:error] }
-          it { expect(exec_result[:values]).to match /relation .* does not exist/ }
+          it { expect(exec_result[:values]).to match(/relation .* does not exist/) }
         end
 
         context 'when query contains invalid column name' do
           let(:query) { 'select names from books' }
 
           it { expect(exec_result[:status]).to eq status[:error] }
-          it { expect(exec_result[:values]).to match /column .* does not exist/ }
+          it { expect(exec_result[:values]).to match(/column .* does not exist/) }
         end
       end
 
@@ -147,15 +147,71 @@ RSpec.describe Samples::QueryHandler, type: :model do
       end
 
       describe 'when invalid query' do
-        context 'when query contains invalid keyword' do
+        context 'when query contains an invalid keyword like create table' do
           let(:query) { 'create table mybook (id integer, name varchar(10));' }
 
           it { expect(exec_result[:status]).to eq status[:error] }
           it { expect(exec_result[:values]).to include 'invalid keywords or syntax error' }
         end
 
-        context 'when query contains system information function keyword' do
+        context 'when query tries to create a table using select' do
+          let(:query) { 'create table another_books as select * from books;' }
+
+          it { expect(exec_result[:status]).to eq status[:error] }
+          it { expect(exec_result[:values]).to include 'invalid keywords or syntax error' }
+        end
+
+        context 'when query uses select into to create a table' do
+          let(:query) { 'select * into new_table from books;' }
+
+          it { expect(exec_result[:status]).to eq status[:error] }
+          it { expect(exec_result[:values]).to include 'invalid keywords or syntax error' }
+        end
+
+        context 'when query contains system a system keyword like pg_' do
           let(:query) { 'select pg_users;' }
+
+          it { expect(exec_result[:status]).to eq status[:error] }
+          it { expect(exec_result[:values]).to include 'invalid keywords or syntax error' }
+        end
+
+        context 'when query contains a system keyword like inet_' do
+          let(:query) { 'select inet_client_addr();' }
+
+          it { expect(exec_result[:status]).to eq status[:error] }
+          it { expect(exec_result[:values]).to include 'invalid keywords or syntax error' }
+        end
+
+        context 'when query contains a system keyword like current_' do
+          let(:query) { 'select current_user;' }
+
+          it { expect(exec_result[:status]).to eq status[:error] }
+          it { expect(exec_result[:values]).to include 'invalid keywords or syntax error' }
+        end
+
+        context 'when query contains a system keyword like has_' do
+          let(:query) { 'select has_table_privilege(\'public.books\', \'select\');' }
+
+          it { expect(exec_result[:status]).to eq status[:error] }
+          it { expect(exec_result[:values]).to include 'invalid keywords or syntax error' }
+        end
+
+        context 'when query contains a system keyword like txid_' do
+          let(:query) { 'select txid_current();' }
+
+          it { expect(exec_result[:status]).to eq status[:error] }
+          it { expect(exec_result[:values]).to include 'invalid keywords or syntax error' }
+        end
+
+        context 'when query contains a system keyword like information_schema.' do
+          let(:query) { 'select table_name from information_schema.tables;' }
+
+          it { expect(exec_result[:status]).to eq status[:error] }
+          it { expect(exec_result[:values]).to include 'invalid keywords or syntax error' }
+        end
+
+        context 'when query contains a system function like set_config(' do
+          let(:query) { "select set_config('search_path', 'public', false);" }
 
           it { expect(exec_result[:status]).to eq status[:error] }
           it { expect(exec_result[:values]).to include 'invalid keywords or syntax error' }

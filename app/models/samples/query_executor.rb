@@ -12,7 +12,7 @@ module Samples
       results = []
 
       tables.each do |table|
-        result = connection.execute("select * from #{table.name}")
+        result = connection.execute("select * from #{table.name} order by id asc")
         results << { name: table.name, fields: result.fields, records: result.values }
       end
 
@@ -21,18 +21,21 @@ module Samples
 
     def execute(queries)
       results = []
+      error_message = ''
 
-      queries.each do |query|
-        QueryValidator.validate(query)
-        result = connection.execute(query)
-        next if result.values.empty?
+      begin
+        # Manually start a transaction
+        connection.execute('BEGIN')
 
-        results << { fields: result.fields, records: result.values }
+        results = execute_queries(queries)
       rescue StandardError => e
-        return query_error(e)
+        error_message = trim_error_message(e)
+      ensure
+        # Always rollback to prevent changes from being persisted to the database
+        connection.execute('ROLLBACK')
       end
 
-      format(:success, results.presence || '')
+      error_message.blank? ? build_response(:success, results.presence || '') : build_response(:error, error_message)
     end
 
     private
@@ -41,10 +44,23 @@ module Samples
     PG_ERROR_TYPE_REGEX = /.*(?=ERROR)/
     PG_ERROR_POINTER_REGEX = /\s+\^\n/
 
-    def query_error(err)
-      error_message = remove_error_type(err.message)
-      error_message = remove_error_pointer(error_message)
-      format(:error, error_message)
+    def execute_queries(queries)
+      results = []
+
+      queries.each do |query|
+        QueryValidator.validate(query)
+        result = connection.execute(query)
+        next if result.values.empty?
+
+        results << { fields: result.fields, records: result.values }
+      end
+
+      results
+    end
+
+    def trim_error_message(error)
+      error_message = remove_error_type(error.message)
+      remove_error_pointer(error_message)
     end
 
     def remove_error_type(str)
@@ -55,7 +71,7 @@ module Samples
       str.gsub(PG_ERROR_POINTER_REGEX, '')
     end
 
-    def format(status = :success, values = [])
+    def build_response(status, values)
       { status: STATUS_CODE[status], values: values }
     end
   end
