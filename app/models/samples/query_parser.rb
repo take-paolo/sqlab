@@ -6,13 +6,13 @@ module Samples
       def call(queries)
         queries = remove_comments(queries)
         queries = replace_newline_with_space(queries)
-        queries.split(';').reject(&:blank?)
+        queries.split(';').compact_blank
       end
 
       private
 
-      SINGLE_LINE_COMMENT_REGEX = /(?:--.*\n)/
-      MULTI_LINE_COMMENT_REGEX = %r{/\*(?:[^*]|\*[^/])*\*/}m
+      SINGLE_LINE_COMMENT_REGEX = /--.*(?:\n|$)/
+      MULTI_LINE_COMMENT_REGEX = %r{/\*(?:.|\n)*?\*/}
 
       COMMENT_REGEX = Regexp.union(SINGLE_LINE_COMMENT_REGEX, MULTI_LINE_COMMENT_REGEX)
 

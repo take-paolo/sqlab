@@ -1,7 +1,7 @@
 sorcery:
   google:
-    callback_url: 'https://sqlab-staging.magia.runteq.jp/api/oauth/callback?provider=google'
+    callback_url: 'https://sqlabapp-staging.herokuapp.com/api/oauth/callback?provider=google'
   github:
     client_id: <%= Rails.application.credentials[:github][:staging][:client_id] %>
     client_secret: <%= Rails.application.credentials[:github][:staging][:client_secret] %>
-    callback_url: 'https://sqlab-staging.magia.runteq.jp/api/oauth/callback?provider=github'
+    callback_url: 'https://sqlabapp-staging.herokuapp.com/api/oauth/callback?provider=github'
