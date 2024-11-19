@@ -32,7 +32,7 @@ module Api
     end
 
     def access_denied?
-      return unless auth_params[:error]
+      return false unless auth_params[:error]
 
       auth_params[:error].match?('access_denied')
     end
