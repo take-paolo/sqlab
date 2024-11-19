@@ -48,5 +48,8 @@
     "format": "prettier --write app/javascript",
     "fix": "yarn format && yarn lint-fix",
     "test": "jest"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
