@@ -4,10 +4,8 @@ Rails.application.load_tasks
 
 RSpec.configure do |config|
   config.before(:suite) do
-    Rake::Task['samples:handle:data_models'].execute
+    Rake::Task['import:sample_csv_data'].execute
   end
 
-  config.after(:suite) do
-    Samples::ModelDatabase.find_each(&:destroy)
-  end
+  # No cleanup needed since import task already clears existing records every time
 end
