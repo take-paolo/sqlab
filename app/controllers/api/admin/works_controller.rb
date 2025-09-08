@@ -29,6 +29,11 @@ module Api
         end
       end
 
+      def update_order
+        Work.update_order(params[:ids])
+        head :ok
+      end
+
       def destroy
         @work.destroy!
 

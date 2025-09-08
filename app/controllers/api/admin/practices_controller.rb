@@ -36,6 +36,11 @@ module Api
         render json: e.record.errors.messages, status: :bad_request
       end
 
+      def update_order
+        Practice.update_order(params[:ids])
+        head :ok
+      end
+
       def destroy
         @practice.destroy!
 
