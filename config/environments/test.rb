@@ -7,9 +7,11 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   config.after_initialize do
-    Bullet.enable        = true
+    # Set SPEC_BULLET_ENABLE=true in environment to detect N+1 queries during spec execution
+    Bullet.enable = ENV['SPEC_BULLET_ENABLE'] == 'true'
     Bullet.bullet_logger = true
-    Bullet.raise         = true # raise an error if n+1 query occurs
+    Bullet.rails_logger = true
+    Bullet.raise = true # raise an error if n+1 query occurs
   end
 
   # Settings specified here will take precedence over those in config/application.rb.
