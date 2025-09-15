@@ -3,12 +3,12 @@
     height="100%"
     class="overflow-auto"
   >
-    <template v-if="isDisplay">
+    <template v-if="url">
       <div>
         <img
           :src="url"
           class="practice-er-diagram"
-          alt="ER図"
+          alt="ER diagram"
           tabindex="0"
         />
       </div>
@@ -30,10 +30,6 @@ export default {
     PracticeSheet,
   },
   props: {
-    isDisplay: {
-      type: Boolean,
-      default: false,
-    },
     url: {
       type: String,
       default: '',
@@ -42,7 +38,9 @@ export default {
   methods: {
     focus() {
       setTimeout(() => {
-        this.$el.querySelector('.practice-er-diagram').focus()
+        if(this.url) {
+          this.$el.querySelector('.practice-er-diagram').focus()
+        }
       }, 1)
     },
   },
