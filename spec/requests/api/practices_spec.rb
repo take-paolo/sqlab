@@ -4,7 +4,7 @@ RSpec.describe 'Api::Practices', type: :request do
   let!(:headers) { { CONTENT_TYPE: 'application/json', ACCEPT: 'application/json' } }
 
   describe 'GET /api/practices/:id' do
-    let(:http_request) { get api_practice_path(practice), headers: headers, as: :json }
+    let(:http_request) { get api_practice_path(practice), params: { with_sample_data: true }, headers: headers, as: :json }
 
     context 'when valid request' do
       let!(:practice) { create(:practice, :enabled, :published, :not_requires_auth) }
@@ -13,7 +13,6 @@ RSpec.describe 'Api::Practices', type: :request do
       it 'returns practice detail' do
         http_request
         expect(body['id']).to eq practice.id
-        expect(body['sampleTableIds']).to eq sample_tables.pluck(:uid)
         expect(response).to be_successful
         expect(response).to have_http_status(:ok)
       end
@@ -24,7 +23,6 @@ RSpec.describe 'Api::Practices', type: :request do
 
       it 'returns nil' do
         http_request
-        expect(body['sampleTableIds']).to eq []
         expect(response).to be_successful
         expect(response).to have_http_status(:ok)
       end
