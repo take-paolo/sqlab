@@ -30,7 +30,7 @@ module Api
     def fetch_sample_data
       target_database = SampleDatabaseDefinition.find_by(id: @practice.sample_database_id)
 
-      return unless target_database
+      return render_500 unless target_database
 
       @er_diagram_url = fetch_er_diagram_url(target_database)
       @sample_table_data = fetch_sample_table_data(target_database)
