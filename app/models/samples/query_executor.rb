@@ -4,8 +4,8 @@ module Samples
   class QueryExecutor
     attr_reader :connection
 
-    def initialize(database)
-      @connection = database.to_class.connection
+    def initialize(target_database)
+      @connection = target_database.establish_connection
     end
 
     def all_records(tables)
@@ -31,7 +31,7 @@ module Samples
       rescue StandardError => e
         error_message = trim_error_message(e)
       ensure
-        # Always rollback to prevent changes from being persisted to the database
+        # Always rollback to prevent changes from being persisted to the target_database
         connection.execute('ROLLBACK')
       end
 
