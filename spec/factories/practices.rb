@@ -4,7 +4,7 @@ FactoryBot.define do
     sequence(:name) { |n| "practice_name#{n}" }
     sequence(:question) { |n| "practice_question#{n}" }
     sequence(:answer) { |n| "practice_answer#{n}" }
-    sequence(:sample_database_id) { |n| n }
+    sequence(:sample_database_id) { SampleDatabaseDefinition.pluck(:id).sample }
     display_er_diagram { true }
     enabled { false }
     published { false }
