@@ -27,7 +27,7 @@ class SampleDatabaseDefinition < ActiveHash::Base
 
   # Get specific tables by IDs
   def table_definitions_by_ids(table_ids)
-    SampleTableDefinition.where(id: table_ids)
+    SampleTableDefinition.where(id: table_ids).order(:id)
   end
 
   # Establish database connection

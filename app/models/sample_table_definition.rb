@@ -35,7 +35,7 @@ class SampleTableDefinition < ActiveHash::Base
       database = SampleDatabaseDefinition.find_by(name: database_name)
       return [] unless database
 
-      where(database_id: database.id)
+      where(database_id: database.id).order(:id)
     end
   end
 end
