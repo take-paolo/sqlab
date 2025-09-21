@@ -26,14 +26,19 @@ RSpec.describe 'Api::Admin::Practices', type: :request do
     let!(:chapter) { create(:chapter) }
 
     context 'when valid request' do
-      let!(:practice) { build(:practice, chapter: chapter) }
-      let!(:sample_tables) { build_list(:sample_table, 3, practice: practice) }
-      let(:params) { { practice: practice, sampleTables: sample_tables.pluck(:uid) } }
+      let!(:practice) { create(:practice, chapter: chapter) }
+      let(:params) { { practice: practice, sampleTables: [1, 2, 3] } }
+
+      before do
+        create(:sample_table, practice: practice, uid: 1)
+        create(:sample_table, practice: practice, uid: 2)
+        create(:sample_table, practice: practice, uid: 3)
+      end
 
       it 'return practice data' do
         http_request
         expect(body['name']).to eq practice.name
-        expect(body['sampleTableIds']).to eq sample_tables.pluck(:uid)
+        expect(body['sampleTableIds']).to contain_exactly(1, 2, 3)
         expect(response).to be_successful
         expect(response).to have_http_status(:ok)
       end
@@ -54,15 +59,19 @@ RSpec.describe 'Api::Admin::Practices', type: :request do
   describe 'PATCH /api/admin/practices/:id' do
     let(:http_request) { patch api_admin_practice_path(practice.id), params: params, headers: headers, as: :json }
     let!(:practice) { create(:practice) }
-    let!(:sample_tables) { build_list(:sample_table, 2, practice: practice) }
-    let(:params) { { practice: practice, sampleTables: sample_tables.pluck(:uid) } }
+    let(:params) { { practice: practice, sampleTables: [1, 2] } }
+
+    before do
+      create(:sample_table, practice: practice, uid: 1)
+      create(:sample_table, practice: practice, uid: 2)
+    end
 
     context 'when valid request' do
       it 'return practice data' do
         practice.name = 'test practice'
         http_request
         expect(body['name']).to eq practice.name
-        expect(body['sampleTableIds']).to eq sample_tables.pluck(:uid)
+        expect(body['sampleTableIds']).to contain_exactly(1, 2)
         expect(response).to be_successful
         expect(response).to have_http_status(:ok)
       end

@@ -89,3 +89,7 @@ RSpec/MultipleMemoizedHelpers:
 Rails/Output:
   Exclude:
     - 'lib/tasks/**/*.rb'
+
+Lint/EmptyBlock:
+  Exclude:
+    - 'spec/factories/**'
