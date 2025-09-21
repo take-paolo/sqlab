@@ -6,7 +6,7 @@ module Api
       before_action :set_work, only: %i[update destroy]
 
       def index
-        @works = Work.all.sort_by_order_number
+        @works = Work.sort_by_order_number
 
         render 'index', formats: :json, handlers: 'jbuilder'
       end

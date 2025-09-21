@@ -6,7 +6,7 @@ module Api
       before_action :set_chapter, only: %i[update destroy]
 
       def index
-        @chapters = Chapter.all.sort_by_order_number
+        @chapters = Chapter.sort_by_order_number
 
         render 'index', formats: :json, handlers: 'jbuilder'
       end
