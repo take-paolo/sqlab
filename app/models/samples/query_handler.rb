@@ -2,21 +2,22 @@
 
 module Samples
   class QueryHandler
-    attr_reader :model_database
+    attr_reader :target_database
 
-    def initialize(model_database)
-      @model_database = model_database
+    def initialize(target_database)
+      @target_database = target_database
     end
 
-    def all_records(model_tables)
-      TempTableCreator.create(model_tables)
-      QueryExecutor.new(model_database).all_records(model_tables)
+    def all_records(tables)
+      TemporaryTableCreator.new(target_database).create(tables)
+      QueryExecutor.new(target_database).all_records(tables)
     end
 
     def execute(query)
       queries = QueryParser.call(query)
-      TempTableCreator.create(model_database.model_tables)
-      QueryExecutor.new(model_database).execute(queries)
+      temporary_tables = target_database.available_temporary_tables
+      TemporaryTableCreator.new(target_database).create(temporary_tables)
+      QueryExecutor.new(target_database).execute(queries)
     end
   end
 end

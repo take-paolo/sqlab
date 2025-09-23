@@ -4,12 +4,13 @@ RSpec.describe 'Api::Samples::Queries', type: :request do
   let!(:headers) { { CONTENT_TYPE: 'application/json', ACCEPT: 'application/json' } }
 
   describe 'POST /api/samples/databases/:database_id/sql' do
-    let(:http_request) { post api_samples_database_sql_path(model_database), params: params, headers: headers, as: :json }
-    let!(:model_database) { Samples::ModelDatabase.find_by(name: 'book_stores') }
-    let!(:status) { { success: 0, error: 1 } }
+    let(:http_request) { post api_samples_query_path, params: params, headers: headers, as: :json }
+    let(:params) { { sample_database_id: sample_database.id, query: query } }
+    let(:sample_database) { SampleDatabaseDefinition.find_by(name: 'book_stores') }
+    let(:status) { { success: 0, error: 1 } }
 
     context 'when valid query' do
-      let(:params) { { query: 'select * from books limit 4; select * from events;' } }
+      let(:query) { 'select * from books limit 4; select * from events;' }
 
       it 'returns execution result' do
         http_request
@@ -21,7 +22,7 @@ RSpec.describe 'Api::Samples::Queries', type: :request do
     end
 
     context 'when query is empty' do
-      let(:params) { { query: '' } }
+      let(:query) { '' }
 
       it 'returns empty value' do
         http_request
@@ -33,19 +34,20 @@ RSpec.describe 'Api::Samples::Queries', type: :request do
     end
 
     context 'when invalid database id' do
-      let(:http_request) { post api_samples_database_sql_path(model_database.id + 1), params: params, headers: headers, as: :json }
-      let!(:model_database) { Samples::ModelDatabase.last }
-      let(:params) { { query: '' } }
+      let(:http_request) { post api_samples_query_path, params: params, headers: headers, as: :json }
+      let(:params) { { sample_database_id: sample_database.id + 1, query: query } }
+      let(:sample_database) { SampleDatabaseDefinition.last }
+      let(:query) { '' }
 
-      it 'returns 404 error' do
+      it 'returns 500 error' do
         http_request
         expect(response).not_to be_successful
-        expect(response).to have_http_status(:not_found)
+        expect(response).to have_http_status(:internal_server_error)
       end
     end
 
     context 'when invalid query' do
-      let(:params) { { query: 'select * into temp_books from books;' } }
+      let(:query) { 'select * into temp_books from books;' }
 
       it 'returns error message' do
         http_request

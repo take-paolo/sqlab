@@ -3,7 +3,7 @@
 module Api
   class WorksController < BaseController
     def index
-      @works = Work.all.published.sort_by_order_number
+      @works = Work.published.sort_by_order_number
       render 'index', formats: :json, handlers: 'jbuilder'
     end
 

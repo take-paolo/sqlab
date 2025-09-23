@@ -12,24 +12,22 @@ Rails.application.routes.draw do
     delete 'logout', to: 'user_sessions#destroy'
 
     namespace :samples do
-      resources :databases, controller: 'model_databases', only: %i[index show] do
-        post 'sql', to: "queries#index"
-        resources :tables, controller: 'model_tables', only: %i[index]
-      end
+      post 'query', to: "queries#execute"
     end
 
     namespace :admin do
       resources :users, only: %i[index destroy]
 
       resources :works, only: %i[index create update destroy] do
-        patch 'order', to: 'works/orders#update', on: :collection
+        patch 'order', to: 'works#update_order', on: :collection
       end
       resources :chapters, only: %i[index create update destroy] do
-        patch 'order', to: 'chapters/orders#update', on: :collection
+        patch 'order', to: 'chapters#update_order', on: :collection
       end
       resources :practices, only: %i[index create update destroy] do
-        patch 'order', to: 'practices/orders#update', on: :collection
+        patch 'order', to: 'practices#update_order', on: :collection
       end
+      resources :sample_databases, only: %i[index]
     end
   end
 
