@@ -78,15 +78,14 @@
               <PracticeTabItemSampleDatabase
                 :ref="camelCase(outputTabs.sampleDatabase.value)"
                 :active-tab.sync="activeSampleTableTab"
-                :tables="sampleTables"
+                :tables="practice.sampleTableData"
               />
             </BaseTabItem>
 
             <BaseTabItem :value="outputTabs.erDiagram.value">
               <PracticeTabItemErDiagram
                 :ref="camelCase(outputTabs.erDiagram.value)"
-                :is-display="practice.displayErDiagram"
-                :url="sampleDatabase.erDiagram"
+                :url="practice.erDiagramUrl"
               />
             </BaseTabItem>
 
@@ -114,9 +113,9 @@
     </div>
 
     <PracticeMenuErDiagram
-      v-if="practice.displayErDiagram"
+      v-if="practice.erDiagramUrl"
       :activator="erDiagramMenu"
-      :url="sampleDatabase.erDiagram"
+      :url="practice.erDiagramUrl"
     />
 
     <PracticeModalTestResult
@@ -198,7 +197,7 @@ export default {
         store.dispatch('app/switchLoginModal', true)
         store.dispatch('app/openFlashMessage', 'loginWarning')
       } else {
-        store.dispatch('practices/fetchPractice', to.params.id).then(() => next())
+        store.dispatch('practices/fetchPractice', { id: to.params.id, withSampleData: true }).then(() => next())
       }
     })
   },
@@ -230,8 +229,6 @@ export default {
       },
       testResult: {},
       queryProcessing: false,
-      sampleDatabase: {},
-      sampleTables: [],
       isTestResultModalActive: false,
       isExampleAnswerModalActive: false,
       isPreferenceListModalActive: false,
@@ -330,9 +327,9 @@ export default {
     camelCase,
     async initPractice(slug, id) {
       await this.fetchWork(slug)
-      await this.fetchPractice(id)
+      await this.fetchPractice({ id, withSampleData: true })
 
-      await this.fetchSampleData()
+      await this.executeExampleAnswerQuery()
 
       this.removeQueryFromLocalStorage()
       this.loadPreferences()
@@ -340,29 +337,6 @@ export default {
     },
     ...mapActions('works', ['fetchWork']),
     ...mapActions('practices', ['fetchPractice']),
-    async fetchSampleData() {
-      await this.fetchSampleDatabase()
-      await this.fetchSampleTables()
-      await this.executeExampleAnswerQuery()
-    },
-    async fetchSampleDatabase() {
-      await this.$axios
-        .get(`samples/databases/${this.practice.sampleDatabaseId}`)
-        .then(res => (this.sampleDatabase = res.data))
-        .catch(err => handleException(err, this.$route.path))
-    },
-    async fetchSampleTables() {
-      if (isEmpty(this.practice.sampleTableIds)) return
-
-      await this.$axios
-        .get(`samples/databases/${this.practice.sampleDatabaseId}/tables`, {
-          params: {
-            tableIds: this.practice.sampleTableIds,
-          },
-        })
-        .then(res => (this.sampleTables = res.data))
-        .catch(err => handleException(err, this.$route.path))
-    },
     async executeExampleAnswerQuery() {
       this.execResultModel = await this.execute(this.practice.answer)
     },
@@ -372,7 +346,8 @@ export default {
 
       this.startProcessing()
       await this.$axios
-        .post(`samples/databases/${this.practice.sampleDatabaseId}/sql`, {
+        .post('samples/query', {
+          sampleDatabaseId: this.practice.sampleDatabaseId,
           query: query,
         })
         .then(res => (result = res.data))
@@ -411,7 +386,7 @@ export default {
     moveOutputTableTabTo(next = true) {
       switch (this.activeOutputTab) {
         case this.outputTabs.sampleDatabase.value:
-          this.activeSampleTableTab = this.findTabIndex(this.sampleTables, this.activeSampleTableTab, next)
+          this.activeSampleTableTab = this.findTabIndex(this.practice.sampleTableData, this.activeSampleTableTab, next)
           break
         case this.outputTabs.execResult.value:
           this.activeExecResultTab = this.findTabIndex(this.execResult.values, this.activeExecResultTab, next)
@@ -529,8 +504,8 @@ export default {
       this.query = query
     },
     openErDiagramInNewTab() {
-      if (!this.practice.displayErDiagram) return
-      window.open(this.sampleDatabase.erDiagram)
+      if (!this.practice.erDiagramUrl) return
+      window.open(this.practice.erDiagramUrl)
     },
     openTestResultModal() {
       this.isTestResultModalActive = true
