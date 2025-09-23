@@ -6,7 +6,7 @@ module Api
       before_action :set_practice, only: %i[update destroy]
 
       def index
-        @practices = Practice.includes(:sample_tables).all.sort_by_order_number
+        @practices = Practice.includes(:sample_tables).sort_by_order_number
 
         render 'index', formats: :json, handlers: 'jbuilder'
       end
@@ -34,6 +34,11 @@ module Api
         render 'update', formats: :json, handlers: 'jbuilder'
       rescue ActiveRecord::RecordInvalid => e
         render json: e.record.errors.messages, status: :bad_request
+      end
+
+      def update_order
+        Practice.update_order(params[:ids])
+        head :ok
       end
 
       def destroy

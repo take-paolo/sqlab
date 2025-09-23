@@ -2,21 +2,29 @@
 
 module Samples
   class Sorting
-    def self.sort_by_associations(arr, result = [])
-      arr_copy ||= Array.new(arr)
-      return result if arr_copy.blank?
+    # Sorts database tables by their dependency relationships to ensure proper creation order
+    # Tables with foreign key constraints will be ordered after their referenced tables
+    def self.sort_by_dependencies(tables, result = [])
+      tables_copy ||= Array.new(tables)
+      return result if tables_copy.blank?
 
-      top = arr_copy.shift
-      associations = top.reflect_on_all_associations(:belongs_to)
-      intesetion_values = associations.map(&:table_name) & arr_copy.map(&:table_name)
+      # Process the next table in queue
+      current_table = tables_copy.shift
+      # Get all belongs_to associations (foreign key dependencies)
+      belongs_to_relations = current_table.reflect_on_all_associations(:belongs_to)
+      # Find dependencies that haven't been processed yet
+      unresolved_dependencies = belongs_to_relations.map(&:table_name) & tables_copy.map(&:table_name)
 
-      if associations.present? && intesetion_values.present?
-        arr_copy << top
-        top = nil
+      if belongs_to_relations.present? && unresolved_dependencies.present?
+        # Table has unresolved dependencies - move to end of queue for later processing
+        tables_copy << current_table
+        current_table = nil
       end
 
-      result << top if top.present?
-      sort_by_associations(arr_copy, result)
+      # Add table to result if it can be processed now (no unresolved dependencies)
+      result << current_table if current_table.present?
+      # Recursively process remaining tables
+      sort_by_dependencies(tables_copy, result)
     end
   end
 end

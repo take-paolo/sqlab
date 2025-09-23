@@ -15,9 +15,11 @@ const practices = {
     },
   },
   actions: {
-    async fetchPractice({ commit }, id) {
+    async fetchPractice({ commit }, { id, withSampleData = false }) {
       await axios
-        .get(`practices/${id}`)
+        .get(`practices/${id}`, {
+          params: { withSampleData }
+        })
         .then(res => commit('setPractice', res.data))
         .catch(err => handleException(err))
     },

@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Samples::QueryHandler, type: :model do
-  let!(:model_database) { Samples::ModelDatabase.find_by(name: 'book_stores') }
+  let!(:target_database) { SampleDatabaseDefinition.find_by(name: 'book_stores') }
 
   describe '#execute' do
     subject(:exec_result) do
-      described_class.new(model_database).execute(query)
+      described_class.new(target_database).execute(query)
     end
 
     let!(:status) { { success: 0, error: 1 } }

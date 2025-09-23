@@ -191,7 +191,7 @@ export default {
       await this.$axios.get('admin/practices').then(res => (this.practices = res.data))
     },
     async fetchSampleDatabases() {
-      await this.$axios.get('samples/databases').then(res => (this.sampleDatabases = res.data))
+      await this.$axios.get('admin/sample_databases').then(res => (this.sampleDatabases = res.data))
     },
     async createWork(work) {
       await this.$axios
