@@ -4,11 +4,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.4.6'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.4'
+gem 'rails', '~> 7.2.1'
 # Use mysql as the database for Active Record
 gem 'pg', '~> 1.1'
 # Use Puma as the app server
-gem 'puma', '~> 5.0'
+gem 'puma', '~> 6.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -32,7 +32,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'seed-fu'
 
 # I18n
-gem 'rails-i18n', '~> 6.0.0'
+gem 'rails-i18n', '~> 7.0.0'
 
 # Authentication
 gem 'sorcery'
@@ -59,13 +59,13 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 
   # RuboCop
-  gem 'rubocop', '~> 1.20', require: false
+  gem 'rubocop', '~> 1.60', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
-  gem 'rubocop-rspec'
+  gem 'rubocop-rspec', require: false
 
   # Rspec
-  gem 'rspec-rails', '~> 5.0.0'
+  gem 'rspec-rails'
   # gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
 

@@ -8,14 +8,14 @@ module Api
       def index
         @works = Work.sort_by_order_number
 
-        render 'index', formats: :json, handlers: 'jbuilder'
+        render 'index', formats: :json
       end
 
       def create
         @work = Work.new(work_params)
 
         if @work.save
-          render 'create', formats: :json, handlers: 'jbuilder'
+          render 'create', formats: :json
         else
           render json: @work.errors.messages, status: :bad_request
         end
@@ -23,7 +23,7 @@ module Api
 
       def update
         if @work.update(work_params)
-          render 'update', formats: :json, handlers: 'jbuilder'
+          render 'update', formats: :json
         else
           render json: @work.errors.messages, status: :bad_request
         end

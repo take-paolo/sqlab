@@ -4,7 +4,7 @@ module Api
   class WorksController < BaseController
     def index
       @works = Work.published.sort_by_order_number
-      render 'index', formats: :json, handlers: 'jbuilder'
+      render 'index', formats: :json
     end
 
     def show
@@ -14,7 +14,7 @@ module Api
 
       @chapters = @work.chapters.with_practice.sort_by_order_number
 
-      render 'show', formats: :json, handlers: 'jbuilder'
+      render 'show', formats: :json
     end
   end
 end

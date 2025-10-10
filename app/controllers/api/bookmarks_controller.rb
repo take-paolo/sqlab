@@ -7,7 +7,7 @@ module Api
     def index
       @bookmark_practices = current_user.bookmark_practices.includes(chapter: :work)
 
-      render 'index', formats: :json, handlers: 'jbuilder'
+      render 'index', formats: :json
     end
 
     def create

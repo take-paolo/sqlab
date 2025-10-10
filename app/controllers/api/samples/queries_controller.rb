@@ -9,7 +9,7 @@ module Api
 
         @result = ::Samples::QueryHandler.new(target_database).execute(params[:query])
 
-        render 'execute', formats: :json, handlers: 'jbuilder'
+        render 'execute', formats: :json
       end
     end
   end
