@@ -18,7 +18,7 @@
               :class="index % 2 !== 0 ? 'feature-item__icon--reverse' : ''"
               max-width="168px"
               eager
-              :src="require(`@/assets/${feature.icon}`)"
+              :src="getAssetUrl(feature.icon)"
               alt=""
             />
           </div>
@@ -34,6 +34,8 @@
 <script>
 import TopSectionTitle from './TopSectionTitle'
 
+const assetModules = import.meta.glob('@/assets/*', { eager: true, import: 'default' })
+
 export default {
   name: 'TopFeature',
   components: {
@@ -43,6 +45,12 @@ export default {
     features: {
       type: Array,
       default: () => [],
+    },
+  },
+  methods: {
+    getAssetUrl(filename) {
+      const path = `/app/javascript/assets/${filename}`
+      return assetModules[path] || ''
     },
   },
 }

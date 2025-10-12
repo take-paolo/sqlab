@@ -1,21 +1,12 @@
 import Vue from 'vue'
 
-const requireComponent = require.context(
-  // Look for files in the current directory
-  '.',
-  // look in subdirectories
-  true,
-  // Only include "Base" prefixed .vue or .js files
-  /(Base|App)[A-Z]\w+\.(vue|js)$/
-)
+const modules = import.meta.glob(['./**/(Base|App)[A-Z]*.vue', './**/(Base|App)[A-Z]*.js'], { eager: true })
 
-// For each matching file name...
-requireComponent.keys().forEach(fileName => {
-  // Get the component config
-  const componentConfig = requireComponent(fileName)
-  // Get the component name
-  const componentName = fileName.replace(/^.+\//, '').replace(/\.\w+$/, '')
+// For each matching file...
+Object.entries(modules).forEach(([path, module]) => {
+  // Get the component name from the file path
+  const componentName = path.replace(/^.+\//, '').replace(/\.\w+$/, '')
 
   // Globally register the component
-  Vue.component(componentName, componentConfig.default || componentConfig)
+  Vue.component(componentName, module.default || module)
 })

@@ -10,7 +10,7 @@
             width="80px"
             height="80px"
             eager
-            :src="require('@/assets/man.svg')"
+            :src="manSvg"
             alt=""
           />
         </div>
@@ -26,7 +26,7 @@
             width="80px"
             height="80px"
             eager
-            :src="require('@/assets/woman.svg')"
+            :src="womanSvg"
             alt=""
           />
         </div>
@@ -42,7 +42,7 @@
             width="80px"
             height="80px"
             eager
-            :src="require('@/assets/man2.svg')"
+            :src="man2Svg"
             alt=""
           />
         </div>
@@ -57,6 +57,9 @@
 
 <script>
 import TopSectionTitle from './TopSectionTitle'
+import manSvg from '@/assets/man.svg'
+import womanSvg from '@/assets/woman.svg'
+import man2Svg from '@/assets/man2.svg'
 
 export default {
   name: 'TopConcern',
@@ -68,6 +71,13 @@ export default {
       type: Array,
       default: () => [],
     },
+  },
+  data() {
+    return {
+      manSvg,
+      womanSvg,
+      man2Svg,
+    }
   },
 }
 </script>
