@@ -6,7 +6,7 @@ module Api
       def index
         @sample_databases = SampleDatabaseDefinition.order(:id)
 
-        render 'index', formats: :json, handlers: 'jbuilder'
+        render 'index', formats: :json
       end
     end
   end

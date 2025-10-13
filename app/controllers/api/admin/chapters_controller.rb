@@ -8,14 +8,14 @@ module Api
       def index
         @chapters = Chapter.sort_by_order_number
 
-        render 'index', formats: :json, handlers: 'jbuilder'
+        render 'index', formats: :json
       end
 
       def create
         @chapter = Chapter.new(chapter_params)
 
         if @chapter.save
-          render 'create', formats: :json, handlers: 'jbuilder'
+          render 'create', formats: :json
         else
           render json: @chapter.errors.messages, status: :bad_request
         end
@@ -23,7 +23,7 @@ module Api
 
       def update
         if @chapter.update(chapter_params)
-          render 'update', formats: :json, handlers: 'jbuilder'
+          render 'update', formats: :json
         else
           render json: @chapter.errors.messages, status: :bad_request
         end

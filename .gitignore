@@ -53,9 +53,7 @@ bower.json
 # Ignore node_modules
 node_modules/
 
-# Ignore precompiled javascript packs
-/public/packs
-/public/packs-test
+# Ignore precompiled assets
 /public/assets
 
 # Ignore yarn files
@@ -79,3 +77,9 @@ coverage
 config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
+
+# Vite Ruby
+/public/vite*
+# Vite uses dotenv and suggests to ignore local-only env files. See
+# https://vitejs.dev/guide/env-and-mode.html#env-files
+*.local

@@ -5,12 +5,12 @@ module Api
     before_action :require_login, only: %i[update destroy]
 
     def show
-      render 'show', formats: :json, handlers: 'jbuilder'
+      render 'show', formats: :json
     end
 
     def update
       if current_user.update(auth_user_params)
-        render 'update', formats: :json, handlers: 'jbuilder'
+        render 'update', formats: :json
       else
         render json: current_user.errors.messages, status: :bad_request
       end
