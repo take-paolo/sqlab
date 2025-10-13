@@ -31,8 +31,8 @@
             class="main-visual-img mx-auto"
             max-width="1540px"
             eager
-            :src="require('@/assets/main-visual.png')"
-            :srcset="`${require('@/assets/main-visual@2x.png')} 2x`"
+            :src="mainVisualImg"
+            :srcset="`${mainVisualImg2x} 2x`"
             alt="演習画面"
           />
         </v-card>
@@ -44,6 +44,8 @@
 
 <script>
 import TopMainVisualDecoration from './TopMainVisualDecoration'
+import mainVisualImg from '@/assets/main-visual.png'
+import mainVisualImg2x from '@/assets/main-visual@2x.png'
 
 export default {
   name: 'TopMainVisual',
@@ -55,6 +57,12 @@ export default {
       type: String,
       default: '',
     },
+  },
+  data() {
+    return {
+      mainVisualImg,
+      mainVisualImg2x,
+    }
   },
 }
 </script>

@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :bookmark_practices, through: :bookmarks, source: :practice
   accepts_nested_attributes_for :authentications
 
-  enum role: {
+  enum :role, {
     general: 0,
     admin: 10
   }

@@ -11,7 +11,7 @@ module Api
 
       fetch_sample_data if @with_sample_data
 
-      render 'show', formats: :json, handlers: 'jbuilder'
+      render 'show', formats: :json
     end
 
     private

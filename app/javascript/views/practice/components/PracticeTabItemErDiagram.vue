@@ -38,7 +38,7 @@ export default {
   methods: {
     focus() {
       setTimeout(() => {
-        if(this.url) {
+        if (this.url) {
           this.$el.querySelector('.practice-er-diagram').focus()
         }
       }, 1)

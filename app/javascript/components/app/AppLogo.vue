@@ -1,7 +1,7 @@
 <template>
   <img
     class="d-block mx-auto"
-    :src="require(`@/assets/${logoType}.svg`)"
+    :src="logoSrc"
     alt="SQLab"
     :style="{
       width: width,
@@ -13,6 +13,9 @@
 </template>
 
 <script>
+import logoSvg from '@/assets/logo.svg'
+import logoDarkSvg from '@/assets/logo-dark.svg'
+
 export default {
   name: 'AppLogo',
   inheritAttrs: false,
@@ -31,8 +34,8 @@ export default {
     },
   },
   computed: {
-    logoType() {
-      return this.dark ? 'logo-dark' : 'logo'
+    logoSrc() {
+      return this.dark ? logoDarkSvg : logoSvg
     },
   },
 }

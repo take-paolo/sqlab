@@ -24,7 +24,7 @@
         class="mx-auto text-large font-weight-bold"
         max-width="500px"
         eager
-        :src="require(`@/assets/${img}`)"
+        :src="imgSrc"
         alt=""
       />
     </div>
@@ -32,12 +32,20 @@
 </template>
 
 <script>
+const assetModules = import.meta.glob('@/assets/*', { eager: true, import: 'default' })
+
 export default {
   name: 'ErrorsContent',
   props: {
     img: {
       type: String,
       required: true,
+    },
+  },
+  computed: {
+    imgSrc() {
+      const path = `/app/javascript/assets/${this.img}`
+      return assetModules[path] || ''
     },
   },
 }

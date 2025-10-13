@@ -8,7 +8,7 @@ module Api
       def index
         @practices = Practice.includes(:sample_tables).sort_by_order_number
 
-        render 'index', formats: :json, handlers: 'jbuilder'
+        render 'index', formats: :json
       end
 
       def create
@@ -21,7 +21,7 @@ module Api
             @practice.sample_tables.create!(uid: id)
           end
         end
-        render 'create', formats: :json, handlers: 'jbuilder'
+        render 'create', formats: :json
       rescue ActiveRecord::RecordInvalid => e
         render json: e.record.errors.messages, status: :bad_request
       end
@@ -31,7 +31,7 @@ module Api
           @practice.update_with_sample_tables!(practice_params, sample_table_ids)
         end
         @practice.sample_tables.reload
-        render 'update', formats: :json, handlers: 'jbuilder'
+        render 'update', formats: :json
       rescue ActiveRecord::RecordInvalid => e
         render json: e.record.errors.messages, status: :bad_request
       end

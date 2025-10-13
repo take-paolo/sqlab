@@ -6,7 +6,7 @@ module Api
       def index
         @users = User.all
 
-        render 'index', formats: :json, handlers: 'jbuilder'
+        render 'index', formats: :json
       end
 
       def destroy
